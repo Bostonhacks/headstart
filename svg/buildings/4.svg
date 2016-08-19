@@ -1,0 +1,38 @@
+<svg width="165px" height="128px" viewBox="173 900 165 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39.1 (31720) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <rect id="path-1" x="125.97973" y="0" width="20.0675676" height="43"></rect>
+        <mask id="mask-2" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="20.0675676" height="43" fill="white">
+            <use xlink:href="#path-1"></use>
+        </mask>
+    </defs>
+    <g id="Building4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(173.000000, 900.000000)">
+        <rect id="Rectangle-4" fill="#EF6262" x="0" y="37" width="165" height="90"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="88.0743243" y="48" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="108.141892" y="69" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="88.0743243" y="69" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="108.141892" y="48" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="7.80405405" y="48" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="27.8716216" y="69" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="7.80405405" y="69" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="27.8716216" y="48" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="47.9391892" y="48" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="68.0067568" y="69" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="47.9391892" y="69" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="68.0067568" y="48" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="128.209459" y="48" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="148.277027" y="69" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="128.209459" y="69" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="108.141892" y="90" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="88.0743243" y="90" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="27.8716216" y="90" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="7.80405405" y="90" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="68.0067568" y="90" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="47.9391892" y="90" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="148.277027" y="90" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="128.209459" y="90" width="10.0337838" height="12"></rect>
+        <rect id="Rectangle-10" fill="#222B30" x="148.277027" y="48" width="10.0337838" height="12"></rect>
+        <use id="Rectangle-32" stroke="#EF6262" mask="url(#mask-2)" stroke-width="8" xlink:href="#path-1"></use>
+    </g>
+</svg>

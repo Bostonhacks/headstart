@@ -1,0 +1,66 @@
+
+/* General*/
+
+h1,
+h2,
+h3,
+h4 {
+  color: #FFFFFF;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+ }
+
+ h1 {
+  font-size: 40px;
+ }
+ h2 {
+  font-size: 32px;
+  line-height: 40px;
+ }
+ h3 {
+  font-size: 24px;
+ }
+
+body {
+    background-color: #222B30;
+}
+
+/* home elements */
+#progressBar {
+  background-color: #EF6262;
+  height: 48px;
+  width: 74%;
+  
+  margin: auto;
+  margin-top: 82px;
+}
+
+#terrierLogo {
+  margin-top: 127px;
+}
+
+#homeButtonsContainer {
+  display: inline-block;
+  margin-top: 46px;
+}
+
+.homeButtons {
+    width: 300px;
+    border-width: 2px;
+    padding: 10px 50px 10px 50px;
+
+    background-color: transparent;
+    border-color: #EF6262;
+    
+    font-size: 32px;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+#attendButton {
+  margin-right: 41px;
+}
+
+#sponsorButton {
+  margin-left: 41px;
+}
