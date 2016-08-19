@@ -10,16 +10,13 @@ h4 {
   font-weight: 300;
  }
 
- h1 {
-  font-size: 40px;
- }
- h2 {
-  font-size: 32px;
-  line-height: 40px;
- }
- h3 {
+h1 { font-size: 32px; }
+h2 {
   font-size: 24px;
- }
+  line-height: 28px; 
+}
+h3 { font-size: 18px; }
+h4 { font-size: 14px; }
 
 body {
     background-color: #222B30;
@@ -27,16 +24,69 @@ body {
 
 /* home elements */
 #progressBar {
-  background-color: #EF6262;
   height: 48px;
-  width: 74%;
-  
+  /*width: 74%;*/
   margin: auto;
-  margin-top: 82px;
+  margin-top: 50px;
 }
 
+#progressItem {
+  display: inline-block;
+  background-color: #EF6262;
+}
+#progressBall {
+   display: inline-block;
+}
+
+#outer-circle {
+   display: inline-block;
+   box-shadow: 0px 0px 0px 3px #EF6262;
+   border-radius: 50%;
+   height: 40px;
+   width: 40px;
+   position: relative;
+ }
+ #inner-circle {
+   position: absolute;
+   /*background: #EF6262;*/
+   border-radius: 50%;
+   height: 20px;
+   width: 20px;
+   top: 50%;
+   left: 50%;
+   margin: -10px 0px 0px -10px;
+ }
+
+ .homeProgressCircle {
+   background: #EF6262;
+ }
+
+#progressLink {
+  margin: 0px 5px 35px 5px;
+  width: 120px;
+  height: 14px;
+  display: inline-block;
+  border: 2px solid #EF6262;
+  border-radius: 8px;
+}
+
+#progressBar #progressLink {
+    background: linear-gradient(to left, transparent 50%, #EF6262 50%);
+    background-size: 200% 100%;
+    background-position:right bottom;
+    transition:all 2s ease;
+}
+
+/*@media screen and (max-width: 1530px) {
+  #progressLink {
+    width: 0px;
+    height: 0px;
+  }
+}
+*/
 #terrierLogo {
-  margin-top: 127px;
+  margin-top: 75px;
+  height: 215px;
 }
 
 #homeButtonsContainer {
@@ -45,22 +95,35 @@ body {
 }
 
 .homeButtons {
-    width: 300px;
+    width: 250px;
     border-width: 2px;
-    padding: 10px 50px 10px 50px;
+    padding: 8px 30px 8px 30px;
 
     background-color: transparent;
     border-color: #EF6262;
     
-    font-size: 32px;
+    font-size: 24px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
 
 #attendButton {
-  margin-right: 41px;
+  margin-right: 40px;
 }
 
 #sponsorButton {
-  margin-left: 41px;
+  margin-left: 40px;
+}
+
+@media screen and (max-width: 687px) {
+  #attendButton { margin-right: 0px; }
+  #sponsorButton { margin-left: 0px; }
+}
+
+#buildings {
+  margin-top: 20px;
+}
+
+.buildingSVG {
+  vertical-align: bottom;
 }
