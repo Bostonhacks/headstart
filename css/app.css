@@ -20,13 +20,26 @@ h4 { font-size: 14px; }
 
 body {
     background-color: #222B30;
+    height: 10000px;
 }
 
 /* home elements */
+#progressContainer {
+  background: #222B30;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 74%;
+  border-left: 2px solid #EF6262;
+  border-right: 2px solid #EF6262;
+  border-bottom: 2px solid #EF6262;
+  border-bottom-left-radius: 25px;
+  border-bottom-right-radius: 25px;
+  /*border-radius: 50%;*/
+}
+
 #progressBar {
-  height: 48px;
-  /*width: 74%;*/
-  margin: auto;
+  height: 72px;
   margin-top: 50px;
 }
 
@@ -85,7 +98,7 @@ body {
 }
 */
 #terrierLogo {
-  margin-top: 75px;
+  margin-top: 150px;
   height: 215px;
 }
 
@@ -126,4 +139,24 @@ body {
 
 .buildingSVG {
   vertical-align: bottom;
+}
+
+/* Schedule */
+#scheduleContainer {
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 60px;
+}
+
+#scheduleItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+#saturday {
+  margin-top: 20px;
+}
+
+#sunday {
+  margin-top: 70px;
 }
