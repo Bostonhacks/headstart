@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <% include ../partials/head %>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+<body>
+    <section>
+      <div id="loginContainer">
+        <img src="img/terrierLogo.png" id="terrierLogo">
+
+        <% if (message.length > 0) { %>
+        <div class="loginError"> <%= message %> </div>
+
+        <!-- <div class="loginError"> <h3 id="loginErrorText"> <%= message %> </h3> </div> -->
+        <% } %>
+
+        <div id="inputContainer">
+            <form action="/login" method="post">
+                <div class="form-group">
+                    <h2> Email: </h2>
+                    <input type="text" class="textForm" name="email" placeholder="you@bostonhacks.io">
+                </div>
+                <div class="form-group">
+                    <h2> Password: </h2>
+                    <input type="password" class="textForm" name="password" placeholder=">= 6 characters">
+                </div>
+                <br>
+                <button type="submit" class="button loginButtons" id="loginButton">Login</button>
+                <button type="submit" class="button loginButtons" id="registerButton">Register</button>
+            </form>
+        </div>
+
+        <div id="forgotPassword">
+            <h3>Forgot Password?</h3>
+        </div>
+</body>
+<footer>
+    <% include ../partials/footer %>
+</footer>
+</html>
+
+
+
+

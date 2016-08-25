@@ -1,0 +1,168 @@
+<!-- views/pages/index.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <% include ../partials/head %>
+</head>
+  <body>
+    <section id="home" align="center">
+        <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2017/events?utm_source=na-2017&amp;utm_medium=TrustBadge&amp;utm_campaign=na-2017&amp;utm_content=gray" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2017/gray.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
+
+        <!-- !!! @nico: Need to fix the spacing between circles, longer text currently screwing up spacing -->
+        <div id="progressContainer">
+            <div id="progressBar">
+                <!-- Home -->
+                <div id="progressBall">
+                    <div id="outer-circle"><div id="inner-circle" class="homeProgressCircle"></div></div>
+                    <h4>Home</h4>
+                    </div>
+                <div id="progressLink" class="homeProgressLink"></div>
+
+                <!-- Schedule -->
+                <div id="progressBall">
+                    <div id="outer-circle"><div id="inner-circle" class="scheduleProgressCircle"></div></div>
+                    <h4>Schedule</h4>
+                </div>
+                <div id="progressLink" class="scheduleProgressLink"></div>
+
+                <!-- FAQ -->
+                <div id="progressBall">
+                    <div id="outer-circle"><div id="inner-circle" class="faqProgressCircle"></div></div>
+                    <h4>FAQ</h4>
+                </div>
+                <div id="progressLink" class="faqProgressLink"></div>
+
+                <!-- Apply -->
+                <div id="progressBall">
+                    <div id="outer-circle"><div id="inner-circle" class="applyProgressCircle"></div></div>
+                    <h4>Apply</h4>
+                </div>
+                <div id="progressLink" class="applyProgressLink"></div>
+
+                <!-- Sponsors -->
+                <div id="progressBall">
+                    <div id="outer-circle"><div id="inner-circle" class="sponsorsProgressCircle"></div></div>
+                    <h4>Sponsors</h4>
+                </div>
+                <div id="progressLink" class="sponsorsProgressLink"></div>
+
+                <!-- Contact us -->
+                <div id="progressBall">
+                    <div id="outer-circle"><div id="inner-circle" class="contactProgressCircle"></div></div>
+                    <h4>Contact us</h4>
+                </div>
+            </div>
+        </div>
+        <img src="img/terrierLogo.png" id="terrierLogo">
+        <h1>Boston<b>Hacks</b> Spring 2016</h1>
+        <h2>March 3rd - 4th<br>Boston, MA</h2>
+        <div id="homeButtonsContainer">
+            <a href="#" class="button homeButtons" id="attendButton">Attend</a>
+            <a href="#" class="button homeButtons" id="sponsorButton">Sponsor</a>
+        </div>
+        <div id="buildings">
+            <img src="img/buildings/1.svg" class="buildingSVG">
+            <img src="img/buildings/2.svg" class="buildingSVG">
+            <img src="img/buildings/3.svg" class="buildingSVG">
+            <img src="img/buildings/4.svg" class="buildingSVG">
+            <img src="img/buildings/5.svg" class="buildingSVG">
+            <img src="img/buildings/6.svg" class="buildingSVG">
+            <img src="img/buildings/7.svg" class="buildingSVG">
+            <img src="img/buildings/8.svg" class="buildingSVG">
+            <img src="img/buildings/9.svg" class="buildingSVG">
+            <img src="img/buildings/10.svg" class="buildingSVG">
+            <img src="img/buildings/11.svg" class="buildingSVG">
+            <img src="img/buildings/12.svg" class="buildingSVG">
+        </div>
+        <div id="filler"></div>
+    </section>
+    <section id="schedule" align="center">
+        <div id="scheduleContainer">
+          <h1> <b>Schedule</b> </h1>
+          <div id="saturday">
+            <h2> Saturday </h2>
+            <hr>
+            <div id="scheduleItem">
+              <h2> Check-in/Registration </h2>
+              <h2> 10:00am </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Opening Ceremony </h2>
+              <h2> 12:00pm </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Team Formation Event </h2>
+              <h2> 1:00pm </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Lunch </h2>
+              <h2> 1:00pm </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Hacking Begins </h2>
+              <h2> 1:30pm </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Dinner </h2>
+              <h2> 6:30pm </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Rocket League Tourney </h2>
+              <h2> 11:30pm </h2>
+            </div>
+          </div>
+          <div id="sunday">
+            <h2> Sunday </h2>
+            <hr>
+            <div id="scheduleItem">
+              <h2> Midnight Snack </h2>
+              <h2> 12:00am </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Pinatas </h2>
+              <h2> 2:00am </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Breakfast </h2>
+              <h2> 7:00am </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Submissions Due </h2>
+              <h2> 10:00am </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Lunch </h2>
+              <h2> 11:00am </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Judging Expo </h2>
+              <h2> 12:00pm </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Closing Ceremony </h2>
+              <h2> 1:30pm </h2>
+            </div>
+            <div id="scheduleItem">
+              <h2> Go home and sleep </h2>
+              <h2> 2:30pm </h2>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq" align="center">
+    <div id="faqTransition"></div>
+    <div id="faqContainer">
+        <h1 id='faqHeader'> Frequently Asked Questions: </h1>
+    </div>
+    </section>
+</body>
+
+<footer>
+    <% include ../partials/footer %>
+    <script src="js/setTransitionDivWidths.js"></script>
+</footer>
+
+</body>
+</html>

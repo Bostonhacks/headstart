@@ -1,0 +1,40 @@
+{
+  "name": "Headstart",
+  "description": "Boilerplate Application for Hackathon Organizers (Using My-MLH)",
+  "author": "Nicolas Hinderling <nicolas.hinderling@gmail.com>",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/username/repository.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "~1.0.0",
+    "connect": "1.8.5",
+    "connect-firebase": "0.0.9",
+    "connect-flash": "~0.1.1",
+    "cookie-parser": "~1.0.0",
+    "dotenv": "^2.0.0",
+    "ejs": "^2.4.1",
+    "express": "~4.0.0",
+    "express-session": "~1.0.0",
+    "file-type": "^3.8.0",
+    "method-override": "~1.0.0",
+    "mongoose": "^4.4.3",
+    "morgan": "~1.0.0",
+    "multer": "^1.1.0",
+    "passport": "^0.3.2",
+    "passport-local": "^1.0.0",
+    "request": "^2.71.0"
+  },
+  "devDependencies": {
+    "vows": "0.5.x",
+    "mocha": "*",
+    "should": "*"
+  },
+  "engine": "node >= 0.6.6",
+  "scripts": {
+    "start": "nodemon server.js"
+  }
+}

@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <% include ../partials/head %>
+</head>
+<body>
+<div class="container">
+    <div class="page-header text-center">
+        <h1>Registration</h1>
+        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <h3> Awesome! Just a few last questions:</h3>
+    <% if (errormessage.length > 0) { %>
+      <div class="alert alert-danger"> <%= errormessage %> </div>
+    <% } %>
+
+        <form action="/submit-application" method="POST" enctype="multipart/form-data">
+            <div class="question">
+                <h4> Is this your first hackathon? </h4>
+                <input type="radio" name="firstHackathon" value="true" required> Yes<br>
+                <input type="radio" name="firstHackathon" value="false"> No<br>
+            </div>
+
+            <div class="question">
+                <h4> Would you like to include your resume? (Optional) </h4>
+                <h5> Make sure your file type is either a .jpg, .jpeg, .pdf, .png, or .gif </h5>
+                    Select an image to upload:
+                    <input type="file" name="resume"> 
+            </div>
+
+            <div class="question">
+                <h4> Do you need travel reimbursement? </h4>
+                <input type="radio" name="reimbursementSeeking" value="true" required> Yes<br>
+                <input type="radio" name="reimbursementSeeking" value="false"> No<br>
+                
+                <div class="followup-question">
+                    <h5> Where are you coming from? </h5>
+                    <input type="text" name="reimbursementLocation" value=""><br>
+                </div>
+                
+                <div class="followup-question">
+                    <h5> How much are you seeking for reimbursement? (USD) </h5>
+                    <input type="number" name="reimbursementAmount" value="100"><br>
+                </div>
+            </div>
+
+            <div class="question">
+                <h4> Comments? Questions? Concerns? </h4>
+                <textarea name="additional" rows="4" cols="50"></textarea>
+            </div>
+
+            <input type="submit" value="Submit">
+        </form>
+
+</div>
+</body>
+
+<footer>
+    <% include ../partials/footer %>
+</footer>
+</html>

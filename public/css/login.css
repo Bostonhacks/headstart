@@ -1,0 +1,90 @@
+body {
+  background-color: #A1DEFF;
+  height: 100%;
+  margin: 0;
+}
+
+button:hover {
+  background-color:  #34434b; 
+}
+
+#loginContainer {
+  position:absolute;
+  margin: 0 auto;
+  text-align: center;
+  top:0;
+  left:0;
+  right:0;
+
+  margin-top: 100px;
+  width: 400px;
+  background-color: #222B30;
+}
+
+#terrierLogo {
+  height: 125px;
+  margin: 0 auto;
+  margin-top: 25px;
+}
+
+.loginError {
+  background-color: red;
+}
+
+#loginErrorText {
+  color: #ff1a1a;
+}
+
+#inputContainer {
+  text-align: left;
+  margin-left: 10%;
+}
+
+.form-group {
+  margin-right: 10%;
+}
+
+.textForm {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+
+  color: #FFFFFF;
+  background-color: transparent;
+  border-bottom-color: #A1DEFF;
+  border-width: 0px;
+  border-bottom-width: 2px;
+}
+
+/* If you know the correct way to combine 
+the following two pieces, pls make PR :) ... 
+otherwise I'll clean this up later */
+input[type=text]:focus {
+  background-color: #3f515a;
+  border: 0px solid #A1DEFF;
+  border-bottom-width: 2px;
+}
+
+input[type=password]:focus {
+  background-color: #3f515a;
+  border: 0px solid #A1DEFF;
+  border-bottom-width: 2px;  
+}
+
+.loginButtons {
+  width: 90%;
+  border-width: 2px;
+  padding: 8px 30px 8px 30px;
+
+  background-color: transparent;
+  border-color: #EF6262;
+  
+  font-size: 24px;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+  text-align:center;
+}
+
+#forgotPassword {
+  padding-top: 5px;
+  padding-bottom: 25px;
+}

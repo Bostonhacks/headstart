@@ -1,0 +1,18 @@
+- redo builds website (at least add requested changes)
+
+onloading in JS
+
+- apply & call
+
+http://sijinjoseph.com/programmer-competency-matrix/
+
+- Fix FlightTracker Bug
+
+- Redo nicohinderling.com!
+- compile a closed source list of interview questions for people!
+- Make a MEAN stack application
+
+read about APACHE/nginx vs. apache
+
+
+The faculty advisory committee thought your project could use more detail. While they found the project interesting, they felt it needed more structure. We encourage you to work closely with your mentor when submitting future applications.

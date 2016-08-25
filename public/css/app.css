@@ -20,7 +20,10 @@ h4 { font-size: 14px; }
 
 body {
     background-color: #222B30;
-    height: 10000px;
+}
+
+a.button:hover {
+  background-color:  #34434b; 
 }
 
 /* home elements */
@@ -146,6 +149,7 @@ body {
   width: 500px;
   margin: 0 auto;
   margin-top: 60px;
+  margin-bottom: 60px;
 }
 
 #scheduleItem {
@@ -159,4 +163,30 @@ body {
 
 #sunday {
   margin-top: 70px;
+}
+
+/* FAQ */
+#faq {
+  width: 100%;
+  background-color: #A1DEFF;
+  position:absolute;
+}
+
+#faqTransition {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 200px 100px 0;
+  border-color: transparent #222B30 transparent transparent;
+}
+
+#faqContainer {
+  width: 100%;
+  background-color: #A1DEFF;
+}
+
+#faqHeader {
+  padding-top: 60px;
+  padding-bottom: 40px;
+  color: #222B30;
 }

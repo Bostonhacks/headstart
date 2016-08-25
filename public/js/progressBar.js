@@ -11,7 +11,7 @@
 
 // To dectect scrolling!
 
-var sections = [["home", 0], ["schedule", 20], ["faq", 1000], ["apply", 1000], ["sponsors", 1000], ["contact", 1000]];
+var sections = [["home", 0], ["schedule", 500], ["faq", 1200], ["apply", 2000], ["sponsors", 3000], ["contact", 3000]];
 
 $(window).scroll(function() {
     var height = $(window).scrollTop();
@@ -21,11 +21,13 @@ $(window).scroll(function() {
         $('.' + sections[i][0] + 'ProgressCircle').css('background', "#EF6262");
         $('.' + sections[i][0] + 'ProgressLink').css('background-position', "left");
       } else {
-        $('.' + sections[i][0] + 'ProgressCircle').css('background', "transparent");
+        $('.' + sections[i][0] + 'ProgressCircle').css('background', "transparent"); 
         $('.' + sections[i][0] + 'ProgressLink').css('background-position', "right");
       }
     }
 
+});
+
+
     // This is the maximum amount of page scroll
     // $(document).height() - $(window).height()
-});
