@@ -47,11 +47,9 @@ body {
   font-weight: 300;
 
   color: #FFFFFF;
-  outline: none;
   background-color: transparent;
-  border-bottom-color: #A1DEFF;
-  border-width: 0px;
-  border-bottom-width: 2px;
+  border: 0;
+  border-bottom: 2px solid #A1DEFF;
 }
 
 /* If you know the correct way to combine 
