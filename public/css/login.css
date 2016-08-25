@@ -4,10 +4,6 @@ body {
   margin: 0;
 }
 
-button:hover {
-  background-color:  #34434b; 
-}
-
 #loginContainer {
   position:absolute;
   margin: 0 auto;
@@ -17,6 +13,7 @@ button:hover {
   right:0;
 
   margin-top: 100px;
+  padding-top: 15px;
   width: 400px;
   background-color: #222B30;
 }
@@ -24,7 +21,7 @@ button:hover {
 #terrierLogo {
   height: 125px;
   margin: 0 auto;
-  margin-top: 25px;
+  margin-top: 10px;
 }
 
 .loginError {
@@ -42,6 +39,7 @@ button:hover {
 
 .form-group {
   margin-right: 10%;
+  margin-bottom: 20px;
 }
 
 .textForm {
@@ -49,6 +47,7 @@ button:hover {
   font-weight: 300;
 
   color: #FFFFFF;
+  outline: none;
   background-color: transparent;
   border-bottom-color: #A1DEFF;
   border-width: 0px;
@@ -75,13 +74,17 @@ input[type=password]:focus {
   border-width: 2px;
   padding: 8px 30px 8px 30px;
 
-  background-color: transparent;
-  border-color: #EF6262;
+  background-color: #ed4545;
+  border-color: #ed4545;
   
   font-size: 24px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
   text-align:center;
+}
+
+.loginButtons:hover {
+  background-color:  #EF6262;
 }
 
 #forgotPassword {
