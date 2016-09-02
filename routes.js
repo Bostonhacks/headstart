@@ -27,6 +27,10 @@ module.exports = function(app, passport, upload) {
         failureFlash : true
     }));
 
+    app.get('/forgot-password', isLoggedIn, function(req, res) {
+        res.render('pages/forgot-password.ejs');
+    });
+
     app.get('/home', isLoggedIn, function(req, res) {
         console.log(req.user);
         if(req.user.local.registered){

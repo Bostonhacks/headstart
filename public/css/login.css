@@ -5,7 +5,7 @@ body {
 }
 
 #loginContainer {
-  position:absolute;
+  position: absolute;
   margin: 0 auto;
   text-align: center;
   top:0;
@@ -16,6 +16,10 @@ body {
   padding-top: 15px;
   width: 400px;
   background-color: #222B30;
+
+  border: 5px solid #161a1d;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
 }
 
 #terrierLogo {
