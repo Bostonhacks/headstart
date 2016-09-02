@@ -12,31 +12,23 @@
     </div>
 
     <div class="row">
+        <h3>Local</h3>
+        <div>
+            <h4>
+                id: <%= user._id %> <br>
+                email: <%= user.local.email %> <br>
+                registered: <%= user.local.registered %> <br>
+            </h4>
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-                <h3><span class="fa fa-user"></span> Local</h3>
-
-                    <p>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>password</strong>: <%= user.local.password %><br>
-                        <strong>registered</strong>: <%= user.local.registered %>
-                    </p>
-
-            </div>
         </div>
-        <div class="col-sm-6">
-        <ul>
-            <li>Application Status</li>
-            <li>Change profile information</li>
-            <li>"I can no longer attend"</li>
-            <li>Join Social Media (Slack as well.. maybe make Slack it's own separate thing)</li>
-            <li>We could make icons of social media.. maybe</li>
-
-        </ul>
-        </div>
+        <h3>To be added</h3>
+        <h4>
+            Application Status <br>
+            Change profile information <br>
+            "I can no longer attend" <br>
+            Join Social Media (Slack as well.. maybe make Slack it's own separate thing) <br>
+            We could make icons of social media.. maybe <br>
+        </h4>
     </div>
 
 </div>

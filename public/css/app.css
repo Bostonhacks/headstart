@@ -10,6 +10,11 @@ h4 {
   font-weight: 300;
  }
 
+.text {
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 300;
+}
+
 h1 { font-size: 32px; }
 h2 {
   font-size: 24px;
@@ -26,6 +31,15 @@ a.button:hover {
   background-color:  #34434b; 
 }
 
+.black { 
+  color: #000000;
+}
+
+.columns {
+  padding-top: 25px;
+  padding-bottom: 25px;
+}
+
 /* home elements */
 #progressContainer {
   background: #222B30;
@@ -39,6 +53,7 @@ a.button:hover {
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
   /*border-radius: 50%;*/
+  z-index:1000;
 }
 
 #progressBar {
