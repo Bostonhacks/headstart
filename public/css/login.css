@@ -25,7 +25,15 @@ body {
 }
 
 .loginError {
-  background-color: red;
+  color: #e81717;
+  border: 1px solid #f58a8a;
+
+  background-color: #fbd0d0;
+  margin: 0 10% 10px 10%;
+  padding: 5px 5px 5px 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+
 }
 
 #loginErrorText {
@@ -55,7 +63,7 @@ body {
 /* If you know the correct way to combine 
 the following two pieces, pls make PR :) ... 
 otherwise I'll clean this up later */
-input[type=text]:focus {
+input[type=email]:focus {
   background-color: #3f515a;
   border: 0px solid #A1DEFF;
   border-bottom-width: 2px;
@@ -81,8 +89,10 @@ input[type=password]:focus {
   text-align:center;
 }
 
-.loginButtons:hover {
+.loginButtons:hover,
+.loginButtons:focus {
   background-color:  #EF6262;
+  outline: 0;
 }
 
 #forgotPassword {

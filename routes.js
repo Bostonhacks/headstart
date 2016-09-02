@@ -11,7 +11,7 @@ module.exports = function(app, passport, upload) {
         res.render('pages/login.ejs', { message: req.flash('loginMessage') }); 
     });
 
-    app.post('/login', passport.authenticate('login', {
+    app.post('/login', hasCredentials, passport.authenticate('login', {
         successRedirect : '/home',
         failureRedirect : '/login',
         failureFlash : true
@@ -129,6 +129,13 @@ function checkFile(req, res, next) {
     console.log(req.files);
     console.log(req.body);
     console.log(req.params);
+    return next();
+}
+
+function hasCredentials(req, res, next) {
+    if (req.body.email.length == 0 || req.body.password.length == 0) {
+        req.flash('loginMessage', 'Invalid email/password combination.');
+    }
     return next();
 }
 
