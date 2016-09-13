@@ -11,17 +11,17 @@ module.exports = function(app, passport, upload) {
         res.render('pages/login.ejs', { message: req.flash('loginMessage') }); 
     });
 
-    app.post('/login', hasCredentials, passport.authenticate('login', {
+    app.post('/login', checkLoginCredentials, passport.authenticate('login', {
         successRedirect : '/home',
         failureRedirect : '/login',
         failureFlash : true
     }));
 
     app.get('/signup', function(req, res) {
-        res.render('pages/signup.ejs', { message: req.flash('signupMessage') });
+        res.render('pages/login.ejs', { message: req.flash('signupMessage') });
     });
 
-    app.post('/signup', passport.authenticate('signup', {
+    app.post('/signup', checkSignupCredentials, passport.authenticate('signup', {
         successRedirect : '/home',
         failureRedirect : '/signup',
         failureFlash : true
@@ -105,7 +105,7 @@ module.exports = function(app, passport, upload) {
         console.log(pageRoute, pageArgs);
         if(pageRoute == 'pages/application-submitted.ejs') {
             updateUser.additionalUpdate(req.user.id, req.body);
-            // updateUser.registered(req.user.id);
+            updateUser.registered(req.user.id);
         }
         res.render(pageRoute, pageArgs);
     });
@@ -136,12 +136,28 @@ function checkFile(req, res, next) {
     return next();
 }
 
-function hasCredentials(req, res, next) {
+function validateEmail(email) {
+  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(email);
+}
+
+function checkLoginCredentials(req, res, next) {
     if (req.body.email.length == 0 || req.body.password.length == 0) {
-        req.flash('loginMessage', 'Invalid email/password combination.');
-    }
+        req.flash('loginMessage', 'login- Invalid email/password combination.');
+    } 
     return next();
 }
+
+function checkSignupCredentials(req, res, next) {
+    if (validateEmail(req.body.email)) {
+      req.flash('signupMessage', 'signup- Please make sure your email is valid.');
+    } else if (req.body.email.length == 0 || req.body.password.length == 0) {
+        req.flash('signupMessage', 'signup- Invalid email/password combination.');
+    }
+    return next();
+
+}
+
 
 function loginCheck(req, res, next) {
     if (req.isAuthenticated()){

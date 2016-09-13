@@ -15,19 +15,17 @@
             <% } %>
 
             <div id="inputContainer">
-                <form action="/login" method="post">
-                    <div class="form-group">
-                        <h2> Email: </h2>
-                        <input type="email" class="textForm" name="email" placeholder="you@bostonhacks.io">
-                    </div>
-                    <div class="form-group">
-                        <h2> Password: </h2>
-                        <input type="password" class="textForm" name="password" placeholder=">= 6 characters">
-                    </div>
-                    <br>
-                    <button type="submit" class="button loginButtons" id="loginButton">Login</button>
-                    <button type="submit" class="button loginButtons" id="registerButton">Register</button>
-                </form>
+                <div class="form-group">
+                    <h2> Email: </h2>
+                    <input type="email" class="textForm" name="email" id="emailInput" placeholder="you@bostonhacks.io">
+                </div>
+                <div class="form-group">
+                    <h2> Password: </h2>
+                    <input type="password" class="textForm" name="password" id="passwordInput" placeholder=">= 6 characters">
+                </div>
+                <br>
+                <button onclick="login()" class="button loginButtons" id="loginButton">Login</button>
+                <button onclick="signup()" class="button loginButtons" id="registerButton">Register</button>
             </div>
 
             <div id="forgotPassword">
