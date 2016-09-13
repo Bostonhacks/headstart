@@ -136,26 +136,18 @@ function checkFile(req, res, next) {
     return next();
 }
 
-function validateEmail(email) {
-  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
-}
-
 function checkLoginCredentials(req, res, next) {
     if (req.body.email.length == 0 || req.body.password.length == 0) {
-        req.flash('loginMessage', 'login- Invalid email/password combination.');
+        req.flash('loginMessage', 'Invalid email/password combination.');
     } 
     return next();
 }
 
 function checkSignupCredentials(req, res, next) {
-    if (validateEmail(req.body.email)) {
-      req.flash('signupMessage', 'signup- Please make sure your email is valid.');
-    } else if (req.body.email.length == 0 || req.body.password.length == 0) {
-        req.flash('signupMessage', 'signup- Invalid email/password combination.');
+    if (req.body.email.length == 0 || req.body.password.length == 0) {
+        req.flash('signupMessage', 'Invalid email/password combination.');
     }
     return next();
-
 }
 
 
