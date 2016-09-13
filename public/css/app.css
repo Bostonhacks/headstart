@@ -61,13 +61,9 @@ body {
   margin-top: 50px;
 }
 
-/*#progressItem {
-  display: inline-block;
-  background-color: #EF6262;
-}*/
-
 .progressBall {
    display: inline-block;
+   width: 70px;
 }
 
 .outer-circle {

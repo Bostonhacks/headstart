@@ -1,20 +1,19 @@
 function resizeProgressLinks() {
-  if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-    $('.progressLink').remove();
-  } else {
-    if($('#progressBar').width() < 1000) {
-      $('.progressLink').width($('#progressBar').width()/20);
-      //$('#progressBar').width()/10);
+    if( (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) || ($('#progressBar').width() < 600)) {
+        $('.progressLink').css("display", "none");
     } else {
-      $('.progressLink').width(100);
+        $('.progressLink').css("display", "");
+        if ($('#progressBar').width() < 1000) {
+            $('.progressLink').width($('#progressBar').width()/20);
+        } else {
+            $('.progressLink').width(100);
+        }
     }
-  }
 }
 
 // do this initially
 resizeProgressLinks();
 
-var width = $(window).width();
 $(window).resize(function(){
   resizeProgressLinks();
 });
@@ -35,7 +34,6 @@ $(window).scroll(function() {
         $('#' + sections[i][0] + 'ProgressLink').css('background-position', "right");
       }
     }
-
 });
 
 
