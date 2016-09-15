@@ -64,6 +64,8 @@ module.exports = function(passport) {
                 return done(err);
             } else if (!user) {
                 return done(null, false, req.flash('loginMessage', 'Invalid email/password combination.'));
+            } else if (!user.validPassword(password)) {
+                return done(null, false, req.flash('loginMessage', 'Oops! Wrong password.'));
             }
             return done(null, user);
         });
