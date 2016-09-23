@@ -7,8 +7,8 @@
 <body>
     <section>
         <% include ../partials/clouds %>
-        <div id="loginContainer">
-            <img src="img/terrierLogo.png" id="terrierLogo">
+        <div id="loginContainer" class="authContainer">
+            <a href="/"><img src="img/terrierLogo.png" id="terrierLogo"></a>
 
             <% if (message.length > 0) { %>
                 <h3 class="loginError"> <%= message %> </h3>
@@ -28,8 +28,8 @@
                 <button onclick="signup()" class="button loginButtons" id="registerButton">Register</button>
             </div>
 
-            <div id="forgotPassword">
-                <a href="/forgot-password"><h3>Forgot Password?</h3></a>
+            <div id="forgotPasswordLink" class="authLink">
+                <a href="/forgot-password"><h3 class="authLinkText">Forgot Password?</h3></a>
             </div>
         </div>
     </body>

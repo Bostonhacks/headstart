@@ -1,10 +1,6 @@
 var LocalStrategy = require('passport-local').Strategy;
 var User = require('../models/user');
-
-function validateEmail(email) {
-  var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-  return re.test(email);
-}
+var emailfns = require('./emailfns');
 
 module.exports = function(passport) {
     passport.serializeUser(function(user, done) {
@@ -25,7 +21,7 @@ module.exports = function(passport) {
     function(req, email, password, done) {
         process.nextTick(function() {
 
-            if (!validateEmail(req.body.email)) {
+            if (!emailfns.validateEmail(req.body.email)) {
                 return done(null, false, req.flash('signupMessage', 'Please make sure your email is valid.'));
             }
 

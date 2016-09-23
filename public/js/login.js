@@ -35,11 +35,15 @@ function login() {
     post('/login', {email: email, password: password});
 }
 
-
-
 function signup() {
   email = document.getElementById('emailInput').value;
   password = document.getElementById('passwordInput').value;
 
   post('/signup', {email: email, password: password});
+}
+
+function reset() {
+  email = document.getElementById('emailInput').value;
+
+  post('/forgot-password', {email: email});
 }

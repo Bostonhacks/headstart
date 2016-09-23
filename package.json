@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "bases": "^0.2.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.0.0",
     "connect": "1.8.5",
@@ -27,7 +28,8 @@
     "multer": "^1.1.0",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
-    "request": "^2.71.0"
+    "request": "^2.71.0",
+    "sendgrid": "^4.3.0"
   },
   "devDependencies": {
     "nodemon": "^1.10.2 "
