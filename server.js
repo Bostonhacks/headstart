@@ -1,22 +1,24 @@
 require('dotenv').config();
 
-var express  = require('express')
-  , connect = require('connect')
-  , app      = express()
-  , mongoose = require('mongoose')
-  , passport = require('passport')
-  , flash    = require('connect-flash')
-  , morgan       = require('morgan')
-  , cookieParser = require('cookie-parser')
-  , bodyParser   = require('body-parser')
-  , session      = require('express-session')
-  , configDB = require('./config/database.js')
-  , port     = process.env.PORT || 5000;
+const bodyParser    = require('body-parser')
+  , configDB        = require('./config/database.js')
+  , connect         = require('connect')
+  , cookieParser    = require('cookie-parser')
+  , express         = require('express')
+  , favicon         = require('serve-favicon')
+  , flash           = require('connect-flash')
+  , fs              = require('fs')
+  , mongoose        = require('mongoose')
+  , morgan          = require('morgan')
+  , multer          = require('multer')
+  , passport        = require('passport')
+  , path            = require('path')
+  , session         = require('express-session');
 
-var path = require('path');
-var fs = require('fs');
+const app = express();
+const port = process.env.PORT || 5000;
 
-var multer = require('multer');
+
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
     cb(null, __dirname + '/uploads/');
@@ -54,6 +56,8 @@ app.use(express.static("public"));
 app.use('/img',express.static(path.join(__dirname, 'public/images')));
 app.use('/js',express.static(path.join(__dirname, 'public/javascripts')));
 app.use('/css',express.static(path.join(__dirname, 'public/stylesheets')));
+app.use(favicon(path.join(__dirname,'public','img','favicon.ico')));
+
 
 mongoose.connect(configDB.url);
 require('./config/passport')(passport);

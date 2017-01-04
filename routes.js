@@ -1,7 +1,9 @@
-var request = require('request');
-var updateUser = require('./config/update');
-var forgot = require('./config/forgot');
-var path = require('path');
+const querystring = require('querystring')
+  , request = require('request')
+  , path = require('path')
+  , updateUser = require('./config/update')
+  , forgot = require('./config/forgot');
+
 
 module.exports = function(app, passport, upload) {
     app.get('/', function(req, res) {
@@ -70,8 +72,25 @@ module.exports = function(app, passport, upload) {
                 user : req.user
             });
         } else {
+            // Format according to Authorization Code Flow: https://my.mlh.io/docs#oauth_flows
+            var redirect_url = 'https://my.mlh.io/oauth/authorize?' + 
+                querystring.stringify(
+                    {
+                        client_id: process.env.MLH_ID,
+                        redirect_uri: process.env.MLH_CALLBACK_URL,
+                        response_type: 'code',
+                        scope: ''
+                    }
+                ) + 'email+phone_number+demographics+event+education+birthday';
+                /* 
+                    ^ This looks weird ^
+                    EXPLANATION: This is because querystring.stringify automatically 
+                    uriencodes parameter values and my.mlh wants the +'s as is...
+                */
+
             res.render('pages/application-preMLH.ejs', {
-                user : req.user
+                user : req.user,
+                redirect_url: redirect_url
             });
         }
     });
@@ -84,16 +103,21 @@ module.exports = function(app, passport, upload) {
 
     app.get('/auth/mlh/callback', isLoggedIn, function(req, res) {
         if(req.query.hasOwnProperty("code")){
-            authURL = 'https://my.mlh.io/oauth/token?client_id='+process.env.MLH_ID+
-            '&client_secret='+process.env.MLH_SECRET+'&code='+req.query.code+'&redirect_uri='+
-            process.env.MLH_CALLBACK_URL+'&grant_type=authorization_code';
-
-            request.post(authURL,
+            request.post('https://my.mlh.io/oauth/token',
+                {
+                    form: {
+                        client_id:      process.env.MLH_ID,
+                        client_secret:  process.env.MLH_SECRET,
+                        code:           req.query.code,
+                        redirect_uri:   process.env.MLH_CALLBACK_URL,
+                        grant_type:     'authorization_code'
+                    }
+                },
                 function (error, response, body) {
                     if (typeof error !== 'undefined' && response.statusCode == 200) {
                         authResponse = JSON.parse(body);
                         request.get(
-                            'https://my.mlh.io/api/v1/user',
+                            'https://my.mlh.io/api/v2/user.json',
                             { form: { access_token: authResponse.access_token } },
                             function (error, response, body) {
                                 if (!error && response.statusCode == 200) {
@@ -111,7 +135,8 @@ module.exports = function(app, passport, upload) {
                 }
             );
         } else {
-            console.error("MLH_CALLBACK ERROR:" + error);
+            // Make this more detailed later. Should never happen, but MLH can fail!
+            console.error("MLH_CALLBACK ERROR"); 
         }
     });
 
@@ -151,12 +176,6 @@ module.exports = function(app, passport, upload) {
         console.log("500 hit")
         throw new Error('This is a 500 Error');
     });
-
-    app.get('/public/:directory/:filename', function(req, res){
-        var directory = req.params.directory;
-        var filename = req.params.filename;
-    });
-
 
     app.get('/*', isLoggedIn, function(req, res){
         console.log('404 Error trying to hit "' + req.url + '"');

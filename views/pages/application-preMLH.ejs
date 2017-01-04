@@ -21,7 +21,7 @@
     <% include ../partials/footer %>
     <script>
     $(setTimeout(function () {
-        window.location.href = "https://my.mlh.io/oauth/authorize?client_id=223fde16c1eaa768cb8ed16f3f6837cecca8b1168584ee4212c5ef9b0a5ecaf7&redirect_uri=http%3A%2F%2F192.81.211.73%3A5000%2Fauth%2Fmlh%2Fcallback&response_type=code";
+        window.location.href = "<%= redirect_url %>";
     }, 3000));
 </script>
 

@@ -10,7 +10,7 @@ var userSchema = mongoose.Schema({
     email: String,
     first_name: String,
     last_name: String,
-    graduation: Date,
+    level_of_study: String,
     major: String,
     shirt_size: String,
     dietary_restrictions: String,
