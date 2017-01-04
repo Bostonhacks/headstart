@@ -47,3 +47,9 @@ function reset() {
 
   post('/forgot-password', {email: email});
 }
+
+function change() {
+  password = document.getElementById('passwordInput').value;
+
+  post(window.location.pathname, {password: password});
+}

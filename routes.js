@@ -46,7 +46,14 @@ module.exports = function(app, passport, upload) {
 
 
     app.get('/change-password/:ident/:timestamp-:hash', function(req, res) {
-        console.log("Are we even getting here??");
+        res.render('pages/change-password.ejs', {
+            message: req.flash('forgotMessage'),
+            forgotMessageSuccess: req.flash('forgotMessageSuccess')
+        });
+    });
+
+
+    app.post('/change-password/:ident/:timestamp-:hash', function(req, res) {
         forgot.changePassword(req, res, function() {
             res.render('pages/change-password.ejs', {
                 message: req.flash('forgotMessage'),
@@ -54,6 +61,7 @@ module.exports = function(app, passport, upload) {
             });
         });
     });
+
 
     app.get('/home', isLoggedIn, function(req, res) {
         console.log(req.user);
@@ -143,6 +151,12 @@ module.exports = function(app, passport, upload) {
         console.log("500 hit")
         throw new Error('This is a 500 Error');
     });
+
+    app.get('/public/:directory/:filename', function(req, res){
+        var directory = req.params.directory;
+        var filename = req.params.filename;
+    });
+
 
     app.get('/*', isLoggedIn, function(req, res){
         console.log('404 Error trying to hit "' + req.url + '"');

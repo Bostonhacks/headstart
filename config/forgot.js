@@ -88,8 +88,13 @@ module.exports = {
         // Again, doing this replace because bcrypt uses forward slashes which we can't use for data in URLs
         var hash = req.params.hash.replace(/~/g, "/");
 
+        console.log("hello");
         var d = new Date();
         // Make sure we sent them this link at least 24 hours ago
+
+        console.log(bases.fromBase36(timestamp) + 86400);
+        console.log(d.getTime());
+        console.log(bases.fromBase36(timestamp) + 86400 > d.getTime());
         if (bases.fromBase36(timestamp) + 86400 > d.getTime()) {
             User.findOne({'_id': ident }, function(err, user) {
                 if (err) {
@@ -106,8 +111,15 @@ module.exports = {
                         } else {
                             bcrypt.compare(user.local.email+user.local.password, hash, function(err, res) {
                                 if (res) {
-                                    // Log them the fuck in!!
-                                    console.log("welcome home daddio!");
+                                    console.log(req)
+                                    User.findOneAndUpdate({ '_id': ident }, {'local.password': user.generateHash(password) }, {upsert: true}, function (err, raw) {
+                                        if (err) {
+                                            req.flash('forgotMessage', 'There was an error, please try again.');
+                                            console.log("Error attempting to change password: " + err)
+                                        } else {
+                                            req.flash('forgotMessageSuccess', 'Your password has successfully been reset! Please try logging in.');
+                                        }
+                                    })
                                     next();
                                 } else {
                                     req.flash('forgotMessage', 'Hmmmm.. looks like your link is invalid. Lets try this again!');
@@ -123,6 +135,7 @@ module.exports = {
                 }
             });
         } else {
+            console.log("actually expired.")
             req.flash('forgotMessage', 'Hmmmm.. looks like your link has expired. Lets try this again!');
             next();
         }
