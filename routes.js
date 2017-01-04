@@ -90,7 +90,7 @@ module.exports = function(app, passport, upload) {
 
             request.post(authURL,
                 function (error, response, body) {
-                    if (!error && response.statusCode == 200) {
+                    if (typeof error !== 'undefined' && response.statusCode == 200) {
                         authResponse = JSON.parse(body);
                         request.get(
                             'https://my.mlh.io/api/v1/user',
