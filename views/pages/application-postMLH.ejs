@@ -3,6 +3,7 @@
 <head>
     <title>Registration - BostonHacks - March 3rd</title>
     <% include ../partials/head %>
+    <link rel="stylesheet" href="css/registration.css">
 </head>
 <body>
 <div class="container">
@@ -10,11 +11,11 @@
         <h1>Registration</h1>
         <a href="/logout" class="btn btn-default btn-sm">Logout</a>
     </div>
-
-    <h2> Awesome! Just a few last questions:</h2>
-    <% if (errormessage.length > 0) { %>
-      <div class="alert alert-danger"> <%= errormessage %> </div>
-    <% } %>
+    <div class="questions-container">
+        <h2> Awesome! Just a few last questions:</h2>
+        <% if (errormessage.length > 0) { %>
+          <div class="alert alert-danger"> <%= errormessage %> </div>
+        <% } %>
 
         <form action="/submit-application" method="POST" enctype="multipart/form-data">
             <div class="question">
@@ -24,23 +25,20 @@
             </div>
 
             <div class="question">
-                <h3> Would you like to include your resume? (Optional) </h3>
-                <h4> Make sure your file type is either a .jpg, .jpeg, .pdf, .png, or .gif </h4>
-                    Select an image to upload:
-                    <input type="file" name="resume"> 
+                <h3 class="contains-clarification"> Would you like to include your resume? (Optional) </h3>
+                <h4 class="question-clarification"> Make sure your file type is either a .jpg, .jpeg, .pdf, .png, or .gif </h4>
+                    <input type="file" name="resume" class="resume-input"> 
             </div>
 
             <div class="question">
                 <h3> Do you need travel reimbursement? </h3>
-                <input type="radio" name="reimbursementSeeking" value="true" required> Yes<br>
-                <input type="radio" name="reimbursementSeeking" value="false"> No<br>
+                <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="true" id="reimbursementYes" required> Yes<br>
+                <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="false" id="reimbursementNo"> No<br>
                 
-                <div class="followup-question">
+                <div id="reimbursement-followup-questions">
                     <h4> Where are you coming from? </h4>
                     <input type="text" name="reimbursementLocation" value=""><br>
-                </div>
-                
-                <div class="followup-question">
+                    
                     <h4> How much are you seeking for reimbursement? (USD) </h4>
                     <input type="number" name="reimbursementAmount" value="100"><br>
                 </div>
@@ -51,13 +49,14 @@
                 <textarea name="additional" rows="4" cols="50"></textarea>
             </div>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" class="submit-application">
         </form>
-
+    </div>
 </div>
 </body>
 
 <footer>
     <% include ../partials/footer %>
+    <script src="js/registration.js"></script> 
 </footer>
 </html>

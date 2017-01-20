@@ -5,59 +5,45 @@
 <head>
     <title>BostonHacks - March 3rd</title>
     <% include ../partials/head %>
+    <link rel="stylesheet" href="css/navigation.css">
 </head>
   <body>
     <section id="home" align="center">
         <a id="mlh-trust-badge" style="display:block;max-width:100px;min-width:60px;position:fixed;right:50px;top:0;width:10%;z-index:10000" href="https://mlh.io/seasons/na-2017/events?utm_source=na-2017&amp;utm_medium=TrustBadge&amp;utm_campaign=na-2017&amp;utm_content=gray" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2017/gray.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
 
-        <!-- !!! @nico: Need to fix the spacing between circles, longer text currently screwing up spacing -->
-        <div id="progressContainer">
-            <div id="progressBar">
-                <!-- Home -->
-                <div class="progressBall">
-                    <div class="outer-circle"><div id="homeProgressCircle" class="inner-circle"></div></div>
-                    <h4>Home</h4>
+            <!-- <section class="navigation"> -->
+        <div class="nav-container">
+            <a href="/">
+                <div class="navbar-brand">
+                    <img src="/public/img/guestmeal-logo.png" class="navbar-brand-logo">
+                    <h4 class="navbar-brand-name">Guestmeal me</h4>
                 </div>
-                <div id="homeProgressLink" class="progressLink"></div>
-
-                <!-- Schedule -->
-                <div class="progressBall">
-                    <div class="outer-circle"><div id="scheduleProgressCircle" class="inner-circle"></div></div>
-                    <h4>Schedule</h4>
-                </div>
-                <div id="scheduleProgressLink" class="progressLink"></div>
-
-                <!-- FAQ -->
-                <div class="progressBall">
-                    <div class="outer-circle"><div id="faqProgressCircle" class="inner-circle"></div></div>
-                    <h4>FAQ</h4>
-                </div>
-                <div id="faqProgressLink" class="progressLink"></div>
-
-                <!-- Apply -->
-                <div class="progressBall">
-                    <div class="outer-circle"><div id="applyProgressCircle" class="inner-circle"></div></div>
-                    <h4>Apply</h4>
-                </div>
-                <div id="applyProgressLink" class="progressLink"></div>
-
-                <!-- Sponsors -->
-                <div class="progressBall">
-                    <div class="outer-circle"><div id="sponsorsProgressCircle" class="inner-circle"></div></div>
-                    <h4>Sponsors</h4>
-                </div>
-                <div id="sponsorsProgressLink" class="progressLink"></div>
-
-                <!-- Contact us -->
-                <div class="progressBall">
-                    <div class="outer-circle"><div id="contactProgressCircle" class="inner-circle"></div></div>
-                    <h4>Contact us</h4>
-                </div>
-            </div>
+            </a>
+            <nav>
+                <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+                <ul class="nav-list">
+                    <li>
+                        <a href="/buy">Buy</a>
+                    </li>
+                    <li>
+                        <a href="/sell">Sell</a>
+                    </li>
+                    <li>
+                        <a href="/dashboard">Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="/about">How it works</a>
+                    </li>
+                    <li>
+                        <a href="/logout">Log out</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
+        <!-- </section> -->
         <img src="img/terrierLogo.png" id="terrierLogo">
         <h1>Boston<b>Hacks</b> Spring 2016</h1>
-        <h2>March 3rd - 4th<br>Boston, MA</h2>
+        <h2>April 29th - 30th<br>Boston, MA</h2>
         <div id="homeButtonsContainer">
             <a href="/login" class="button homeButtons" id="attendButton">Attend</a>
             <a href="#" class="button homeButtons" id="sponsorButton">Sponsor</a>
@@ -163,11 +149,11 @@
             </div>
             <div class="columns large-4 small-12">
                 <h3 class="black">Who's coming?</h3>
-                <div class="text">We expect 500 hackers from all around the world to attend BostonHacks.</div>
+                <div class="text">We expect 400 hackers from all around the world to attend BostonHacks.</div>
             </div>
             <div class="columns large-4 small-12">
                 <h3 class="black">Who can attend?</h3>
-                <div class="text">All students are welcome. Unfortunately, we will not be able to accommodate students under 18 this year.</div>
+                <div class="text">All students are welcome. Unfortunately, we will not be able to accommodate students under 18 this year (unless you are a BU student).</div>
             </div>
             <div class="columns large-4 small-12">
                 <h3 class="black">Do I need experience?</h3>
@@ -184,7 +170,7 @@
             </div>
             <div class="columns large-4 small-12">
                 <h3 class="black">Can we form teams?</h3>
-                <div class="text">Of course you can! We encourage people to work in teams of up to 4 people. You can work alone, but it won't be the same. There will be plenty of team building events on site and online.</div>
+                <div class="text">Of course you can! We encourage people to work in teams of up to 5 people. You can work alone, but it won't be the same. There will be plenty of team building events on site and online.</div>
             </div>
             <div class="columns large-4 small-12">
                 <h3 class="black">Does it cost anything?</h3>
