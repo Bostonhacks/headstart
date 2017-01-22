@@ -116,6 +116,7 @@ body {
 #faq {
   width: 100%;
   background-color: #A1DEFF;
+  padding-bottom: 50px;
 }
 
 .faqTransitionLeft {
