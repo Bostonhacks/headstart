@@ -41,70 +41,6 @@ body {
 }
 
 /* home elements */
-#progressContainer {
-  background: #222B30;
-  position: fixed;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: 74%;
-  border-left: 2px solid #EF6262;
-  border-right: 2px solid #EF6262;
-  border-bottom: 2px solid #EF6262;
-  border-bottom-left-radius: 25px;
-  border-bottom-right-radius: 25px;
-  /*border-radius: 50%;*/
-  z-index:1000;
-}
-
-#progressBar {
-  height: 72px;
-  margin-top: 50px;
-}
-
-.progressBall {
-   display: inline-block;
-   width: 70px;
-}
-
-.outer-circle {
-   display: inline-block;
-   box-shadow: 0px 0px 0px 3px #EF6262;
-   border-radius: 50%;
-   height: 40px;
-   width: 40px;
-   position: relative;
- }
-.inner-circle {
-   position: absolute;
-   /*background: #EF6262;*/
-   border-radius: 50%;
-   height: 20px;
-   width: 20px;
-   top: 50%;
-   left: 50%;
-   margin: -10px 0px 0px -10px;
- }
-
- .homeProgressCircle {
-   background: #EF6262;
- }
-
-.progressLink {
-  margin: 0px 5px 35px 5px;
-  width: 100px;
-  height: 14px;
-  display: inline-block;
-  border: 2px solid #EF6262;
-  border-radius: 8px;
-}
-
-#progressBar .progressLink {
-    background: linear-gradient(to left, transparent 50%, #EF6262 50%);
-    background-size: 200% 100%;
-    background-position:right bottom;
-    transition:all 1s ease;
-}
-
 #terrierLogo {
   margin-top: 150px;
   height: 215px;
@@ -144,7 +80,7 @@ body {
 #buildings {
   margin-top: 20px;
   white-space: nowrap;
-  width: 100%;
+  max-width: 100%;
 }
 
 .buildingSVG {
