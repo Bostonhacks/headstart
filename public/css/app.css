@@ -26,8 +26,19 @@ body {
     background-color: #222B30;
 }
 
+#mlh-trust-badge {
+    display:block;
+    max-width:100px;
+    min-width:60px;
+    position:fixed;
+    right:50px;
+    top:0;
+    width:10%;
+    z-index:10000;
+}
+
 .button:hover, .button:focus {
-  background-color:  #34434b; 
+  background-color:  #34434b;
 }
 
 .black { 
@@ -41,13 +52,18 @@ body {
 
 /* home elements */
 #terrierLogo {
-  margin-top: 150px;
+  margin-top: 120px;
   height: 215px;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #homeButtonsContainer {
   display: inline-block;
   margin-top: 46px;
+  width: 100%;
 }
 
 .homeButtons {
@@ -64,16 +80,29 @@ body {
 }
 
 #attendButton {
-  margin-right: 40px;
+  float: left;
+  margin-left: 100px;
 }
 
 #sponsorButton {
-  margin-left: 40px;
+  float: right;
+  margin-right: 100px;
 }
 
-@media screen and (max-width: 687px) {
-  #attendButton { margin-right: 0px; }
-  #sponsorButton { margin-left: 0px; }
+@media screen and (max-width: 1400px) {
+  #attendButton { 
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #sponsorButton {
+    float: none;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 #buildings {
@@ -84,24 +113,55 @@ body {
 
 .buildingSVG {
   vertical-align: bottom;
+  width: auto;
 }
 
-.buildingSVG svg {
-  max-width:100%;
+#buildings svg {
+  max-width: 100%;
 }
+
 
 /* Schedule */
 #scheduleContainer {
-  width: 500px;
+  width: 60%;
   margin: 0 auto;
   margin-top: 60px;
   margin-bottom: 60px;
 }
 
-#scheduleItem {
-  display: flex;
-  justify-content: space-between;
+/* DO I EVEN NEED THIS??*/
+.scheduleItem {
+  overflow-x: auto;
 }
+
+.scheduleEvent {
+    float: left;
+}
+
+.scheduleEventTime {
+    float: right;
+}
+
+/* Hi, clearly you've found this. Sorry if this makes you cringe because 
+   there is a way better way to do this... submit a PR if you do!!:)
+*/
+@media screen and (max-width: 600px) {
+    .scheduleItem h2 {
+        font-size: 18px;
+    }
+
+    #scheduleContainer {
+        width: 90%;
+    }
+}
+
+/*@media screen and (max-width: 600px) {
+    .scheduleItem h2 {
+        font-size: 18px;
+    }
+}
+*/
+
 
 #saturday {
   margin-top: 20px;
@@ -156,7 +216,23 @@ body {
     margin-bottom: 50px;
 }
 
-section {
-    text-align: center;
+
+.homeContainer {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
+.homeContainer h1, h2 {
+    text-align: center;
+    /*width: 50%;*/
+/*    margin-left: auto;
+    margin-right: auto;*/
+}
+
+#buildingSVG { 
+    top:0;
+    left:0;
+    height:100%;
+    width:100%;
+}
