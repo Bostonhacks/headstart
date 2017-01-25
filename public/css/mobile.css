@@ -1,0 +1,65 @@
+@media only screen and (max-width: 1150px) {
+    #navContainer {
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    #navContainer a h3 {
+      font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    
+    /* Make navigation bar mobile friendly */
+
+    #navContainer {
+      width: 100%;
+      position: static;
+
+      left: 0;
+      transform: none;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+      background: #EF6262;
+      overflow: hidden;
+    }
+
+    #navContainer a h3 {
+        font-size: 18px;
+    }
+
+    .nav-separator, .navLink, #mlh-trust-badge {
+        display: none;
+    }
+    
+    #terrierLogo {
+        margin-top: 50px;
+    }
+
+    #nav--burger {
+        display: inline;
+        outline: none;
+    }
+    .navLinks {
+        margin-left: 15px;
+    }
+
+    /* Stack buttons for horizontal space */
+    
+    #attendButton { 
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    #sponsorButton {
+        float: none;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+

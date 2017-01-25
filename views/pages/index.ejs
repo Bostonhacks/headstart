@@ -7,49 +7,49 @@
     <% include ../partials/head %>
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/hamburgers.css">
-
+    <link rel="stylesheet" href="css/mobile.css">
 </head>
-  <body>
-      <a id="mlh-trust-badge" href="https://mlh.io/seasons/na-2017/events?utm_source=na-2017&amp;utm_medium=TrustBadge&amp;utm_campaign=na-2017&amp;utm_content=gray" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2017/gray.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
+<body>
+    <a id="mlh-trust-badge" href="https://mlh.io/seasons/na-2017/events?utm_source=na-2017&amp;utm_medium=TrustBadge&amp;utm_campaign=na-2017&amp;utm_content=gray" target="_blank"><img src="https://s3.amazonaws.com/logged-assets/trust-badge/2017/gray.svg" alt="Major League Hacking 2017 Hackathon Season" style="width:100%"></a>
 
-        <div id="navContainer">
-            <button class="hamburger hamburger--slider" id="nav--burger" type="button">
-                <span class="hamburger-box">
-                    <span class="hamburger-inner"></span>
-                </span>
-            </button>
+    <div id="navContainer">
+        <button class="hamburger hamburger--slider" id="nav--burger" type="button">
+            <span class="hamburger-box">
+                <span class="hamburger-inner"></span>
+            </span>
+        </button>
 
-            <div class="navLinks">
-                <a href="#home" class="navLink">
-                    <h3>Home</h3>
-                </a>
-                <div class="nav-separator"></div>
-                
-                <a href="#schedule" class="navLink">
-                    <h3>Schedule</h3>
-                </a>
-                <div class="nav-separator"></div>
-                
-                <a href="#faqContainer" class="navLink">
-                    <h3>FAQ</h3>
-                </a>
-                <div class="nav-separator"></div>
+        <div class="navLinks">
+            <a href="#home" class="navLink">
+                <h3>Home</h3>
+            </a>
+            <div class="nav-separator"></div>
+            
+            <a href="#schedule" class="navLink">
+                <h3>Schedule</h3>
+            </a>
+            <div class="nav-separator"></div>
+            
+            <a href="#faqContainer" class="navLink">
+                <h3>FAQ</h3>
+            </a>
+            <div class="nav-separator"></div>
 
-                <a href="#sponsors" class="navLink">
-                    <h3>Sponsors</h3>
-                </a>
-                <div class="nav-separator"></div>
+            <a href="#sponsors" class="navLink">
+                <h3>Sponsors</h3>
+            </a>
+            <div class="nav-separator"></div>
 
-                <a href="#contact" class="navLink">
-                    <h3>Contact us</h3>
-                </a>
-            </div>
+            <a href="#contact" class="navLink">
+                <h3>Contact us</h3>
+            </a>
         </div>
-        
-    <section id="home">
-      
-        <br>
+    </div>
 
+    <!-- Need this br -->
+    <br>
+
+    <section id="home">      
         <div class="homeContainer">
         
             <img src="img/terrierLogo.png" id="terrierLogo">
@@ -57,8 +57,10 @@
             <h1>Boston<b>Hacks</b> Spring 2016</h1>
             <h2>April 29th - 30th<br>Boston, MA</h2>
             <div id="homeButtonsContainer">
-                <a href="/login" class="button homeButtons" id="attendButton">Attend</a>
-                <a href="/sponsordoc.pdf" class="button homeButtons" id="sponsorButton">Sponsor</a>
+                <!-- <div id="buttonWrapper"> -->
+                    <a href="/login" class="button homeButtons" id="attendButton">Attend</a>
+                    <a href="/sponsordoc.pdf" class="button homeButtons" id="sponsorButton">Sponsor</a>
+                <!-- </div> -->
             </div>
         </div>
         
