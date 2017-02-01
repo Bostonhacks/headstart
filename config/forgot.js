@@ -111,16 +111,17 @@ module.exports = {
                         } else {
                             bcrypt.compare(user.local.email+user.local.password, hash, function(err, res) {
                                 if (res) {
-                                    console.log(req)
-                                    User.findOneAndUpdate({ '_id': ident }, {'local.password': user.generateHash(password) }, {upsert: true}, function (err, raw) {
+                                    User.findOneAndUpdate({ '_id': ident }, {'local.password': user.generateHash(req.body.password) }, {upsert: true}, function (err, raw) {
                                         if (err) {
                                             req.flash('forgotMessage', 'There was an error, please try again.');
                                             console.log("Error attempting to change password: " + err)
+                                            next();
                                         } else {
                                             req.flash('forgotMessageSuccess', 'Your password has successfully been reset! Please try logging in.');
+                                            console.log("User " + user.local.email + " successfully reset their password.");
+                                            next();
                                         }
                                     })
-                                    next();
                                 } else {
                                     req.flash('forgotMessage', 'Hmmmm.. looks like your link is invalid. Lets try this again!');
                                     next();
