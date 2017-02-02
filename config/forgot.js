@@ -62,23 +62,23 @@ module.exports = {
                 } else {
                     console.log(user);
                     if (user == null) {
-                        req.flash('forgotMessage', 'There is no user with that email.');
+                        req.flash('forgotErrorMessage', 'There is no user with that email.');
                         next();
                     } else {
                         // Change this once we have a proper errorhandler
                         if (user == "err") {
-                            req.flash('forgotMessage', 'There was an error, please try again.');
+                            req.flash('forgotErrorMessage', 'There was an error, please try again.');
                             next();
                         } else {
                             sendForgotPasswordEmail(user);
-                            req.flash('forgotMessageSuccess', 'An email has been sent to reset your password!');
+                            req.flash('forgotErrorMessageSuccess', 'An email has been sent to reset your password!');
                             next();
                         }
                     }
                 }
             });
         } else {
-            req.flash('forgotMessage', 'Please make sure your email is valid.');
+            req.flash('forgotErrorMessage', 'Please make sure your email is valid.');
             next();
         }
     },
@@ -106,38 +106,38 @@ module.exports = {
                     if (user != null) {
                         // Change this once we have a proper errorhandler
                         if (user == "err") {
-                            req.flash('forgotMessage', 'There was an error, please try again.');
+                            req.flash('forgotErrorMessage', 'There was an error, please try again.');
                             next();
                         } else {
                             bcrypt.compare(user.local.email+user.local.password, hash, function(err, res) {
                                 if (res) {
                                     User.findOneAndUpdate({ '_id': ident }, {'local.password': user.generateHash(req.body.password) }, {upsert: true}, function (err, raw) {
                                         if (err) {
-                                            req.flash('forgotMessage', 'There was an error, please try again.');
+                                            req.flash('forgotErrorMessage', 'There was an error, please try again.');
                                             console.log("Error attempting to change password: " + err)
                                             next();
                                         } else {
-                                            req.flash('forgotMessageSuccess', 'Your password has successfully been reset! Please try logging in.');
+                                            req.flash('forgotErrorMessageSuccess', 'Your password has successfully been reset! Please try logging in.');
                                             console.log("User " + user.local.email + " successfully reset their password.");
                                             next();
                                         }
                                     })
                                 } else {
-                                    req.flash('forgotMessage', 'Hmmmm.. looks like your link is invalid. Lets try this again!');
+                                    req.flash('forgotErrorMessage', 'Hmmmm.. looks like your link is invalid. Lets try this again!');
                                     next();
                                 }
                             });
                         }
                     } else {
                         // There is no user with that id
-                            req.flash('forgotMessage', 'Hmmmm.. looks like your link is invalid. Lets try this again!');
+                            req.flash('forgotErrorMessage', 'Hmmmm.. looks like your link is invalid. Lets try this again!');
                         next();
                     }
                 }
             });
         } else {
             console.log("actually expired.")
-            req.flash('forgotMessage', 'Hmmmm.. looks like your link has expired. Lets try this again!');
+            req.flash('forgotErrorMessage', 'Hmmmm.. looks like your link has expired. Lets try this again!');
             next();
         }
 

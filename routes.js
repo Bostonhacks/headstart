@@ -32,15 +32,15 @@ module.exports = function(app, passport, upload) {
 
     app.get('/forgot-password', function(req, res) {
         res.render('pages/forgot-password.ejs', {
-            errorMessage: req.flash('forgotMessage'),
-            forgotMessageSuccess: req.flash('forgotMessageSuccess')
+            forgotErrorMessage: '',
+            forgotMessageSuccess: ''
         });
     });
 
     app.post('/forgot-password', function(req, res) {
         forgot.resetPassword(req, res, function() {
             res.render('pages/forgot-password.ejs', {
-                errorMessage: req.flash('forgotMessage'),
+                forgotErrorMessage: req.flash('forgotErrorMessage'),
                 forgotMessageSuccess: req.flash('forgotMessageSuccess')
             });
         });
@@ -49,7 +49,7 @@ module.exports = function(app, passport, upload) {
 
     app.get('/change-password/:ident/:timestamp-:hash', function(req, res) {
         res.render('pages/change-password.ejs', {
-            errorMessage: req.flash('forgotMessage'),
+            forgotErrorMessage: req.flash('forgotErrorMessage'),
             forgotMessageSuccess: req.flash('forgotMessageSuccess')
         });
     });
@@ -58,7 +58,7 @@ module.exports = function(app, passport, upload) {
     app.post('/change-password/:ident/:timestamp-:hash', function(req, res) {
         forgot.changePassword(req, res, function() {
             res.render('pages/change-password.ejs', {
-                errorMessage: req.flash('forgotMessage'),
+                forgotErrorMessage: req.flash('forgotErrorMessage'),
                 forgotMessageSuccess: req.flash('forgotMessageSuccess')
             });
         });
