@@ -26,8 +26,11 @@ var userSchema = mongoose.Schema({
     reimbursementSeeking: Boolean,
     reimbursementLocation: String,
     reimbursementAmount: Number,
-    additional: String
+    additional: String,
+    status: String, // Possible values so far: {'Pending', 'Not Attending'}
+    notAttendingReason: String
 });
+
 
 // Hash Generation
 userSchema.methods.generateHash = function(password) {

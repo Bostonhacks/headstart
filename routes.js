@@ -32,7 +32,7 @@ module.exports = function(app, passport, upload) {
 
     app.get('/forgot-password', function(req, res) {
         res.render('pages/forgot-password.ejs', {
-            message: req.flash('forgotMessage'),
+            errorMessage: req.flash('forgotMessage'),
             forgotMessageSuccess: req.flash('forgotMessageSuccess')
         });
     });
@@ -40,7 +40,7 @@ module.exports = function(app, passport, upload) {
     app.post('/forgot-password', function(req, res) {
         forgot.resetPassword(req, res, function() {
             res.render('pages/forgot-password.ejs', {
-                message: req.flash('forgotMessage'),
+                errorMessage: req.flash('forgotMessage'),
                 forgotMessageSuccess: req.flash('forgotMessageSuccess')
             });
         });
@@ -49,7 +49,7 @@ module.exports = function(app, passport, upload) {
 
     app.get('/change-password/:ident/:timestamp-:hash', function(req, res) {
         res.render('pages/change-password.ejs', {
-            message: req.flash('forgotMessage'),
+            errorMessage: req.flash('forgotMessage'),
             forgotMessageSuccess: req.flash('forgotMessageSuccess')
         });
     });
@@ -58,7 +58,7 @@ module.exports = function(app, passport, upload) {
     app.post('/change-password/:ident/:timestamp-:hash', function(req, res) {
         forgot.changePassword(req, res, function() {
             res.render('pages/change-password.ejs', {
-                message: req.flash('forgotMessage'),
+                errorMessage: req.flash('forgotMessage'),
                 forgotMessageSuccess: req.flash('forgotMessageSuccess')
             });
         });
@@ -66,10 +66,12 @@ module.exports = function(app, passport, upload) {
 
 
     app.get('/home', isLoggedIn, function(req, res) {
-        console.log(req.user);
         if(req.user.local.registered){
             res.render('pages/profile.ejs', {
-                user : req.user
+                email : req.user.local.email,
+                status: req.user.status,
+                notAttendingMessageSuccess: '',
+                notAttendingMessageError: ''
             });
         } else {
             // Format according to Authorization Code Flow: https://my.mlh.io/docs#oauth_flows
@@ -93,12 +95,6 @@ module.exports = function(app, passport, upload) {
                 redirect_url: redirect_url
             });
         }
-    });
-  
-    app.get('/profile', isLoggedIn, function(req, res) {
-        res.render('pages/profile.ejs', {
-            user : req.user
-        });
     });
 
     app.get('/auth/mlh/callback', isLoggedIn, function(req, res) {
@@ -159,7 +155,6 @@ module.exports = function(app, passport, upload) {
                 errormessage: 'There was an error with your response. Please try again.'
             };            
         }
-        console.log(pageRoute, pageArgs);
         if(pageRoute == 'pages/application-submitted.ejs') {
             updateUser.additionalUpdate(req.user.id, req.body);
             updateUser.registered(req.user.id);
@@ -170,6 +165,43 @@ module.exports = function(app, passport, upload) {
      app.get('/logout', function(req, res) {
         req.logout();
         res.redirect('/');
+    });
+
+    // app.get('/change-account-information', function(req, res) {
+    //     res.render('pages/change-account-information.ejs');
+    // });
+
+    app.get('/not-attending-confirmation', isLoggedIn, function(req, res) {
+        res.render('pages/not-attending-confirmation.ejs', {
+            notAttendingTrollMessage: ''
+        });
+    });
+
+    app.post('/not-attending-confirmation', isLoggedIn, function(req, res) {
+        if(req.body.notAttending == 'false') {
+            res.render('pages/not-attending-confirmation.ejs', {
+                notAttendingTrollMessage: 'Nice troll. Really though, can you no longer attend?'
+            });
+        } else {
+            updateErr = updateUser.notAttending(req.user.id, {
+                'status': 'Not Attending',
+                'notAttendingReason': req.body.notAttendingReason
+            });
+
+            if (updateErr) {
+                req.flash('notAttendingMessageError', 'Server error trying to change your status: ' + err);
+                console.log("Not Attending error: " + err);
+            } else {
+                req.flash('notAttendingMessageSuccess', 'Successfully no longer attending.');
+            }
+
+            res.render('pages/profile.ejs', {
+                email : req.user.local.email,
+                status: req.user.local.status,
+                notAttendingMessageSuccess: req.flash('notAttendingMessageSuccess'),
+                notAttendingMessageError: req.flash('notAttendingMessageError')
+            });
+        }
     });
 
     app.get('/500', function(req, res){
@@ -183,17 +215,9 @@ module.exports = function(app, passport, upload) {
     });
 };
 
-function checkFile(req, res, next) {
-    console.log("here is one: ");
-    console.log(req.file);
-    console.log(req.files);
-    console.log(req.files);
-    console.log(req.body);
-    console.log(req.params);
-    return next();
-}
 
-function checkLoginCredentials(req, res, next) {
+// Need to combine these two functions
+function checkLoginCredentials(messageType, req, res, next) {
     if (req.body.email.length == 0 || req.body.password.length == 0) {
         req.flash('loginMessage', 'Invalid email/password combination.');
     } 
@@ -220,7 +244,6 @@ function loginCheck(req, res, next) {
 }
 
 function isLoggedIn(req, res, next) {
-    return next();
     if (req.isAuthenticated()){
         return next();
     } else {

@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <title>Profile - BostonHacks - March 3rd</title>
+    <% include ../partials/head %>
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/registration.css">
+</head>
+<body>
+    <% include ../partials/profile-nav %>
+
+    <div class="account-extras-container">
+        <div class="large-12 columns">
+            <h1> No Longer Attending </h1>
+            <br>
+
+            <% if (notAttendingTrollMessage.length > 0) { %>
+                <h3 class="serverMessageError"> <%= notAttendingTrollMessage %> </h3>
+                <br>
+            <% } %>
+
+            <form action="/not-attending-confirmation" method="POST">
+                <div class="question">
+                    <h3> Are you sure you can no longer attend? (We'll miss you!!) </h3>
+                    <input type="radio" name="notAttending" value="true" required> Yes<br>
+                    <input type="radio" name="notAttending" value="false"> No<br>
+                </div>
+
+                <div class="question">
+                    <h3> Reason that you can no longer attend? (Optional) </h3>
+                    <textarea name="notAttendingReason" rows="4" cols="50"></textarea>
+                </div>
+
+                <input type="submit" value="Submit" class="submit">
+            </form>
+        </div>
+    </div>
+
+    <% include ../partials/profile-footer %>
+</body>
+
+<script src="https://use.fontawesome.com/fae771462f.js"></script>
+</html>

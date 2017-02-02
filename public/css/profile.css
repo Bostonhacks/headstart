@@ -1,0 +1,100 @@
+#navContainer {
+    width: 100%;
+    position: static;
+
+    left: 0;
+    transform: none;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 0px;
+    background: #EF6262;
+    overflow: hidden;
+}
+
+.profile-nav-left {
+    float: left;
+}
+
+.profile-nav-terrier {
+    width: 70px;
+    vertical-align: middle;
+    margin-left: 20px;
+}
+
+.profile-nav-right {
+    float: right;
+    margin: 20px 20px 0 0;
+}
+
+.profile-nav-left h2,
+.profile-nav-right h2 {
+    display: inline-block;
+    font-size: 20px;
+}
+
+.container {
+    margin: 100px 100px 0px 100px;
+}
+
+.profile-info-header {
+    background: #EF6262;
+    padding-left: 5px;
+    margin-right: 50px;
+}
+
+.profile-app-header {
+    background: #EF6262;
+    padding-left: 5px;
+    margin-right: 50px;   
+}
+
+.social-media-icons i {
+    display: inline-block;
+    font-size: 32px;
+}
+
+#profile-footer h3,
+.social-media-icons i {
+     color: #000000;
+}
+
+.fa-facebook-official {
+    margin-right: 10px;
+}
+
+.fa-twitter-square {
+    margin-left: 10px;
+}
+
+#profile-footer {
+    background: #A1DEFF;
+    position: absolute;
+    bottom: 0;
+}
+
+ul {
+    list-style-type: square;
+    padding-left: 20px;
+}
+
+ul > li,
+ul > li a {
+    color: #FFFFFF;
+}
+
+ul > li {
+    padding-top: 20px;
+}
+
+ul > li a {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+}
+
+li a:hover {
+    color: #d9d9d9;
+}
+
+.account-extras-container {
+    margin: 20px 200px 0px 200px;
+}
