@@ -10,11 +10,15 @@ module.exports = function(app, passport, upload) {
         res.render('pages/index.ejs');
     });
 
-    app.get('/login', loginCheck, function(req, res) {
-        res.render('pages/login.ejs', { message: req.flash('loginMessage') }); 
+    app.get('/login', function(req, res) {
+        if (req.isAuthenticated()){
+            res.redirect('/home');
+        } else {
+            res.render('pages/login.ejs', { message: req.flash('loginMessage') }); 
+        }
     });
 
-    app.post('/login', checkLoginCredentials, passport.authenticate('login', {
+    app.post('/login', passport.authenticate('login', {
         successRedirect : '/home',
         failureRedirect : '/login',
         failureFlash : true
@@ -24,7 +28,7 @@ module.exports = function(app, passport, upload) {
         res.render('pages/login.ejs', { message: req.flash('signupMessage') });
     });
 
-    app.post('/signup', checkSignupCredentials, passport.authenticate('signup', {
+    app.post('/signup', passport.authenticate('signup', {
         successRedirect : '/home',
         failureRedirect : '/signup',
         failureFlash : true
@@ -214,34 +218,6 @@ module.exports = function(app, passport, upload) {
         res.render('pages/404.ejs');
     });
 };
-
-
-// Need to combine these two functions
-function checkLoginCredentials(messageType, req, res, next) {
-    if (req.body.email.length == 0 || req.body.password.length == 0) {
-        req.flash('loginMessage', 'Invalid email/password combination.');
-    } 
-    return next();
-}
-
-function checkSignupCredentials(req, res, next) {
-    if (req.body.email.length == 0 || req.body.password.length == 0) {
-        req.flash('signupMessage', 'Invalid email/password combination.');
-    }
-    return next();
-}
-
-function mockPassword(req, res, next) {
-    req.body.password = "password";
-    next();
-}
-
-function loginCheck(req, res, next) {
-    if (req.isAuthenticated()){
-        res.redirect('/home');
-    }
-    return next();
-}
 
 function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()){
