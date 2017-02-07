@@ -28,17 +28,16 @@
             <h3> <%= status %> </h3>
         </div>
         <div class="large-8 columns">
-            <h1 class="profile-app-header"> Actions: </h1>
-            <ul>
-                <!-- 
-                <li><a href="/change-account-information">Change Account Information</a></li>
-                -->
-                <% if (status != "Not Attending") { %>
+            <% if (status != "Not Attending") { %>
+                <h1 class="profile-app-header"> Actions: </h1>
+                <ul>
+                    <!-- 
+                    <li><a href="/change-account-information">Change Account Information</a></li>
+                    -->
                     <li><a href="#">Join Our Slack!</a></li>
                     <li><a href=/not-attending-confirmation>"I can no longer attend"</a></li>
-                <% } %>
-
                  </ul>
+            <% } %>
         </div>
     </div>
 
