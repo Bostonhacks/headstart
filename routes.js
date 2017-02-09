@@ -14,69 +14,67 @@ module.exports = function(app, passport, upload) {
         if (req.isAuthenticated()){
             res.redirect('/home');
         } else {
-            res.render('pages/login.ejs', { message: req.flash('loginMessage') }); 
+            res.render('pages/login.ejs', {
+                message: req.flash('loginMessage'),
+                email: req.flash('submittedEmail')
+            }); 
         }
     });
 
-    app.post('/login', passport.authenticate('login', {
-        successRedirect : '/home',
-        failureRedirect : '/login',
-        failureFlash : true
-    }));
-
-    app.get('/signup', function(req, res) {
-        res.render('pages/login.ejs', { message: req.flash('signupMessage') });
+    app.post('/login', passport.authenticate('login', { failureRedirect: '/login' }), function(req, res) {
+        res.redirect('/home');
     });
 
-    app.post('/signup', passport.authenticate('signup', {
-        successRedirect : '/home',
-        failureRedirect : '/signup',
-        failureFlash : true
-    }));
+    app.post('/signup', passport.authenticate('signup', { failureRedirect: '/login' }), function(req, res) {
+        res.redirect('/home');
+    });
+
 
     app.get('/forgot-password', function(req, res) {
         res.render('pages/forgot-password.ejs', {
-            forgotErrorMessage: '',
-            forgotMessageSuccess: ''
-        });
-    });
-
-    app.post('/forgot-password', function(req, res) {
-        forgot.resetPassword(req, res, function() {
-            res.render('pages/forgot-password.ejs', {
-                forgotErrorMessage: req.flash('forgotErrorMessage'),
-                forgotMessageSuccess: req.flash('forgotMessageSuccess')
-            });
-        });
-    });
-
-
-    app.get('/change-password/:ident/:timestamp-:hash', function(req, res) {
-        res.render('pages/change-password.ejs', {
             forgotErrorMessage: req.flash('forgotErrorMessage'),
             forgotMessageSuccess: req.flash('forgotMessageSuccess')
         });
     });
 
+    app.post('/forgot-password', function(req, res) {
+        forgot.resetPassword(req, res, function() {
+            res.redirect('/forgot-password');
+        });
+    });
+
+
+    app.get('/change-password/:ident/:timestamp-:hash', function(req, res) {
+        forgot.checkValidLink(req, res, function(validLink) {
+            if (validLink) {
+                res.render('pages/change-password.ejs', {
+                    forgotErrorMessage: req.flash('forgotErrorMessage'),
+                    forgotMessageSuccess: req.flash('forgotMessageSuccess')
+                });
+            } else {
+                res.redirect('/forgot-password');
+            }
+        });
+    });
+
 
     app.post('/change-password/:ident/:timestamp-:hash', function(req, res) {
-        forgot.changePassword(req, res, function() {
-            res.render('pages/change-password.ejs', {
-                forgotErrorMessage: req.flash('forgotErrorMessage'),
-                forgotMessageSuccess: req.flash('forgotMessageSuccess')
-            });
+        forgot.changePassword(req, res, function(validLink) {
+            if (validLink) {
+                res.render('pages/change-password.ejs', {
+                    forgotErrorMessage: req.flash('forgotErrorMessage'),
+                    forgotMessageSuccess: req.flash('forgotMessageSuccess')
+                });
+            } else {
+                res.redirect('/forgot-password');
+            }
         });
     });
 
 
     app.get('/home', isLoggedIn, function(req, res) {
         if(req.user.local.registered){
-            res.render('pages/profile.ejs', {
-                email : req.user.local.email,
-                status: req.user.status,
-                notAttendingMessageSuccess: '',
-                notAttendingMessageError: ''
-            });
+            renderProfile(req, res);
         } else {
             // Format according to Authorization Code Flow: https://my.mlh.io/docs#oauth_flows
             var redirect_url = 'https://my.mlh.io/oauth/authorize?' + 
@@ -142,7 +140,11 @@ module.exports = function(app, passport, upload) {
 
 
     app.get('/almost-done', isLoggedIn, function(req, res) {
-        res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''});
+        if(req.user.local.registered){
+            renderProfile(req, res);
+        } else {
+            res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''});
+        }
     });
 
     app.post('/submit-application', isLoggedIn, upload.single('resume'), function(req, res) {
@@ -225,4 +227,13 @@ function isLoggedIn(req, res, next) {
     } else {
         res.redirect('/login');
     }
+}
+
+function renderProfile(req, res) {
+    res.render('pages/profile.ejs', {
+        email : req.user.local.email,
+        status: req.user.status,
+        notAttendingMessageSuccess: '',
+        notAttendingMessageError: ''
+    });
 }

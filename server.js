@@ -66,10 +66,14 @@ app.use(cookieParser());
 app.use(bodyParser());
 
 //Passport
-app.use(session({ secret: process.env.SESSION_SECRET }));
+app.use(session({ 
+    secret: process.env.SESSION_SECRET
+    // cookie: { secure: true }
+}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+
 
 //Routes
 require('./routes.js')(app, passport, upload);

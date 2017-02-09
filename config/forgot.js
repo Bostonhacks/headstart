@@ -9,11 +9,11 @@ function generateLink(user, next) {
     var ident = user._id;
     var d = new Date();
     var today = bases.toBase36(d.getTime());
+
     // Doing this replace because bcrypt uses forward slashes which we can't use for data in URLs
     var hash = bcrypt.hashSync(user.local.email + user.local.password).replace(/\//g, "~")
     console.log(hash);
 
-    // CHANGE THIS TO BOSTONHACKS.IO LATER!
     next("bostonhacks.io/change-password/" + ident + "/" + today + "-" + hash);
 }
 
@@ -67,11 +67,11 @@ module.exports = {
                     } else {
                         // Change this once we have a proper errorhandler
                         if (user == "err") {
-                            req.flash('forgotErrorMessage', 'There was an error, please try again.');
+                            req.flash('forgotErrorMessage', 'There was an error, please try again');
                             next();
                         } else {
                             sendForgotPasswordEmail(user);
-                            req.flash('forgotErrorMessageSuccess', 'An email has been sent to reset your password!');
+                            req.flash('forgotMessageSuccess', 'An email has been sent to reset your password!');
                             next();
                         }
                     }
@@ -82,67 +82,65 @@ module.exports = {
             next();
         }
     },
-    changePassword: function(req, res, next) {
+    checkValidLink: function(req, res, next) {
+        var d = new Date();
         var ident = req.params.ident;
         var timestamp = req.params.timestamp;
+        var errorMessage = 'Hmmmm.. looks like your link is invalid. Lets try this again!';
+
         // Again, doing this replace because bcrypt uses forward slashes which we can't use for data in URLs
         var hash = req.params.hash.replace(/~/g, "/");
 
-        console.log("hello");
-        var d = new Date();
         // Make sure we sent them this link at least 24 hours ago
-
-        console.log(bases.fromBase36(timestamp) + 86400);
+        console.log(bases.fromBase36(timestamp) + 86400000);
         console.log(d.getTime());
-        console.log(bases.fromBase36(timestamp) + 86400 > d.getTime());
-        if (bases.fromBase36(timestamp) + 86400 > d.getTime()) {
-            User.findOne({'_id': ident }, function(err, user) {
-                if (err) {
-                    // Change this once we have a proper errorhandler
-                    console.log(err);
-                    return "err";
-                } else {
-                    console.log(user);
-                    if (user != null) {
-                        // Change this once we have a proper errorhandler
-                        if (user == "err") {
-                            req.flash('forgotErrorMessage', 'There was an error, please try again.');
-                            next();
-                        } else {
-                            bcrypt.compare(user.local.email+user.local.password, hash, function(err, res) {
-                                if (res) {
-                                    User.findOneAndUpdate({ '_id': ident }, {'local.password': user.generateHash(req.body.password) }, {upsert: true}, function (err, raw) {
-                                        if (err) {
-                                            req.flash('forgotErrorMessage', 'There was an error, please try again.');
-                                            console.log("Error attempting to change password: " + err)
-                                            next();
-                                        } else {
-                                            req.flash('forgotErrorMessageSuccess', 'Your password has successfully been reset! Please try logging in.');
-                                            console.log("User " + user.local.email + " successfully reset their password.");
-                                            next();
-                                        }
-                                    })
-                                } else {
-                                    req.flash('forgotErrorMessage', 'Hmmmm.. looks like your link is invalid. Lets try this again!');
-                                    next();
-                                }
-                            });
-                        }
-                    } else {
-                        // There is no user with that id
-                            req.flash('forgotErrorMessage', 'Hmmmm.. looks like your link is invalid. Lets try this again!');
-                        next();
-                    }
-                }
-            });
-        } else {
-            console.log("actually expired.")
-            req.flash('forgotErrorMessage', 'Hmmmm.. looks like your link has expired. Lets try this again!');
-            next();
+        console.log(bases.fromBase36(timestamp) + 86400000 > d.getTime());
+
+        if (bases.fromBase36(timestamp) + 86400000 <= d.getTime()) {
+            console.log("Link actually expired.")
+            req.flash('forgotErrorMessage', errorMessage);
+            next(false);
+            return;
         }
 
+        User.findOne({'_id': ident }, function(err, user) {
+            if (err || user == null) { // There is no user with that id
+                console.log(err ? err : "no user found."); // Should handle these better..
+                req.flash('forgotErrorMessage', errorMessage);
+                next(false, user);
+            } else {
+                bcrypt.compare(user.local.email+user.local.password, hash, function(err, response) {
+                    if(!res) {
+                        req.flash('forgotErrorMessage', errorMessage);
+                    }
+                    next(true, user);
+                });
+            }
+        });
+    },
 
+    changePassword: function(req, res, next) {
+        this.checkValidLink(req, res, function(validLink, user) {
+            if (!validLink) { // Exit if link wasn't valid
+                next(false);
+                return;
+            } else if (req.body.password.length < 9) {
+                req.flash('forgotErrorMessage', 'Invalid password. Must be at least 9 characters long!');
+                next(true);
+                return;   
+            }
 
+            User.findOneAndUpdate({ '_id': req.params.ident }, {'local.password': user.generateHash(req.body.password) }, function (err, raw) {
+                if (err) {
+                    req.flash('forgotErrorMessage', 'There was an error, please try again.');
+                    console.log("Error attempting to change password: " + err);
+                } else {
+                    req.flash('forgotMessageSuccess', 'Your password has successfully been reset! Please try logging in.');
+                    console.log("User " + user.local.email + " successfully reset their password.");
+                }
+                next(true);
+            });
+        });
     }
 }
 

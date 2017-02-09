@@ -11,7 +11,7 @@
         <div id="loginContainer" class="authContainer">
             <a href="/"><img src="img/terrierLogo.png" id="terrierLogo"></a>
 
-            <% if (message.length > 0) { %>
+            <% if (message) { %>
                 <h3 class="serverMessageError"> <%= message %> </h3>
             <% } %>
 
@@ -22,7 +22,7 @@
                 </div>
                 <div class="form-group">
                     <h2> Password: </h2>
-                    <input type="password" class="textForm" name="password" id="passwordInput" placeholder=">= 6 characters">
+                    <input type="password" class="textForm" name="password" id="passwordInput" placeholder=">= 9 characters">
                 </div>
                 <br>
                 <button onclick="login()" class="button loginButtons" id="loginButton">Login</button>
@@ -38,6 +38,14 @@
 <footer>
     <% include ../partials/footer %>
     <script src="js/login.js"></script>
+
+    <!-- Populate email field if they failed.. gatta be nice :) -->
+    <% if (email) { %>
+        <script type="text/javascript">
+            document.getElementById('emailInput').value = "<%= email %>";
+        </script>
+    <% } %>
+
 </footer>
 </html>
 
