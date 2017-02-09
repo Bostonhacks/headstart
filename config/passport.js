@@ -30,7 +30,7 @@ module.exports = function(passport) {
                     return done(err);
                 } else if (user) {
                     return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
-                } else if (password.length < 6) {
+                } else if (password.length < 9) {
                     return done(null, false, req.flash('signupMessage', 'Password must be at least 6 characters.'));
                 } else {
                     var newUser = new User();
