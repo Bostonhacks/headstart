@@ -13,16 +13,16 @@ module.exports = function(passport) {
     
         // Make sure the email is actually valid serverside
         if (!emailfns.validateEmail(email)) {
-            return done(null, false, req.flash('loginMessage', 'Please make sure your email is valid.'));
+            return done(null, false, req.flash('signupMessage', 'Please make sure your email is valid.'));
         }
 
         User.findOne({ 'local.email' :  email }, function(err, user) {
             if (err) {
                 return done(err);
             } else if (user) {
-                return done(null, false, req.flash('loginMessage', 'That email is already taken.'));
+                return done(null, false, req.flash('signupMessage', 'That email is already taken.'));
             } else if (password.length < 9) {
-                return done(null, false, req.flash('loginMessage', 'Password must be at least 9 characters.'));
+                return done(null, false, req.flash('signupMessage', 'Password must be at least 9 characters.'));
             } else {
                 var newUser = new User();
                 newUser.local.email    = email;

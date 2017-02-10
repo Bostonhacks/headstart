@@ -25,7 +25,18 @@ module.exports = function(app, passport, upload) {
         res.redirect('/home');
     });
 
-    app.post('/signup', passport.authenticate('signup', { failureRedirect: '/login' }), function(req, res) {
+    app.get('/signup', function(req, res) {
+        if (req.isAuthenticated()){
+            res.redirect('/home');
+        } else {
+            res.render('pages/signup.ejs', {
+                message: req.flash('signupMessage'),
+                email: req.flash('submittedEmail'),
+            }); 
+        }
+    });
+
+    app.post('/signup', passport.authenticate('signup', { failureRedirect: '/signup' }), function(req, res) {
         res.redirect('/home');
     });
 

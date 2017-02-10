@@ -11,6 +11,7 @@
         <div id="loginContainer" class="authContainer">
             <a href="/"><img src="img/terrierLogo.png" id="terrierLogo"></a>
 
+            <h1 id="loginThemeTitle"> Registration </h1>
             <% if (message.length > 0) { %>
                 <h3 class="serverMessageError"> <%= message %> </h3>
             <% } %>
@@ -25,12 +26,11 @@
                     <input type="password" class="textForm" name="password" id="passwordInput" placeholder=">= 9 characters">
                 </div>
                 <br>
-                <button onclick="login()" class="button loginButtons" id="loginButton">Login</button>
+                <button onclick="signup()" class="button loginButtons" id="registerButton">Register</button>
             </div>
 
             <div class="authLink">
-                <a href="/signup"><h3 class="authLinkText">Need to make an Account?</h3></a>
-                <a href="/forgot-password"><h3 class="authLinkText">Forgot Password?</h3></a>
+                <a href="/login"><h3 class="authLinkText">Have an Account?</h3></a>
             </div>
         </div>
     </body>

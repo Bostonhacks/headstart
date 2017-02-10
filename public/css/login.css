@@ -95,10 +95,6 @@ input[type=password]:focus {
 }
 
 .authLink {
-  padding-bottom: 10px;
-}
-
-#forgotPasswordLink {
   padding-top: 5px;
   padding-bottom: 15px;
 }
@@ -107,7 +103,7 @@ input[type=password]:focus {
   color: #e6e6e6;
 }
 
-#forgotPasswordTitle {
+#loginThemeTitle {
     margin-bottom: 15px;
 }
 
