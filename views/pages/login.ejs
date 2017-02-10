@@ -11,7 +11,7 @@
         <div id="loginContainer" class="authContainer">
             <a href="/"><img src="img/terrierLogo.png" id="terrierLogo"></a>
 
-            <% if (message) { %>
+            <% if (message.length > 0) { %>
                 <h3 class="serverMessageError"> <%= message %> </h3>
             <% } %>
 
