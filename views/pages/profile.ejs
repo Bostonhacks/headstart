@@ -22,10 +22,8 @@
 
         <div class="large-4 columns profile-info">
             <h1 class="profile-info-header"> Your info: </h1>
-            <h3> Email: </h3>
-            <h3> <%= email %> </h3>
-            <h3> Status: </h3>
-            <h3> <%= status %> </h3>
+            <h3 class="profile-info-details"> <b>Email:</b> <%= email %> </h3>
+            <h3 class="profile-info-details"> <b>Status:</b> <%= status %> </h3>
         </div>
         <div class="large-8 columns">
             <% if (status != "Not Attending") { %>

@@ -71,9 +71,33 @@
     bottom: 0;
 }
 
+@media only screen and (max-width: 900px) {
+    #profile-footer {
+        display: none;
+    }
+    .profile-container {
+        margin: 20px 20px 0px 20px;
+    }
+
+    .profile-info-header, .profile-app-header {
+        margin-right: 0px;
+    }
+
+
+}
+
+.profile-info-details {
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
 ul {
     list-style-type: square;
     padding-left: 20px;
+}
+
+ul > li {
+    padding-top: 10px;
 }
 
 ul > li,
@@ -81,13 +105,9 @@ ul > li a {
     color: #FFFFFF;
 }
 
-ul > li {
-    padding-top: 20px;
-}
-
 ul > li a {
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 600;
     font-size: 18px;
 }
 
