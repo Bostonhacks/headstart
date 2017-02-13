@@ -15,6 +15,9 @@ module.exports = function(app, passport, upload) {
             res.redirect('/home');
         } else {
             res.render('pages/login.ejs', {
+                initialView: 'login',
+                forgotMessageSuccess: '',
+                forgotErrorMessage: '',
                 message: req.flash('loginMessage'),
                 email: req.flash('submittedEmail')
             }); 
@@ -29,9 +32,12 @@ module.exports = function(app, passport, upload) {
         if (req.isAuthenticated()){
             res.redirect('/home');
         } else {
-            res.render('pages/signup.ejs', {
+            res.render('pages/login.ejs', {
+                initialView: 'signup',
+                forgotMessageSuccess: '',
+                forgotErrorMessage: '',
                 message: req.flash('signupMessage'),
-                email: req.flash('submittedEmail'),
+                email: req.flash('submittedEmail')
             }); 
         }
     });
@@ -42,7 +48,10 @@ module.exports = function(app, passport, upload) {
 
 
     app.get('/forgot-password', function(req, res) {
-        res.render('pages/forgot-password.ejs', {
+        res.render('pages/login.ejs', {
+            initialView: 'forgot',
+            message: '',
+            email: '',
             forgotErrorMessage: req.flash('forgotErrorMessage'),
             forgotMessageSuccess: req.flash('forgotMessageSuccess')
         });
