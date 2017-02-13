@@ -193,10 +193,6 @@ module.exports = function(app, passport, upload) {
         res.redirect('/');
     });
 
-    // app.get('/change-account-information', function(req, res) {
-    //     res.render('pages/change-account-information.ejs');
-    // });
-
     app.get('/not-attending-confirmation', isLoggedIn, function(req, res) {
         res.render('pages/not-attending-confirmation.ejs', {
             notAttendingTrollMessage: ''
