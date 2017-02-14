@@ -206,6 +206,7 @@ body {
 
   background-color: #ccffcc;
   padding: 5px 5px 5px 5px;
+  margin: 10px 30px 10px 30px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   text-align: center;
@@ -217,6 +218,7 @@ body {
   border: 1px solid #f58a8a;
   background-color: #fbd0d0;
   padding: 5px 5px 5px 5px;
+  margin: 10px 30px 10px 30px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   text-align: center;
