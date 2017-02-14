@@ -30,7 +30,8 @@
     "querystring": "^0.2.0",
     "request": "^2.71.0",
     "sendgrid": "^4.3.0",
-    "serve-favicon": "^2.3.2"
+    "serve-favicon": "^2.3.2",
+    "validator": "^6.2.1"
   },
   "devDependencies": {
     "nodemon": "^1.10.2 ",
