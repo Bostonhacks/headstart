@@ -205,21 +205,20 @@ body {
   border: 1px solid #009900;
 
   background-color: #ccffcc;
-  margin: 0 10% 10px 10%;
   padding: 5px 5px 5px 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   text-align: center;
+  display: inline-block;
 }
 
 .serverMessageError {
   color: #e81717;
   border: 1px solid #f58a8a;
-
   background-color: #fbd0d0;
-  margin: 0 10% 10px 10%;
   padding: 5px 5px 5px 5px;
   -moz-border-radius: 5px;
   border-radius: 5px;
   text-align: center;
+  display: inline-block;
 }

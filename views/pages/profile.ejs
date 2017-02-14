@@ -25,7 +25,7 @@
             <h3 class="profile-info-details"> <b>Status:</b> <%= status %> </h3>
         </div>
         <div class="large-8 columns">
-            <% if (status != "Not Attending") { %>
+            <% if (status != "Not Attending" && notAttendingMessageSuccess.length == 0) { %>
                 <h1 class="profile-app-header"> Actions: </h1>
                 <ul>
                     <!-- 

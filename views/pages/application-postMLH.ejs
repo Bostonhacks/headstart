@@ -16,7 +16,9 @@
     <div class="questions-container">
         <h2> Awesome! Just a few last questions:</h2>
         <% if (errormessage.length > 0) { %>
-          <div class="alert alert-danger"> <%= errormessage %> </div>
+            <div class="text-center">
+                <div class="serverMessageError"> <%= errormessage %> </div>
+            </div>
         <% } %>
 
         <form action="/submit-application" method="POST" enctype="multipart/form-data">

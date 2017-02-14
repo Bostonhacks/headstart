@@ -19,10 +19,10 @@ module.exports = {
             console.log(raw);
         })
     },
-    notAttending: function(id, data) {
-        return User.findOneAndUpdate({ '_id': id }, data, {upsert: true}, function (err, raw) {
+    notAttending: function(id, data, next) {
+        next(User.findOneAndUpdate({ '_id': id }, data, {upsert: true}, function (err, raw) {
             if (err) return handleError(err);
             console.log(raw);
-        })
+        }));
     }
 } 
