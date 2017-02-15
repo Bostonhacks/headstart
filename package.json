@@ -41,5 +41,8 @@
   "scripts": {
     "start": "node server.js",
     "test": "nodemon server.js"
+  },
+  "standard": {
+    "ignore": ["public/js"]
   }
 }
