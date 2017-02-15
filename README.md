@@ -19,3 +19,5 @@
 
 In order to utilize My.MLH and Sendgrid, reach out to Nico for the required environment variables!
 
+### Before Contributing
+Please ensure that any PRs pass the [Standard](https://github.com/feross/standard) linter
