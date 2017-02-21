@@ -22,7 +22,7 @@
 
 .profile-nav-right {
     float: right;
-    margin: 20px 20px 0 0;
+    margin: 15px 20px 0 0;
 }
 
 .profile-nav-left h2,
@@ -89,29 +89,10 @@
 .profile-info-details {
     padding-top: 10px;
     padding-left: 20px;
+    font-size: 16px;
 }
 
-ul {
-    list-style-type: square;
-    padding-left: 20px;
-}
-
-ul > li {
-    padding-top: 10px;
-}
-
-ul > li,
-ul > li a {
-    color: #FFFFFF;
-}
-
-ul > li a {
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
-    font-size: 18px;
-}
-
-li a:hover {
+a h4:hover {
     color: #d9d9d9;
 }
 
