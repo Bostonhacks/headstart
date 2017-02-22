@@ -16,7 +16,7 @@ function generateLink (user, next) {
 
 function sendForgotPasswordEmail (user) {
   generateLink(user, function (link) {
-    var bodyContent = '<html><body>Forgot your password? No problem!<br>' +
+    var bodyContent = '<html><body>Forgot your password? No problem!<br><br>' +
         'Reset your password by clicking the link below or copying and pasting it into your browser: <br><br>' +
         '<a href="' + link + '">' + link + '</a><br><br>' +
         'Questions? Shoot us an email at <a href="contact@bostonhacks.io">contact@bostonhacks.io</a></body></html>'
