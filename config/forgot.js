@@ -1,5 +1,6 @@
 const bases = require('bases')
 const bcrypt = require('bcrypt-nodejs')
+const errorhandler = require('./errorhandler')
 const sg = require('sendgrid')(process.env.SENDGRID_API_KEY)
 const sgmail = require('sendgrid').mail
 const User = require('../models/user')
@@ -38,28 +39,20 @@ module.exports = {
   resetPassword: function (req, res, next) {
     if (!validator.isEmail(req.body.email)) {
       req.flash('forgotErrorMessage', 'Please make sure your email is valid.')
-      next()
-      return
+      return next()
     }
 
     User.findOne({'local.email': new RegExp('^' + req.body.email + '$', 'i')}, function (err, user) {
-      if (err) { // Change this once we have a proper errorhandler
-        console.log(err)
-        return err
+      if (err) {
+        errorhandler.logErrorMsg('forgot.resetPassword', err)
+        req.flash('forgotErrorMessage', 'There was an error, please try again')
+      } else if (user) {
+        sendForgotPasswordEmail(user)
+        req.flash('forgotMessageSuccess', 'An email has been sent to reset your password!')
       } else {
-        if (user == null) {
-          req.flash('forgotErrorMessage', 'There is no user with that email.')
-          next()
-        } else {
-          if (user === 'err') { // Change this once we have a proper errorhandler
-            req.flash('forgotErrorMessage', 'There was an error, please try again')
-          } else {
-            sendForgotPasswordEmail(user)
-            req.flash('forgotMessageSuccess', 'An email has been sent to reset your password!')
-          }
-          next()
-        }
+        req.flash('forgotErrorMessage', 'There is no user with that email.')
       }
+      next()
     })
   },
   checkValidLink: function (req, res, next) {
@@ -75,49 +68,45 @@ module.exports = {
     if (bases.fromBase36(timestamp) + 86400000 <= d.getTime()) {
       console.log('Link actually expired.')
       req.flash('forgotErrorMessage', errorMessage)
-      next(false)
-      return
+      return next(false)
     }
 
     User.findOne({'_id': ident}, function (err, user) {
-      if (err) {
-        console.log(err)
-        req.flash('forgotErrorMessage', errorMessage)
-        next(false, user)
-      } else if (user == null) { // There is no user with that id
-        console.log('forgot.checkValidLink: No user found.')
-        req.flash('forgotErrorMessage', errorMessage)
-        next(false, user)
-      } else {
+      if (user && !err) {
         bcrypt.compare(user.local.email + user.local.password, hash, function (err, response) {
-          if (err) {
-            console.log('Bcrypt error in forgot.js: ' + err)
-          } else if (!res) {
-            req.flash('forgotErrorMessage', errorMessage)
+          if (response && !err) {
+            return next(true, user)
           }
-          next(true, user)
+
+          if (!response) req.flash('forgotErrorMessage', errorMessage)
+          if (err) errorhandler.logErrorMsg('forgot.checkValidLink.bcrypt', err)
+          next(false, user)
         })
+        return
       }
+
+      // Either there was an error or there is no such user with the id in the link
+      if (err) errorhandler.logErrorMsg('forgot.checkValidLink', err)
+      req.flash('forgotErrorMessage', errorMessage)
+      next(false, user)
     })
   },
   changePassword: function (req, res, next) {
     this.checkValidLink(req, res, function (validLink, user) {
-      if (!validLink) { // Exit if link wasn't valid
-        next(false)
-        return
-      } else if (req.body.password.length < 9) {
+      // Exit if link wasn't valid
+      if (!validLink) return next(false)
+
+      if (req.body.password.length < 9) {
         req.flash('forgotErrorMessage', 'Invalid password. Must be at least 9 characters long!')
-        next(true)
-        return
+        return next(true)
       }
 
       User.findOneAndUpdate({'_id': req.params.ident}, {'local.password': user.generateHash(req.body.password)}, function (err, raw) {
         if (err) {
+          errorhandler.logErrorMsg('forgot.changePassword', err)
           req.flash('forgotErrorMessage', 'There was an error, please try again.')
-          console.log('Error attempting to change password: ' + err)
         } else {
           req.flash('forgotMessageSuccess', 'Your password has successfully been reset! Please try logging in.')
-          console.log('User ' + user.local.email + ' successfully reset their password.')
         }
         next(true)
       })

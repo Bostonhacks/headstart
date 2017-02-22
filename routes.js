@@ -88,7 +88,7 @@ module.exports = function (app, passport, upload) {
   })
 
   app.get('/home', isLoggedIn, function (req, res) {
-    if(req.user.local.email === process.env.ADMIN_EMAIL) {
+    if (req.user.local.email === process.env.ADMIN_EMAIL) {
       res.redirect('/admin')
       return
     }
@@ -108,7 +108,7 @@ module.exports = function (app, passport, upload) {
             ^ This looks weird ^
             EXPLANATION: This is because querystring.stringify automatically
             uriencodes parameter values and my.mlh wants the +'s as is...
-            */
+        */
 
       res.render('pages/application-preMLH.ejs', {
         user: req.user,
@@ -195,7 +195,7 @@ module.exports = function (app, passport, upload) {
   })
 
   app.get('/admin', isLoggedIn, function (req, res) {
-    if(req.user.local.email !== process.env.ADMIN_EMAIL) {
+    if (req.user.local.email !== process.env.ADMIN_EMAIL) {
       res.redirect('/')
       return
     }
