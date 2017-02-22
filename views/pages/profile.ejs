@@ -12,29 +12,37 @@
 
         <!-- I'd like to clean this up later -->
         <% if (notAttendingMessageSuccess.length > 0) { %>
-            <h4 class="serverMessageSuccess"> <%= notAttendingMessageSuccess %> </h4>
+            <h3 class="serverMessageSuccess"> <%= notAttendingMessageSuccess %> </h3>
         <% } %>
 
         <% if (notAttendingMessageError.length > 0) { %>
-            <h4 class="serverMessageError"> <%= notAttendingMessageError %> </h4>
+            <h3 class="serverMessageError"> <%= notAttendingMessageError %> </h3>
         <% } %>
 
-        <div class="large-4 columns profile-info">
+        <div class="large-4 columns profile-info" id="info">
             <h2 class="profile-info-header"> Your info: </h2>
             <h4 class="profile-info-details"> <b>Email:</b> <%= email %> </h4>
             <h4 class="profile-info-details"> <b>Status:</b> <%= status %> </h4>
         </div>
-        <div class="large-8 columns">
-            <% if (status != "Not Attending" && notAttendingMessageSuccess.length == 0) { %>
+        <div class="large-8 columns" id="actions">
                 <h2 class="profile-app-header"> Actions: </h2>
                 <a href="#"><h4 class="profile-info-details">Join Our Slack!</h4></a>
                 <a href=/not-attending-confirmation><h4 class="profile-info-details"> "I can no longer attend"</h4></a>
-            <% } %>
         </div>
     </div>
 
     <% include ../partials/profile-footer %>
 </body>
+
+<% include ../partials/footer %>
+
+<script type="text/javascript">
+    // If they aren't attending, make the info panel full width and hide the actions panel
+    if ('<%= status %>' === "Not Attending" || '<%= notAttendingMessageSuccess %>'.length) {
+        $('#info').attr('class', 'large-12 columns profile-info');
+        $('#actions').hide();
+    }
+</script>
 
 <script src="https://use.fontawesome.com/fae771462f.js"></script>
 </html>
