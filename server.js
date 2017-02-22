@@ -69,7 +69,7 @@ app.use(passport.session())
 app.use(flash())
 
 // Routes
-require('./routes.js')(app, passport, upload)
+require('./routes')(app, passport, upload)
 
 app.listen(port)
 console.log('Now running on port: ' + port)
