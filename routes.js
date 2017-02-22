@@ -23,6 +23,7 @@ module.exports = function (app, passport, upload) {
   })
 
   app.post('/login', passport.authenticate('login', { failureRedirect: '/login' }), function (req, res) {
+    console.log(req)
     res.redirect('/home')
   })
 
@@ -87,6 +88,11 @@ module.exports = function (app, passport, upload) {
   })
 
   app.get('/home', isLoggedIn, function (req, res) {
+    if(req.user.local.email === process.env.ADMIN_EMAIL) {
+      res.redirect('/admin')
+      return
+    }
+
     if (req.user.local.registered) {
       renderProfile(req, res)
     } else {
@@ -186,6 +192,14 @@ module.exports = function (app, passport, upload) {
       }
       res.redirect('/home')
     })
+  })
+
+  app.get('/admin', isLoggedIn, function (req, res) {
+    if(req.user.local.email !== process.env.ADMIN_EMAIL) {
+      res.redirect('/')
+      return
+    }
+    res.render('pages/admin-console.ejs')
   })
 
   app.get('/500', function (req, res) {
