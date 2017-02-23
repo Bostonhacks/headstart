@@ -59,11 +59,20 @@ app.use(morgan('dev'))
 app.use(cookieParser())
 app.use(bodyParser())
 
-// Passport
+// Session Configuration
+
+/* 
+Regarding line 72 ("cookie: { secure: true }"): https://github.com/expressjs/session#cookiesecure
+We use HTTPS and therefore enable cookie.secure as it's recommended, but it's not required
+*/
+
+app.set('trust proxy', 1) // We use Nginx as a proxy. If you don't use one, you can remove this line
 app.use(session({
-  secret: process.env.SESSION_SECRET
-    // cookie: { secure: true }
+  secret: process.env.SESSION_SECRET,
+  cookie: { secure: true }
 }))
+
+// Passport
 app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
