@@ -7,7 +7,7 @@ module.exports = {
 
     // 'school.name': 'Boston University'
     User.find({param: val}, function (err, users) {
-      if (err) errorhandler.logErrorMsg(err)
+      if (err) errorhandler.logErrorMsg('admin.userQuery', err)
       return users
     })
   }

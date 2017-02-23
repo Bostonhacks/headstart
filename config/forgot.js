@@ -66,7 +66,7 @@ module.exports = {
 
     // Make sure we sent them this link at least 24 hours ago
     if (bases.fromBase36(timestamp) + 86400000 <= d.getTime()) {
-      console.log('Link actually expired.')
+      // Link actually expired
       req.flash('forgotErrorMessage', errorMessage)
       return next(false)
     }
@@ -79,7 +79,9 @@ module.exports = {
           }
 
           if (!response) req.flash('forgotErrorMessage', errorMessage)
-          if (err) errorhandler.logErrorMsg('forgot.checkValidLink.bcrypt', err)
+          if (err) errorhandler.logErrorMsg('forgot.checkValidLink.bcrypt', 'Error encountered when trying to compare ' + 
+            user.local.email + ' and ' + user.local.password + '!\n ' + hasherr)
+
           next(false, user)
         })
         return

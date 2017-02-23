@@ -60,9 +60,7 @@ app.use(cookieParser())
 app.use(bodyParser())
 
 // Session Configuration
-app.use(session({
-  secret: process.env.SESSION_SECRET
-}))
+app.use(session({ secret: process.env.SESSION_SECRET }))
 
 // Passport
 app.use(passport.initialize())

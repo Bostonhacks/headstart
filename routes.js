@@ -1,3 +1,4 @@
+const errorhandler = require('./config/errorhandler')
 const forgot = require('./config/forgot')
 const querystring = require('querystring')
 const request = require('request')
@@ -23,7 +24,6 @@ module.exports = function (app, passport, upload) {
   })
 
   app.post('/login', passport.authenticate('login', { failureRedirect: '/login' }), function (req, res) {
-    console.log(req)
     res.redirect('/home')
   })
 
@@ -88,73 +88,85 @@ module.exports = function (app, passport, upload) {
   })
 
   app.get('/home', isLoggedIn, function (req, res) {
+    // If user is admin
     if (req.user.local.email === process.env.ADMIN_EMAIL) {
-      res.redirect('/admin')
-      return
+      return res.redirect('/admin')
     }
 
+    // If user has already registered
     if (req.user.local.registered) {
-      renderProfile(req, res)
-    } else {
-      // Format according to Authorization Code Flow: https://my.mlh.io/docs#oauth_flows
-      var redirectUrl = 'https://my.mlh.io/oauth/authorize?' +
+      return renderProfile(req, res)
+    }
+
+    // Format according to Authorization Code Flow: https://my.mlh.io/docs#oauth_flows
+    var redirectUrl = 'https://my.mlh.io/oauth/authorize?' +
       querystring.stringify({
         client_id: process.env.MLH_ID,
         redirect_uri: process.env.MLH_CALLBACK_URL,
         response_type: 'code',
         scope: ''
       }) + 'email+phone_number+demographics+event+education+birthday'
-        /*
-            ^ This looks weird ^
-            EXPLANATION: This is because querystring.stringify automatically
-            uriencodes parameter values and my.mlh wants the +'s as is...
-        */
+      /*
+        ^ This looks weird ^
 
-      res.render('pages/application-preMLH.ejs', {
-        user: req.user,
-        redirectUrl: redirectUrl
-      })
-    }
+        EXPLANATION: This is because querystring.stringify automatically
+        uri-encodes parameter values and my.mlh wants the +'s as is...
+      */
+
+    res.render('pages/application-preMLH.ejs', {
+      errormessage: req.flash('mlhErrorMessage'),
+      redirectUrl: redirectUrl
+    })
   })
 
-  app.get('/auth/mlh/callback', isLoggedIn, function (req, res) {
-    if (req.query.hasOwnProperty('code')) {
-      request.post('https://my.mlh.io/oauth/token', {
-        form: {
-          client_id: process.env.MLH_ID,
-          client_secret: process.env.MLH_SECRET,
-          code: req.query.code,
-          redirect_uri: process.env.MLH_CALLBACK_URL,
-          grant_type: 'authorization_code'
-        }
-      }, function (error, response, body) {
-        if (typeof error !== 'undefined' && response.statusCode === 200) {
-          request.get('https://my.mlh.io/api/v2/user.json', {
-            form: { access_token: JSON.parse(body).access_token }
-          }, function (error, response, body) {
-            if (!error && response.statusCode === 200) {
-              updateUser.mlhUpdate(req.user.id, JSON.parse(body).data)
-              res.redirect('/almost-done')
-            } else {
-              console.error('MLH_USER_GET ERROR:' + error)
-            }
-          })
-        } else {
-          console.error('MLH_AUTH_POST ERROR:' + error)
-        }
-      })
-    } else {
-      // Make this more detailed later. Should never happen, but MLH can fail!
-      console.error('MLH_CALLBACK ERROR')
+  app.get('/auth/mlh/callback', isLoggedIn, function (req, res) {    
+    // Generic functions for MLH errors
+    function mlhError(whichCB, err) {
+      errorhandler.logErrorMsg('routes.mlhcallback' + whichCB, err)
+      req.flash('mlhErrorMessage', 'We encountered an error when connecting with My.MLH... lets try this again!')
+      return res.redirect('/home')
     }
+
+    function checkResponse(whichCB, err, statusCode) {
+      if (err) return mlhError(whichCB, 'MLH Callback with the token produced an error:\n ' + err)
+      return mlhError(whichCB, 'MLH Callback with the token return a non 200: ' + response.statusCode)
+    }
+
+    // Flow begins here
+    if (!req.query.hasOwnProperty('code')) {
+      return mlhError('1', 'MLH Callback req.query had no code:\n ' + req.query)
+    }
+
+    request.post('https://my.mlh.io/oauth/token', {
+      form: {
+        client_id: process.env.MLH_ID,
+        client_secret: process.env.MLH_SECRET,
+        code: req.query.code,
+        redirect_uri: process.env.MLH_CALLBACK_URL,
+        grant_type: 'authorization_code'
+      }
+    }, function (err, response, body) {
+      if (err || response.statusCode !== 200) {
+        return checkResponse('2', err, response.statusCode)
+      }
+
+      request.get('https://my.mlh.io/api/v2/user.json', {
+        form: { access_token: JSON.parse(body).access_token }
+      }, function (error, response, body) {
+        if (err || response.statusCode !== 200) {
+          return checkResponse('3', err, response.statusCode)
+        }
+
+        // Successfully got the data from the MLH API!
+        updateUser.mlhUpdate(req.user.id, JSON.parse(body).data)
+        res.redirect('/almost-done')
+      })
+    })
   })
 
   app.get('/almost-done', isLoggedIn, function (req, res) {
-    if (req.user.local.registered) {
-      renderProfile(req, res)
-    } else {
-      res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''})
-    }
+    if (req.user.local.registered) return renderProfile(req, res)
+    res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''})
   })
 
   app.post('/submit-application', isLoggedIn, upload.single('resume'), function (req, res) {

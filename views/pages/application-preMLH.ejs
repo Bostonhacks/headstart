@@ -8,9 +8,15 @@
 <body>
 <div class="container preMLH">
     <% include ../partials/profile-nav %>
-    
     <div class="page-header text-center">
         <h1>Registration</h1>
+    
+        <% if (errormessage.length > 0) { %>
+            <div class="text-center">
+                <div class="serverMessageError"> <%= errormessage %> </div>
+            </div>
+        <% } %>
+    
         <h3> We use MyMLH to speed up your application process. <br>You'll be redirected now....</h3>
     </div>
 
@@ -20,10 +26,9 @@
 <footer>
     <% include ../partials/footer %>
     <script>
-    $(setTimeout(function () {
-        window.location.href = "<%= redirectUrl %>";
-    }, 3000));
-</script>
-
+        $(setTimeout(function () {
+            window.location.href = "<%= redirectUrl %>";
+        }, 3000));
+    </script>
 </footer>
 </html>

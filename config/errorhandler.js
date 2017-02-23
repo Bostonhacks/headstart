@@ -3,7 +3,9 @@ const logFileName = 'errorlog.txt'
 
 module.exports = {
   logErrorMsg: function (source, error) {
-    const message = 'via ' + source + ': \n' + error + '\n\n'
+    const timestamp = new Date().toLocaleString()
+    const message = '[' + timestamp + '] -> ' + source + ': \n' + error + '\n\n'
+
     fs.exists(logFileName, function (exists) {
       if (exists) {
         fs.appendFile(logFileName, message)
