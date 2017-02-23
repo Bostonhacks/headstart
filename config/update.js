@@ -20,10 +20,10 @@ module.exports = {
       return raw
     })
   },
-  notAttending: function (id, data, next) {
-    next(User.findOneAndUpdate({ '_id': id }, data, {upsert: true}, function (err, raw) {
+  notAttending: function (id, data) {
+    User.findOneAndUpdate({ '_id': id }, data, {upsert: true}, function (err, raw) {
       if (err) errorhandler.logErrorMsg('update.notAttending', err)
       return raw
-    }))
+    })
   }
 }

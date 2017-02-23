@@ -13,15 +13,17 @@
             <h1 id="loginThemeTitle"></h1>
 
             <!-- Server Messages -->
-            <% if (message.length > 0) { %>
-                <h3 class="serverMessageError loginSignupMessage"> <%= message %></h3>
-            <% } %>
-            <% if (forgotMessageSuccess.length > 0) { %>
-                <h3 class="serverMessageSuccess forgotMessage"> <%= forgotMessageSuccess %> </h3>
-            <% } %>
-            <% if (forgotErrorMessage.length > 0) { %>
-                <h3 class="serverMessageError forgotMessage"> <%= forgotErrorMessage %> </h3>
-            <% } %>
+            <div class="text-center">
+                <% if (message.length > 0) { %>
+                    <h3 class="serverMessageError loginSignupMessage"> <%= message %></h3>
+                <% } %>
+                <% if (forgotMessageSuccess.length > 0) { %>
+                    <h3 class="serverMessageSuccess forgotMessage"> <%= forgotMessageSuccess %> </h3>
+                <% } %>
+                <% if (forgotErrorMessage.length > 0) { %>
+                    <h3 class="serverMessageError forgotMessage"> <%= forgotErrorMessage %> </h3>
+                <% } %>
+            </div>
 
             <div id="inputContainer">
                 <div class="form-group">

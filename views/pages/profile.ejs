@@ -9,14 +9,10 @@
     <% include ../partials/profile-nav %>
 
     <div class="profile-container">
-
-        <!-- I'd like to clean this up later -->
         <% if (notAttendingMessageSuccess.length > 0) { %>
-            <h3 class="serverMessageSuccess"> <%= notAttendingMessageSuccess %> </h3>
-        <% } %>
-
-        <% if (notAttendingMessageError.length > 0) { %>
-            <h3 class="serverMessageError"> <%= notAttendingMessageError %> </h3>
+            <div class="text-center">
+                <h3 class="serverMessageSuccess"> <%= notAttendingMessageSuccess %> </h3>
+            </div>
         <% } %>
 
         <div class="large-4 columns profile-info" id="info">

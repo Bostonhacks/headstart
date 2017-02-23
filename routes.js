@@ -195,15 +195,10 @@ module.exports = function (app, passport, upload) {
     updateUser.notAttending(req.user.id, {
       'status': 'Not Attending',
       'notAttendingReason': req.body.notAttendingReason
-    }, function (err) {
-      if (err) {
-        req.flash('notAttendingMessageError', 'Server error trying to change your status: ' + err)
-        console.log('Not Attending error: ' + err)
-      } else {
-        req.flash('notAttendingMessageSuccess', 'Successfully no longer attending.')
-      }
-      res.redirect('/home')
     })
+
+    req.flash('notAttendingMessageSuccess', 'Successfully no longer attending.')
+    res.redirect('/home')
   })
 
   app.get('/admin', isLoggedIn, function (req, res) {
@@ -237,7 +232,6 @@ function renderProfile (req, res) {
   res.render('pages/profile.ejs', {
     email: req.user.local.email,
     status: req.user.status,
-    notAttendingMessageSuccess: req.flash('notAttendingMessageSuccess'),
-    notAttendingMessageError: req.flash('notAttendingMessageError')
+    notAttendingMessageSuccess: req.flash('notAttendingMessageSuccess')
   })
 }
