@@ -79,8 +79,10 @@ module.exports = {
           }
 
           if (!response) req.flash('forgotErrorMessage', errorMessage)
-          if (err) errorhandler.logErrorMsg('forgot.checkValidLink.bcrypt', 'Error encountered when trying to compare ' + 
-            user.local.email + ' and ' + user.local.password + '!\n ' + hasherr)
+          if (err) {
+            errorhandler.logErrorMsg('forgot.checkValidLink.bcrypt', 'Error encountered when trying to compare ' +
+              user.local.email + ' and ' + user.local.password + '!\n ' + err)
+          }
 
           next(false, user)
         })

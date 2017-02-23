@@ -119,17 +119,17 @@ module.exports = function (app, passport, upload) {
     })
   })
 
-  app.get('/auth/mlh/callback', isLoggedIn, function (req, res) {    
+  app.get('/auth/mlh/callback', isLoggedIn, function (req, res) {
     // Generic functions for MLH errors
-    function mlhError(whichCB, err) {
+    function mlhError (whichCB, err) {
       errorhandler.logErrorMsg('routes.mlhcallback' + whichCB, err)
       req.flash('mlhErrorMessage', 'We encountered an error when connecting with My.MLH... lets try this again!')
       return res.redirect('/home')
     }
 
-    function checkResponse(whichCB, err, statusCode) {
+    function checkResponse (whichCB, err, statusCode) {
       if (err) return mlhError(whichCB, 'MLH Callback with the token produced an error:\n ' + err)
-      return mlhError(whichCB, 'MLH Callback with the token return a non 200: ' + response.statusCode)
+      return mlhError(whichCB, 'MLH Callback with the token return a non 200: ' + statusCode)
     }
 
     // Flow begins here
@@ -152,7 +152,7 @@ module.exports = function (app, passport, upload) {
 
       request.get('https://my.mlh.io/api/v2/user.json', {
         form: { access_token: JSON.parse(body).access_token }
-      }, function (error, response, body) {
+      }, function (err, response, body) {
         if (err || response.statusCode !== 200) {
           return checkResponse('3', err, response.statusCode)
         }
