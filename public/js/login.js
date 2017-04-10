@@ -65,14 +65,21 @@ function configureSettings(view, callback) {
     // Only display server messages & password field relevant to the view you're on
     if (['login', 'signup'].includes(view)) {
         $('.loginSignupMessage').css('display', 'block');
-        $('.forgotMessage').css('display', 'none');
-
         $('#passwordField').css('display', 'block');
+
+        $('.forgotMessage').css('display', 'none');
     } else {
         $('.loginSignupMessage').css('display', 'none');
-        $('.forgotMessage').css('display', 'block');
-
         $('#passwordField').css('display', 'none');
+
+        $('.forgotMessage').css('display', 'block');
+    }
+
+    // April 10th: Adding this to make sure the message is only visible
+    if (['login', 'forgot'].includes(view)) {
+        $('#buRegistrationMessage').css('display', 'none');
+    } else {
+        $('#buRegistrationMessage').css('display', 'block');
     }
 
     switch (view) {
@@ -83,6 +90,8 @@ function configureSettings(view, callback) {
             $('#additionalOptions').html('<a id="signupRedirect"><h3 class="authLinkText">Need to make an Account?</h3></a><a id="forgotRedirect"><h3 class="authLinkText">Forgot Password?</h3></a>');
             break;
         case 'signup':
+            settings.buRegistrationMessage = 'Note: Registration is now only open to BU students';
+
             settings.pathname = '/signup';
             settings.buttonLabel = 'Register';
             settings.submitFunction = 'signup';
@@ -105,6 +114,12 @@ function configurePage(view) {
     configureSettings(view, function(settings) {
         // Set URL pathname
         window.history.pushState('', '', settings.pathname);
+
+
+        //Set bu registration message
+        $('#buRegistrationMessage').text(settings.buRegistrationMessage);
+
+
 
         // Set title
         $('#loginThemeTitle').text(settings.pageTitle);
