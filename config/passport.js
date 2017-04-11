@@ -17,7 +17,7 @@ module.exports = function (passport) {
     }
 
     // April 10th: Adding this code to only accept new signups from @bu.edu and @mit.edu emails
-    if (!email.endsWith('@bu.edu') && !email.endsWith('@mit.edu')) {
+    if (!email.endsWith('@bu.edu') && !email.endsWith('@mit.edu') && !email.endsWith('@neu.edu')) {
       return done(null, false, req.flash('signupMessage', 'We are now only accepting new applications from BU students.'))
     }
 
