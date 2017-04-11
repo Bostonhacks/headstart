@@ -16,8 +16,8 @@ module.exports = function (passport) {
       return done(null, false, req.flash('signupMessage', 'Please make sure your email is valid.'))
     }
 
-    // April 10th: Adding this code to only accept new signups from @bu.edu emails
-    if (!email.endsWith('@bu.edu')) {
+    // April 10th: Adding this code to only accept new signups from @bu.edu and @mit.edu emails
+    if (!email.endsWith('@bu.edu') && !email.endsWith('@mit.edu')) {
       return done(null, false, req.flash('signupMessage', 'We are now only accepting new applications from BU students.'))
     }
 
