@@ -17,7 +17,15 @@ module.exports = function (passport) {
     }
 
     // April 10th: Adding this code to only accept new signups from @bu.edu and @mit.edu emails
-    if (!email.endsWith('@bu.edu') && !email.endsWith('@mit.edu') && !email.endsWith('@husky.neu.edu')) {
+    var validLateRegistration = false
+    var validEndings = ['@bu.edu', '@mit.edu', '@husky.neu.edu', '@citymail.cuny.edu']
+    for(i = 0; i < validEndings.length; i++) {
+      if (email.endsWith(validEndings[i])) {
+        validLateRegistration = true
+      }
+    }
+
+    if (!validLateRegistration) {
       return done(null, false, req.flash('signupMessage', 'We are now only accepting new applications from BU students.'))
     }
 
