@@ -18,7 +18,7 @@ module.exports = function (passport) {
 
     // April 10th: Adding this code to only accept new signups from @bu.edu and @mit.edu emails
     var validLateRegistration = false
-    var validEndings = ['@bu.edu', '@mit.edu', '@husky.neu.edu', '@citymail.cuny.edu']
+    var validEndings = ['@bu.edu', '@mit.edu', '@husky.neu.edu', '@citymail.cuny.edu', '@student.bridgew.edu']
     for(i = 0; i < validEndings.length; i++) {
       if (email.endsWith(validEndings[i])) {
         validLateRegistration = true
@@ -26,7 +26,7 @@ module.exports = function (passport) {
     }
 
     if (!validLateRegistration) {
-      return done(null, false, req.flash('signupMessage', 'We are now only accepting new applications from BU students.'))
+      return done(null, false, req.flash('signupMessage', 'We are now only accepting new applications from local Boston students.'))
     }
 
     User.findOne({ 'local.email': email }, function (err, user) {
