@@ -18,7 +18,7 @@ module.exports = function (passport) {
 
     // April 10th: Adding this code to only accept new signups from @bu.edu and @mit.edu emails
     var validLateRegistration = false
-    var validEndings = ['@bu.edu', '@mit.edu', '@husky.neu.edu', '@citymail.cuny.edu', '@student.bridgew.edu', '@umass.edu']
+    var validEndings = ['@bu.edu', '@mit.edu', '@husky.neu.edu', '@citymail.cuny.edu', '@student.bridgew.edu', '@umass.edu', '@bhcc.edu']
     for(i = 0; i < validEndings.length; i++) {
       if (email.endsWith(validEndings[i])) {
         validLateRegistration = true
