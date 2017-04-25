@@ -9,6 +9,10 @@ module.exports = function (app, passport, upload) {
     res.render('pages/index.ejs')
   })
 
+  app.get('/live', function (req, res) {
+    res.send('Live, baby!')
+  })
+
   app.get('/login', function (req, res) {
     if (req.isAuthenticated()) {
       res.redirect('/home')
@@ -221,6 +225,7 @@ module.exports = function (app, passport, upload) {
 }
 
 function isLoggedIn (req, res, next) {
+  console.log(req)
   if (req.isAuthenticated()) {
     return next()
   } else {
