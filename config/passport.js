@@ -16,7 +16,7 @@ module.exports = function (passport) {
       return done(null, false, req.flash('signupMessage', 'Please make sure your email is valid.'))
     }
 
-    // April 10th: Adding this code to only accept new signups from @bu.edu and @mit.edu emails
+    // April 10th: Adding this code to only accept new signups from the following email domains
     var validLateRegistration = false
     var validEndings = ['@bu.edu', '@mit.edu', '@husky.neu.edu', '@citymail.cuny.edu', '@student.bridgew.edu', '@umass.edu', '@bhcc.edu', '@g.rit.edu', '@csh.rit.edu']
     for(i = 0; i < validEndings.length; i++) {
