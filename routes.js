@@ -9,10 +9,6 @@ module.exports = function (app, passport, upload) {
     res.render('pages/index.ejs')
   })
 
-  app.get('/live', function (req, res) {
-    res.send('Live, baby!')
-  })
-
   app.get('/login', function (req, res) {
     if (req.isAuthenticated()) {
       res.redirect('/home')
