@@ -3,6 +3,7 @@ const forgot = require('./config/forgot')
 const querystring = require('querystring')
 const request = require('request')
 const updateUser = require('./config/update')
+const adminFunc = require('./config/admin')
 
 module.exports = function (app, passport, upload) {
   app.get('/', function (req, res) {
@@ -206,7 +207,23 @@ module.exports = function (app, passport, upload) {
       res.redirect('/')
       return
     }
+    /*
+    adminFunc.getAllAdminInfo(req, res, function(responseData) {
+      res.render('pages/admin-console.ejs', { 
+        allInfo: responseData
+      })
+    }) */
     res.render('pages/admin-console.ejs')
+  })
+
+  app.get('/admin-all-registrants', isLoggedIn, function(req, res) {
+    if (req.user.local.email !== process.env.ADMIN_EMAIL) {
+      res.redirect('/')
+      return
+    }
+    adminFunc.getAllUsers(req, res, function(responseData) {
+      res.json(responseData)
+    })
   })
 
   app.get('/500', function (req, res) {

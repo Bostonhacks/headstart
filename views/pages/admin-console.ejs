@@ -1,15 +1,152 @@
 <!doctype html>
 <html>
 <head>
-    <% include ../partials/head %>
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/admin.css">
+  <% include ../partials/head %>
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-    <% include ../partials/profile-nav %>
-    <h1 class="text-center" id="admin-title"> Admin Console </h1>
+  <% include ../partials/profile-nav %>
+  <h1 class="text-center" id="admin-title"> Admin Console </h1>
 
-    <% include ../partials/profile-footer %>
+  <script src="/js/vue.js"></script>
+
+  <style>
+    p,table {color: white}
+    td, th {
+      border: 1px solid #EF6262;
+      text-align: left;
+      padding: 4px;
+    }
+    button { 
+      background-color: #EF6262;
+      padding: 2px 10px; 
+    }
+  </style>
+
+  <div id="app">
+    <p>
+      Notify All...
+      <button>Accepted</button>
+      <button>Pending</button>
+      <button>Rejected</button>
+      <button>Not yet Notified</button>
+      <button>Accepted / Rejected and not yet Notified</button>
+      <button>Pending and not yet Notified</button>
+    </p>
+    <p>
+      Sort by...
+      <button>Status</button>
+      <button>School</button>
+      <button>Major</button>
+      <button>Level of Study</button>
+      <button>Reimbursement</button>
+    </p>
+    <p><button>Export to CSV</button></p>
+    <p>Applicants: 999, &nbsp Accepted: 999, &nbsp </p>
+    <p>A - Accept, P - Set Pending, R - Reject, N - Notify of Status</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Change<br>Status</th>
+          <th>Status</th>
+          <th>Name</th>
+          <th>School</th>
+          <th>Major</th>
+          <th>Level of<br>Study</th>
+          <th>Reimburse</th>
+          <th>Reimburse<br>Location</th>
+          <th>Additional</th>
+          <th>Gender</th>
+          <th>First<br>Hackathon?</th>
+          <th>Notified</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in users">
+          <td>
+            <button>A</button> &nbsp <!-- Accept -->
+            <button>P</button> &nbsp <!-- Put on Pending -->
+            <button>R</button> &nbsp <!-- Reject -->
+            <button>N</button> &nbsp <!-- Notify (send email) -->
+          </td>
+          <td> {{ user.status }} </td>
+          <td> {{ user.first_name }} {{ user.last_name }} </td>
+          <td> {{ user.school.name }} </td>
+          <td> {{ user.major }} </td>
+          <td> {{ user.level_of_study }} </td>
+          <td>
+            <div v-if="user.reimbursementSeeking"> {{ user.reimbursementAmount }} </div>
+          </td>
+          <td>
+            <div v-if="user.reimbursementSeeking"> {{ user.reimbursementLocation }} </div>
+          </td>
+          <td> {{ user.additional }} </td>
+          <td> {{ user.gender }} </td>
+          <td> {{ user.firstHackathon }} </td>
+          <td>No.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function httpGetAsync(theUrl, callback)
+    {
+      var xmlHttp = new XMLHttpRequest();
+      xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          callback(xmlHttp.responseText);
+      }
+      xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+      xmlHttp.send(null);
+    }
+
+    var app; 
+
+    app = new Vue({
+      el: '#app',
+      data: {
+        // users: result
+        users: [{
+          first_name: "ken",
+          last_name: "garber",
+          school: { name: "BU" },
+          status: "in",
+          reimbursementSeeking: true,
+          reimbursementAmount: 900,
+          reimbursementLocation: "Boston",
+          level_of_study: "Bachelor",
+          major: "CS",
+          gender: "Male",
+          additional: "hi.",
+          firstHackathon: false
+        },{
+          first_name: "ben",
+          last_name: "farber",
+          school: { name: "BC" },
+          status: "out",
+          reimbursementSeeking: false,
+          level_of_study: "Bachelor",
+          major: "CS",
+          gender: "Male",
+          additional: "hi.",
+          firstHackathon: false
+        }]
+      }
+    })
+
+    // httpGetAsync('/admin-all-registrants', function(result) {
+    //   app = new Vue({
+    //     el: '#app',
+    //     data: {
+    //       users: result
+    //     }
+    //   })
+    // })
+  </script>
+
+  <% include ../partials/profile-footer %>
 </body>
 
 <script src="https://use.fontawesome.com/fae771462f.js"></script>
