@@ -104,46 +104,46 @@
 
     var app; 
 
-    app = new Vue({
-      el: '#app',
-      data: {
-        // users: result
-        users: [{
-          first_name: "ken",
-          last_name: "garber",
-          school: { name: "BU" },
-          status: "in",
-          reimbursementSeeking: true,
-          reimbursementAmount: 900,
-          reimbursementLocation: "Boston",
-          level_of_study: "Bachelor",
-          major: "CS",
-          gender: "Male",
-          additional: "hi.",
-          firstHackathon: false
-        },{
-          first_name: "ben",
-          last_name: "farber",
-          school: { name: "BC" },
-          status: "out",
-          reimbursementSeeking: false,
-          level_of_study: "Bachelor",
-          major: "CS",
-          gender: "Male",
-          additional: "hi.",
-          firstHackathon: false
-        }]
-      }
-    })
-
-    // httpGetAsync('/admin-all-registrants', function(result) {
-    //   app = new Vue({
-    //     el: '#app',
-    //     data: {
-    //       users: result
-    //     }
-    //   })
+    // app = new Vue({
+    //   el: '#app',
+    //   data: {
+    //     // users: result
+    //     users: [{
+    //       first_name: "ken",
+    //       last_name: "garber",
+    //       school: { name: "BU" },
+    //       status: "in",
+    //       reimbursementSeeking: true,
+    //       reimbursementAmount: 900,
+    //       reimbursementLocation: "Boston",
+    //       level_of_study: "Bachelor",
+    //       major: "CS",
+    //       gender: "Male",
+    //       additional: "hi.",
+    //       firstHackathon: false
+    //     },{
+    //       first_name: "ben",
+    //       last_name: "farber",
+    //       school: { name: "BC" },
+    //       status: "out",
+    //       reimbursementSeeking: false,
+    //       level_of_study: "Bachelor",
+    //       major: "CS",
+    //       gender: "Male",
+    //       additional: "hi.",
+    //       firstHackathon: false
+    //     }]
+    //   }
     // })
+
+    httpGetAsync('/admin-all-registrants', function(result) {
+      app = new Vue({
+        el: '#app',
+        data: {
+          users: result
+        }
+      })
+    })
   </script>
 
   <% include ../partials/profile-footer %>
