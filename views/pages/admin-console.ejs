@@ -12,11 +12,13 @@
   <script src="/js/vue.js"></script>
 
   <style>
-    p,table {color: white}
+    p,table {
+      color: white;
+    }
     td, th {
       border: 1px solid #EF6262;
       text-align: left;
-      padding: 4px;
+      /*padding: 4px;*/
     }
     button { 
       background-color: #EF6262;
@@ -43,7 +45,7 @@
       <button>Reimbursement</button>
     </p>
     <p><button>Export to CSV</button></p>
-    <p>Applicants: 999, &nbsp Accepted: 999, &nbsp </p>
+    <p>Applicants: {{ users.length }}, &nbsp Accepted: {{ acceptedNum }} </p>
     <p>A - Accept, P - Set Pending, R - Reject, N - Notify of Status</p>
     <table>
       <thead>
@@ -53,9 +55,8 @@
           <th>Name</th>
           <th>School</th>
           <th>Major</th>
-          <th>Level of<br>Study</th>
+          <!-- <th>Level of<br>Study</th> -->
           <th>Reimburse</th>
-          <th>Reimburse<br>Location</th>
           <th>Additional</th>
           <th>Gender</th>
           <th>First<br>Hackathon?</th>
@@ -65,21 +66,20 @@
       <tbody>
         <tr v-for="user in users">
           <td>
-            <button>A</button> &nbsp <!-- Accept -->
-            <button>P</button> &nbsp <!-- Put on Pending -->
-            <button>R</button> &nbsp <!-- Reject -->
-            <button>N</button> &nbsp <!-- Notify (send email) -->
+            <button>A</button> <!-- Accept -->
+            <button>P</button> <!-- Put on Pending -->
+            <button>R</button> <!-- Reject -->
+            <button>N</button> <!-- Notify (send email) -->
           </td>
           <td> {{ user.status }} </td>
           <td> {{ user.first_name }} {{ user.last_name }} </td>
-          <td> {{ user.school.name }} </td>
+          <td> {{ user.school }} </td>
           <td> {{ user.major }} </td>
-          <td> {{ user.level_of_study }} </td>
+          <!-- <td> {{ user.level_of_study }} </td> -->
           <td>
-            <div v-if="user.reimbursementSeeking"> {{ user.reimbursementAmount }} </div>
-          </td>
-          <td>
-            <div v-if="user.reimbursementSeeking"> {{ user.reimbursementLocation }} </div>
+            <div v-if="user.reimbursementSeeking"> 
+              {{ user.reimbursementAmount }}, {{ user.reimbursementLocation }}
+            </div>
           </td>
           <td> {{ user.additional }} </td>
           <td> {{ user.gender }} </td>
@@ -140,7 +140,8 @@
       app = new Vue({
         el: '#app',
         data: {
-          users: result
+          users: JSON.parse(result),
+          acceptedNum: JSON.parse(result).filter(function(u){ return u.status=="Accepted" }).length
         }
       })
     })

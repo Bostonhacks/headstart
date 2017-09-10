@@ -20,7 +20,8 @@ module.exports = {
     // })
   // }
   getAllUsers: function(req, res, next) {
-  	User.find({"local.registered": false}, function(err, users) {
+  	// {"local.registered": false}
+  	User.find({}, function(err, users) {
       // Not sure this is the right error message to log, just doing it based on the above function.
       if (err) errorhandler.logErrorMsg('admin.userQuery', err)
       return next(users)
