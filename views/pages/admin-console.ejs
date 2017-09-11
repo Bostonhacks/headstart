@@ -9,8 +9,6 @@
   <% include ../partials/profile-nav %>
   <h1 class="text-center" id="admin-title"> Admin Console </h1>
 
-  <script src="/js/vue.js"></script>
-
   <style>
     p,table {
       color: white;
@@ -65,15 +63,18 @@
       </thead>
       <tbody>
         <tr v-for="user in users">
-          <td>
+          <td style="min-width:150px">
             <button>A</button> <!-- Accept -->
-            <button>P</button> <!-- Put on Pending -->
             <button>R</button> <!-- Reject -->
+            <button>P</button> <!-- Put on Pending -->
             <button>N</button> <!-- Notify (send email) -->
           </td>
-          <td> {{ user.status }} </td>
+          <td v-if='user.status == "Accepted"' style='background-color: green'> {{ user.status }} </td>
+          <td v-else-if='user.status == "Denied"' style='background-color: red'> {{ user.status }} </td>
+          <td v-else style='background-color: #f90'> {{ user.status }} </td>
           <td> {{ user.first_name }} {{ user.last_name }} </td>
-          <td> {{ user.school }} </td>
+          <td v-if='user.school'> {{ user.school.name }} </td>
+          <td v-else> none </td>
           <td> {{ user.major }} </td>
           <!-- <td> {{ user.level_of_study }} </td> -->
           <td>
@@ -89,6 +90,8 @@
       </tbody>
     </table>
   </div>
+
+  <script src="/js/vue.js"></script>
 
   <script>
     function httpGetAsync(theUrl, callback)
@@ -146,8 +149,6 @@
       })
     })
   </script>
-
-  <% include ../partials/profile-footer %>
 </body>
 
 <script src="https://use.fontawesome.com/fae771462f.js"></script>
