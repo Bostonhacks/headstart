@@ -35,7 +35,8 @@
   },
   "devDependencies": {
     "mocha": "^3.5.3",
-    "standard": "^8.6.0"
+    "standard": "^8.6.0",
+    "supertest": "^3.0.0"
   },
   "engine": "node >= 6.9.0",
   "scripts": {
