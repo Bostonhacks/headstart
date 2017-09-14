@@ -34,7 +34,6 @@
     "validator": "^6.2.1"
   },
   "devDependencies": {
-    "nodemon": "^1.10.2 ",
     "standard": "^8.6.0"
   },
   "engine": "node >= 6.9.0",
