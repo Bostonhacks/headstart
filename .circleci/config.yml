@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/headstart
     docker:
-      - image: circleci/node:6.10.3
+      - image: circleci/node:6.10
       - image: mongo:3.4.4
     steps:
       - checkout
