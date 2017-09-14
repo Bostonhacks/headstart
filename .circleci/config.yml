@@ -25,4 +25,5 @@ jobs:
             ls ~
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
               scp -o StrictHostKeyChecking=no -r ~/headstart/* circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              cat ~/headstart/scripts/restart | ssh -o StrictHostKeyChecking=no circleci@${BOSTONHACKS_IP_ADDR}
             fi
