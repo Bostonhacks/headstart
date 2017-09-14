@@ -23,5 +23,5 @@ jobs:
           name: deploy-bostonhacks-headstart-prod
           command: |
             if [ "${CIRCLE_BRANCH}" == "master" ]; then
-              scp -r headstart/* circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r headstart/* circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
             fi
