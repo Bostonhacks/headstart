@@ -11,9 +11,9 @@
     "bases": "^0.2.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.0.0",
-    "connect-firebase": "0.0.9",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.0.0",
+    "debug": "^3.0.1",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
     "express": "~4.14.0",
@@ -39,7 +39,7 @@
   },
   "engine": "node >= 6.9.0",
   "scripts": {
-    "start": "node server.js"
+    "start": "node ./bin/www"
   },
   "standard": {
     "ignore": [

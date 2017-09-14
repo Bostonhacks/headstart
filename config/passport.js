@@ -17,17 +17,17 @@ module.exports = function (passport) {
     }
 
     // April 10th: Adding this code to only accept new signups from the following email domains
-    var validLateRegistration = false
-    var validEndings = ['@bu.edu', '@mit.edu', '@husky.neu.edu', '@citymail.cuny.edu', '@student.bridgew.edu', '@umass.edu', '@bhcc.edu', '@g.rit.edu', '@csh.rit.edu', '@mail.arcrealityinc.com', '@umich.edu']
-    for(i = 0; i < validEndings.length; i++) {
-      if (email.endsWith(validEndings[i])) {
-        validLateRegistration = true
-      }
-    }
+    // var validLateRegistration = false
+    // var validEndings = ['@bu.edu', '@mit.edu', '@husky.neu.edu', '@citymail.cuny.edu', '@student.bridgew.edu', '@umass.edu', '@bhcc.edu', '@g.rit.edu', '@csh.rit.edu', '@mail.arcrealityinc.com', '@umich.edu']
+    // for (var i = 0; i < validEndings.length; i++) {
+    //   if (email.endsWith(validEndings[i])) {
+    //     validLateRegistration = true
+    //   }
+    // }
 
-    if (!validLateRegistration) {
-      return done(null, false, req.flash('signupMessage', 'We are now only accepting new applications from local Boston students.'))
-    }
+    // if (!validLateRegistration) {
+    //   return done(null, false, req.flash('signupMessage', 'We are now only accepting new applications from local Boston students.'))
+    // }
 
     User.findOne({ 'local.email': email }, function (err, user) {
       if (err) {
@@ -37,7 +37,7 @@ module.exports = function (passport) {
       if (user) return done(null, false, req.flash('signupMessage', 'That email is already taken.'))
       if (password.length < 9) return done(null, false, req.flash('signupMessage', 'Password must be at least 9 characters.'))
 
-      var newUser = new User()
+      let newUser = new User()
       newUser.local.email = email
       newUser.local.password = newUser.generateHash(password)
       newUser.local.registered = false
@@ -56,16 +56,17 @@ module.exports = function (passport) {
   }, function (req, email, password, done) {
     req.flash('submittedEmail', email)
     User.findOne({ 'local.email': email }, function (err, user) {
-      if (user && !err) return done(null, user)
+      if (err) { return done(err) }
+      if (user && user.validPassword(password)) { return done(null, user) }
 
       // The error message will usually be an invalid combination unless an error occurred
-      var errorMessage = 'Invalid email/password combination.'
+      let errorMessage = 'Invalid email/password combination.'
       if (err) {
         errorMessage = 'Server error. Please try again.'
         errorhandler.logErrorMsg('passport.login', err)
       }
 
-      done(null, false, req.flash('loginMessage', errorMessage))
+      return done(null, false, req.flash('loginMessage', errorMessage))
     })
   }))
 
