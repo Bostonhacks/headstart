@@ -7,6 +7,5 @@ describe('Landing page', function () {
     request(app)
       .get('/')
       .expect(200, done)
-    done()
   })
 })
