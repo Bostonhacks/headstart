@@ -7,9 +7,21 @@ jobs:
       - image: mongo:3.4.4
     steps:
       - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
       - run:
           name: install-npm
           command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
       - run:
           name: test
           command: npm test
+      - deploy:
+          name: deploy-bostonhacks-headstart-prod
+          command: |
+            ls ~/.ssh/
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              scp -r headstart/* circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
