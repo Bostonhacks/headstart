@@ -4,8 +4,7 @@
   "author": "Nicolas Hinderling <nicolas.hinderling@gmail.com>",
   "version": "0.0.1",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/username/repository.git"
+    "type": "git"
   },
   "license": "MIT",
   "dependencies": {
@@ -38,10 +37,9 @@
     "nodemon": "^1.10.2 ",
     "standard": "^8.6.0"
   },
-  "engine": "node >= 0.6.6",
+  "engine": "node >= 6.9.0",
   "scripts": {
-    "start": "node server.js",
-    "test": "nodemon server.js"
+    "start": "node server.js"
   },
   "standard": {
     "ignore": [
