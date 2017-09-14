@@ -11,6 +11,9 @@ jobs:
           name: update-npm
           command: 'sudo npm install -g npm@latest'
       - run:
+          name: fix-readable-stream
+          command: 'sudo npm i -g process-nextick-args util-deprecate'
+      - run:
           name: install-npm
           command: npm install
       - run:
