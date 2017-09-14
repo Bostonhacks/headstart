@@ -1,7 +1,7 @@
-var mongoose = require('mongoose')
-var bcrypt = require('bcrypt-nodejs')
+const mongoose = require('mongoose')
+const bcrypt = require('bcrypt-nodejs')
 
-var userSchema = mongoose.Schema({
+const userSchema = mongoose.Schema({
   local: {
     email: String,
     password: String,
