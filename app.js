@@ -29,7 +29,7 @@ app.use(passport.initialize())
 app.use(passport.session())
 app.use(flash())
 
-mongoose.connect(process.env.DB_URL)
+mongoose.connect(process.env.DB_URL || 'mongodb://localhost/headstart')
 require('./config/passport')(passport)
 
 app.use('/', index)

@@ -1,4 +1,4 @@
-require('dotenv').load()
+// require('dotenv').load()
 const request = require('supertest')
 const app = require('../app')
 
