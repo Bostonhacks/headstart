@@ -5,7 +5,7 @@
     }
 
     #navContainer a h3 {
-      font-size: 14px;
+      font-size: 18px;
     }
 }
 
@@ -21,12 +21,14 @@
       transform: none;
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: 0px;
-      background: #EF6262;
+      background: #F58549;
       overflow: hidden;
     }
 
     #navContainer a h3 {
-        font-size: 18px;
+        font-size: 30px;
+        padding-bottom: 10px;
+        font-weight: bold;
     }
 
     .nav-separator, .navLink, #mlh-trust-badge {
@@ -42,7 +44,7 @@
         outline: none;
     }
     .navLinks {
-        margin-left: 15px;
+        margin-left: 18px;
     }
 
     /* Stack buttons for horizontal space */
