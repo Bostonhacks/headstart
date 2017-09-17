@@ -12,7 +12,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', function (req, res, next) {
-  return res.render('pages/index.ejs')
+  return res.send('pages/index.html')
 })
 
 router.get('/login', function (req, res, next) {
