@@ -26,5 +26,10 @@ module.exports = {
       if (err) errorhandler.logErrorMsg('admin.userQuery', err)
       return next(users)
     })
+  },
+  changeStatus: function(userid, stat, next) {
+    User.update({_id: userid}, {$set: {status: stat}}, function(err, raw){
+      return next()
+    })
   }
 }

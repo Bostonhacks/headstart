@@ -226,6 +226,16 @@ module.exports = function (app, passport, upload) {
     })
   })
 
+  app.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
+    if (req.user.local.email !== process.env.ADMIN_EMAIL) {
+      res.redirect('/')
+      return
+    }
+    adminFunc.changeStatus(req.params.userid, req.params.stat, function() {
+      return res.sendStatus(200)
+    })
+  })
+
   app.get('/500', function (req, res) {
     console.log('500 hit')
     throw new Error('This is a 500 Error')

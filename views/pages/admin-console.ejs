@@ -27,22 +27,22 @@
   <div id="app">
     <p>
       Notify All...
-      <button>Accepted</button>
-      <button>Pending</button>
-      <button>Rejected</button>
-      <button>Not yet Notified</button>
-      <button>Accepted / Rejected and not yet Notified</button>
-      <button>Pending and not yet Notified</button>
+      <button v-on:click='notify()'>Accepted</button>
+      <button v-on:click='notify()'>Pending</button>
+      <button v-on:click='notify()'>Rejected</button>
+      <button v-on:click='notify()'>Not yet Notified</button>
+      <button v-on:click='notify()'>Accepted / Rejected and not yet Notified</button>
+      <button v-on:click='notify()'>Pending and not yet Notified</button>
     </p>
     <p>
       Sort by...
-      <button>Status</button>
-      <button>School</button>
-      <button>Major</button>
-      <button>Level of Study</button>
-      <button>Reimbursement</button>
+      <button v-on:click='sortUsers("status")'>Status</button>
+      <button v-on:click='sortUsers("school")'>School</button>
+      <button v-on:click='sortUsers("major")'>Major</button>
+      <!-- <button v-on:click='sortUsers("level_of_study")'>Level of Study</button> -->
+      <button v-on:click='sortUsers("reimbursementAmount")'>Reimbursement</button>
     </p>
-    <p><button>Export to CSV</button></p>
+    <p><button v-on:click='getCSV()'>Export to CSV</button></p>
     <p>Applicants: {{ users.length }}, &nbsp Accepted: {{ acceptedNum }} </p>
     <p>A - Accept, P - Set Pending, R - Reject, N - Notify of Status</p>
     <table>
@@ -64,9 +64,9 @@
       <tbody>
         <tr v-for="user in users">
           <td style="min-width:150px">
-            <button>A</button> <!-- Accept -->
-            <button>R</button> <!-- Reject -->
-            <button>P</button> <!-- Put on Pending -->
+            <button v-on:click='changeStatus(user._id, "Accepted")'>A</button> <!-- Accept -->
+            <button v-on:click='changeStatus(user._id, "Denied")'>R</button> <!-- Reject -->
+            <button v-on:click='changeStatus(user._id, "Pending")'>P</button> <!-- Put on Pending -->
             <button>N</button> <!-- Notify (send email) -->
           </td>
           <td v-if='user.status == "Accepted"' style='background-color: green'> {{ user.status }} </td>
@@ -107,44 +107,55 @@
 
     var app; 
 
-    // app = new Vue({
-    //   el: '#app',
-    //   data: {
-    //     // users: result
-    //     users: [{
-    //       first_name: "ken",
-    //       last_name: "garber",
-    //       school: { name: "BU" },
-    //       status: "in",
-    //       reimbursementSeeking: true,
-    //       reimbursementAmount: 900,
-    //       reimbursementLocation: "Boston",
-    //       level_of_study: "Bachelor",
-    //       major: "CS",
-    //       gender: "Male",
-    //       additional: "hi.",
-    //       firstHackathon: false
-    //     },{
-    //       first_name: "ben",
-    //       last_name: "farber",
-    //       school: { name: "BC" },
-    //       status: "out",
-    //       reimbursementSeeking: false,
-    //       level_of_study: "Bachelor",
-    //       major: "CS",
-    //       gender: "Male",
-    //       additional: "hi.",
-    //       firstHackathon: false
-    //     }]
-    //   }
-    // })
-
     httpGetAsync('/admin-all-registrants', function(result) {
       app = new Vue({
         el: '#app',
         data: {
           users: JSON.parse(result),
           acceptedNum: JSON.parse(result).filter(function(u){ return u.status=="Accepted" }).length
+        },
+        methods: {
+          changeStatus: function(userid, stat) {
+            console.log("Set user " + userid + " to " + stat)
+            httpGetAsync("/changeStatus/" + userid + "/" + stat, function(responseText) {
+              for (i = 0; i < app.users.length; i++){
+                if (app.users[i]._id == userid) app.users[i].status = stat
+              }
+          })
+          },
+          sortUsers: function(param) {
+            if (param == "school") {
+              app.users.sort(function(a,b) {
+                if (a.school != undefined && b.school != undefined){
+                  return (a.school.name > b.school.name) ? 1 : ((b.school.name > a.school.name) ? -1 : 0);
+                } else {
+                  return 1
+                }
+              }) 
+            } else {
+              app.users.sort(function(a,b) {
+                return (a[param] > b[param]) ? 1 : ((b[param] > a[param]) ? -1 : 0);
+              }) 
+            }
+          },
+          notify: function() {
+            alert("Notifications don't work yet!")
+          },
+          getCSV: function() {
+            // var data = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]];
+            var csvContent = "data:text/csv;charset=utf-8," + "\n"
+            csvContent += Object.keys(app.users[10]).join(",")
+            app.users.forEach(function(user, index){
+              dataString = Object.keys(user).map(function(k){return user[k]}).join(",")
+              csvContent += dataString + "\n"
+            })
+            var encodedUri = encodeURI(csvContent);
+            var link = document.createElement("a");
+            link.setAttribute("href", encodedUri);
+            link.setAttribute("download", "bostonhacks_userdata.csv");
+            document.body.appendChild(link); // Required for FF
+            link.click(); // This will download the data file named "my_data.csv".  
+          }
         }
       })
     })
