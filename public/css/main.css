@@ -1,6 +1,6 @@
 :root {
   --light-orange-color: #F58549;
-  --dark-organge-color: #C16C3E;;
+  --dark-orange-color: #C16C3E;;
   --white-color: #F9F5EF;
   --darker-white-color: #EADFD8;
 	--dark-color: #212939;
@@ -8,4 +8,5 @@
 	--medium-grey-color: #727478;
 	--light-grey-color: #A69C95;
 	--black-color: #000000;
+	--bg-color-config: rgba(42, 45, 60, 0.9);
 }

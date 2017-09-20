@@ -65,7 +65,7 @@ body {
   background-position: center center; }
 
 #bg-overlay {
-  background-color: rgba(42, 45, 60, 0.9); }
+  background-color: var(--bg-color-config); }
 
 #home {
   padding-bottom: 20px; }

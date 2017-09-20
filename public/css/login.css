@@ -1,7 +1,10 @@
+@import url("main.css");
+
 body {
-  background-color: #A1DEFF;
+  background-color: var(--dark-color);
   height: 100%;
   margin: 0;
+  color: var(--dark-grey-color);
 }
 
 .authContainer {
@@ -14,9 +17,9 @@ body {
 
   padding-top: 15px;
   width: 400px;
-  background-color: #222B30;
+  background-color: var(--darker-white-color);
 
-  border: 5px solid #161a1d;
+  border: 5px solid var(--light-grey-color);
   -moz-border-radius: 5px;
   border-radius: 5px;
 }
@@ -52,25 +55,25 @@ body {
 .textForm {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-
-  color: #FFFFFF;
+  color: var(--light-grey-color);
   background-color: transparent;
   border: 0;
-  border-bottom: 2px solid #A1DEFF;
+  border-radius: 5px;
+  border-bottom: 2px solid var(--white-color);
 }
 
 /* If you know the correct way to combine 
 the following two pieces, pls make PR :) ... 
 otherwise I'll clean this up later */
 input[type=email]:focus {
-  background-color: #3f515a;
-  border: 0px solid #A1DEFF;
+  background-color: var(--white-color);
+  border: 0px solid var(--light-grey-color);
   border-bottom-width: 2px;
 }
 
 input[type=password]:focus {
-  background-color: #3f515a;
-  border: 0px solid #A1DEFF;
+  background-color: var(--white-color);;
+  border: 0px solid var(--light-grey-color);
   border-bottom-width: 2px;  
 }
 
@@ -78,10 +81,10 @@ input[type=password]:focus {
   width: 90%;
   border-width: 2px;
   padding: 8px 30px 8px 30px;
-
-  background-color: #ed4545;
-  border-color: #ed4545;
-  
+  border-radius: 5px;
+  background-color: var(--light-orange-color);
+  border-color: var(--dark-orange-color);
+  color: var(--dark-grey-color);;
   font-size: 24px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
@@ -90,7 +93,8 @@ input[type=password]:focus {
 
 .loginButtons:hover,
 .loginButtons:focus {
-  background-color:  #EF6262;
+  background-color:  var(--dark-orange-color);
+  color: var(--dark-grey-color);;
   outline: 0;
 }
 
@@ -127,4 +131,8 @@ input[type=password]:focus {
   display: inline-block;
   font-size: 18px;
   display: none;
+}
+
+.authLinkText {
+  color: var(--dark-grey-color);
 }

@@ -6,16 +6,10 @@
 </head>
 <body>
     <section>
-        <% include ../partials/clouds %>
+        <% include ../partials/halloween %>
         <div id="loginContainer" class="authContainer">
             <a href="/"><img src="img/terrierLogo.png" id="terrierLogo"></a>
-
             <h1 id="loginThemeTitle"></h1>
-
-            <!-- April 10th: Adding this now -->
-            <!-- <h2 id="buRegistrationMessage">Note: Registration is now only open to local Boston students. Global registration has closed.</h2> -->
-
-            <!-- Server Messages -->
             <div class="text-center">
                 <% if (message.length > 0) { %>
                     <h3 class="serverMessageError loginSignupMessage"> <%= message %></h3>
