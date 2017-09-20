@@ -93,11 +93,18 @@ router.post('/change-password/:ident/:timestamp-:hash', function (req, res, next
   })
 })
 
+router.get('/registrationForm', function (req, res, next) {
+  console.log("registrationTest");
+  res.render('pages/application-postMLH', {
+    errormessage: req.flash('mlhErrorMessage')
+  })
+});
+
 router.get('/home', isLoggedIn, function (req, res, next) {
   // If user is admin
-  if (req.user.local.email === process.env.ADMIN_EMAIL) {
-    return res.redirect('/admin')
-  }
+  // if (req.user.local.email === process.env.ADMIN_EMAIL) {
+  //   return res.redirect('/admin')
+  // }
 
   // If user has already registered
   if (req.user.local.registered) {
