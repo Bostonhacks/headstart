@@ -6,34 +6,35 @@
     <link rel="stylesheet" href="css/registration.css">
 </head>
 <body>
-<div class="container">
+<div class="container registration-body">
     <% include ../partials/profile-nav %>
-
     <div class="page-header text-center">
-        <h1>Registration</h1>
+        <span class="registration-heading">
+            <h1>Registration</h1>
+        </span>
     </div>
 
     <div class="questions-container">
-        <h2> Awesome! Just a few last questions:</h2>
+        <span class="registration-heading">
+            <h2> Awesome! Just a few last questions:</h2>
+        </span>
         <% if (errormessage.length > 0) { %>
             <div class="text-center">
                 <div class="serverMessageError"> <%= errormessage %> </div>
             </div>
         <% } %>
-
+    <div class="registration-body-form">
         <form action="/submit-application" method="POST" enctype="multipart/form-data">
             <div class="question">
                 <h3> Is this your first hackathon? </h3>
                 <input type="radio" name="firstHackathon" value="true" required> Yes<br>
                 <input type="radio" name="firstHackathon" value="false"> No<br>
             </div>
-
             <div class="question">
                 <h3 class="contains-clarification"> Would you like to include your resume? (Optional) </h3>
                 <h4 class="question-clarification"> Make sure your file type is either a .jpg, .jpeg, .pdf, .png, or .gif </h4>
                     <input type="file" name="resume" class="resume-input"> 
             </div>
-
             <div class="question">
                 <h3> Do you need travel reimbursement? </h3>
                 <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="true" id="reimbursementYes" required> Yes<br>
@@ -47,14 +48,13 @@
                     <input type="number" name="reimbursementAmount" value="10"><br>
                 </div>
             </div>
-
             <div class="question">
                 <h3> Comments? Questions? Concerns? </h3>
                 <textarea name="additional" rows="4" cols="50"></textarea>
             </div>
-
-            <input type="submit" value="Submit" class="submit-application">
+            <input type="submit" value="Submit" class="submit-application">                
         </form>
+        </div>
     </div>
 </div>
 </body>

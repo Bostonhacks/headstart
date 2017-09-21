@@ -1,7 +1,16 @@
+@import url("main.css");
+
 .page-header {
     margin: 20px 0px 20px 0px;
 }
 
+.registration-body {
+    background-color: var(--dark-color);
+}
+
+.registration-heading {
+    color: var(--light-orange-color);
+}
 
 /* Post MLH View */
 input[type="text"], input[type="number"], textarea {
@@ -13,12 +22,13 @@ input[type="radio"] {
     margin-bottom: 0px;
 }
 
-.questions-container {
-    margin-left: 50px;
+.registration-body-form {
+    background-color: var(--darker-white-color);    
+    padding: 20px 20px 0 20px;
 }
 
 .question {
-    color: #FFFFFF;
+    color: var(--dark-grey-color);
     margin-top: 10px;
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
