@@ -4,10 +4,10 @@
     <% include ../partials/head %>
     <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/registration.css">    
+    <link rel="stylesheet" href="css/registration.css">
     <script src="http://code.jquery.com/jquery.js"></script>
     <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    <link rel="stylesheet" href="css/slider.css">    
+    <link rel="stylesheet" href="css/slider.css">
     <script src="js/vendor/slider.js"></script>
     
   </head>
@@ -32,8 +32,8 @@
           <form action="/submit-application" method="POST" enctype="multipart/form-data">
             <div id="registration-body-form-skills">
               <div class="registration-body-form-question-section">
-                <h3 class="contains-clarification q2">What areas are you most interested in?</h3>
                 <div class="registration-form-skills-response row">
+                  <span class="q2 small-12 columns">What areas are you most interested in?</span>
                   <div class="small-6 columns">
                     <input class="q1i" id="q1i1" type="checkbox"><label for="q1i1">Finance</label><br>
                     <input class="q1i" id="q1i2" type="checkbox"><label for="q1i2">Politics</label><br>
@@ -50,16 +50,18 @@
                     <input class="q1i" id="q1i11" type="checkbox"><label for="q1i11">Sports</label><br>
                     <input class="q1i" id="q1i12" type="checkbox"><label for="q1i12">Arts</label><br>
                   </div>
-                  <label>
-                    Other:
-                    <input class="q1i" id="q1i10" type="text">
-                  </label>
+                  <div class="small-12 columns">
+                    <label>
+                      Other:
+                      <input class="q1i" id="q1i10" type="text">
+                    </label>
+                  </div>
                 </div>
               </div>
               <div class="registration-body-form-question-section">
-                <h3 class="contains-clarification q2">What role do you expect to play on the team?</h3>
                 <div class="registration-form-role-response row">
-                  <div class="">
+                  <span class="q2 small-12 columns">What role do you expect to play on the team?</span>
+                  <div class="small-12 columns">
                     <input class="q2i" id="q2i1" type="checkbox"><label for="q2i1">Front-end Engineer</label><br>
                     <input class="q2i" id="q2i2" type="checkbox"><label for="q2i2">Back-end Engineer</label><br>
                     <input class="q2i" id="q2i3" type="checkbox"><label for="q2i3">Data Scientist</label><br>
@@ -67,24 +69,83 @@
                     <input class="q2i" id="q2i5" type="checkbox"><label for="q2i5">iOS</label><br>
                     <input class="q2i" id="q2i6" type="checkbox"><label for="q2i6">Android</label><br>
                   </div>
-                  <label>
-                    Other:
-                    <input class="q2i" id="q2i10" type="text">
-                  </label>
+                  <div class="small-12 columns">
+                    <label>
+                      Other:
+                      <input class="q2i" id="q2i10" type="text">
+                    </label>
+                  </div>
                 </div>
               </div>
               <div class="registration-body-form-question-section">
-                <h3 class="contains-clarification">What technology are you insterested in?</h3>
-                <div class="registration-form-technology-response row">
-                  <div>
-                    <% var sliderId = 'technology-slider-1'; %>
-                    <% include ../partials/slider %>
+                <div class="row">
+                  <span class="q3 small-12 columns">What technology are you insterested in?</span>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Web Application Development</span>
+                      <% var sliderId = 'technology-slider-1'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Mobile Application Development</span>
+                      <% var sliderId = 'technology-slider-2'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Data Analytics/Mining</span>
+                      <% var sliderId = 'technology-slider-3'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Machine Intelligence</span>
+                      <% var sliderId = 'technology-slider-4'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Computer Networks</span>
+                      <% var sliderId = 'technology-slider-5'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Algorithm Design</span>
+                      <% var sliderId = 'technology-slider-6'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Virtual/Augmented Reality</span>
+                      <% var sliderId = 'technology-slider-7'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Hardware</span>
+                      <% var sliderId = 'technology-slider-8'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Internet of Things (IoT)</span>
+                      <% var sliderId = 'technology-slider-9'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <br>
+                    <div id="technology-slider-row">
+                      <span class="technology-option q3i">Game Development</span>
+                      <% var sliderId = 'technology-slider-10'; %>
+                      <% include ../partials/slider %>
+                    </div>
+                    <div id="technology-slider-row">
+                      <label>
+                      Other:
+                      <input class="q3i" id="q3other" type="text">
+                    </label>
+
                   </div>
-                    <div>
-                    <% var sliderId = 'technology-slider-2'; %>
-                    <% include ../partials/slider %>
-                  </div>
-                </div>
               </div>
             </div>
             <div class="question">

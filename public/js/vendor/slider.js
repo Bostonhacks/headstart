@@ -66,14 +66,6 @@
 
          this._alignWithStep();
 
-         if ( this.orientation == 'horizontal' ) {
-            this.uiSlider
-               .width( this.element.css('width') );
-         } else {
-            this.uiSlider
-               .height( this.element.css('height') );
-         }
-
          this._drawLabels();
       },
 
@@ -101,7 +93,7 @@
 
                $('<div>').addClass( 'ui-slider-label-ticks' )
                    .css( dir, (Math.round( ( i / cnt ) * 10000 ) / 100) + '%' )
-                   .html( '<span>'+( label )+'</span>' )
+                   .html( '<span class="registration-slider-option">'+( label )+'</span>' )
                    .appendTo( $lbl );
 
             }

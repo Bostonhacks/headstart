@@ -28,7 +28,7 @@
 .ui-slider-wrapper .ui-slider-horizontal { width: 100%; }
 
 .ui-slider-labels { position: absolute; border: 1px solid transparent; }
-.ui-slider-label-ticks { border: 1px solid transparent; position: absolute; white-space: nowrap; }
+.ui-slider-label-ticks { border: 1px solid transparent; position: absolute; white-space: pre-wrap; }
 .ui-slider-label-ticks span { font-size: 0.9em; min-width: 1.2em; }
 
 .ui-slider-wrapper.horizontal { height: 4.5em; }
