@@ -1,66 +1,129 @@
 <!doctype html>
 <html>
-<head>
+  <head>
     <% include ../partials/head %>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/registration.css">
-</head>
-<body>
-<div class="container registration-body">
-    <% include ../partials/profile-nav %>
-    <div class="page-header text-center">
+    <link rel="stylesheet" href="css/registration.css">    
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <link rel="stylesheet" href="css/slider.css">    
+    <script src="js/vendor/slider.js"></script>
+    
+  </head>
+  <body>
+    <div class="container registration-body">
+      <% include ../partials/profile-nav %>
+      <div class="page-header text-center">
         <span class="registration-heading">
-            <h1>Registration</h1>
+          <h1>Registration</h1>
         </span>
-    </div>
-
-    <div class="questions-container">
+      </div>
+      <div class="questions-container">
         <span class="registration-heading">
-            <h2> Awesome! Just a few last questions:</h2>
+          <h2> Awesome! Just a few last questions:</h2>
         </span>
         <% if (errormessage.length > 0) { %>
-            <div class="text-center">
-                <div class="serverMessageError"> <%= errormessage %> </div>
-            </div>
-        <% } %>
-    <div class="registration-body-form">
-        <form action="/submit-application" method="POST" enctype="multipart/form-data">
-            <div class="question">
-                <h3> Is this your first hackathon? </h3>
-                <input type="radio" name="firstHackathon" value="true" required> Yes<br>
-                <input type="radio" name="firstHackathon" value="false"> No<br>
-            </div>
-            <div class="question">
-                <h3 class="contains-clarification"> Would you like to include your resume? (Optional) </h3>
-                <h4 class="question-clarification"> Make sure your file type is either a .jpg, .jpeg, .pdf, .png, or .gif </h4>
-                    <input type="file" name="resume" class="resume-input"> 
-            </div>
-            <div class="question">
-                <h3> Do you need travel reimbursement? </h3>
-                <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="true" id="reimbursementYes" required> Yes<br>
-                <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="false" id="reimbursementNo"> No<br>
-                
-                <div id="reimbursement-followup-questions">
-                    <h4> Where are you coming from? </h4>
-                    <input type="text" name="reimbursementLocation" value=""><br>
-                    
-                    <h4> How much are you seeking for reimbursement? (USD) </h4>
-                    <input type="number" name="reimbursementAmount" value="10"><br>
-                </div>
-            </div>
-            <div class="question">
-                <h3> Comments? Questions? Concerns? </h3>
-                <textarea name="additional" rows="4" cols="50"></textarea>
-            </div>
-            <input type="submit" value="Submit" class="submit-application">                
-        </form>
+        <div class="text-center">
+          <div class="serverMessageError"> <%= errormessage %> </div>
         </div>
+        <% } %>
+        <div class="registration-body-form">
+          <form action="/submit-application" method="POST" enctype="multipart/form-data">
+            <div id="registration-body-form-skills">
+              <div class="registration-body-form-question-section">
+                <h3 class="contains-clarification q2">What areas are you most interested in?</h3>
+                <div class="registration-form-skills-response row">
+                  <div class="small-6 columns">
+                    <input class="q1i" id="q1i1" type="checkbox"><label for="q1i1">Finance</label><br>
+                    <input class="q1i" id="q1i2" type="checkbox"><label for="q1i2">Politics</label><br>
+                    <input class="q1i" id="q1i3" type="checkbox"><label for="q1i3">Health</label><br>
+                    <input class="q1i" id="q1i4" type="checkbox"><label for="q1i4">Travel</label><br>
+                    <input class="q1i" id="q1i5" type="checkbox"><label for="q1i5">Entertainment</label><br>
+                    <input class="q1i" id="q1i6" type="checkbox"><label for="q1i6">Music</label>
+                  </div>
+                  <div class="small-6 columns">
+                    <input class="q1i" id="q1i7" type="checkbox"><label for="q1i7">Economics</label><br>
+                    <input class="q1i" id="q1i8" type="checkbox"><label for="q1i8">Social Issues</label><br>
+                    <input class="q1i" id="q1i9" type="checkbox"><label for="q1i9">Gaming</label><br>
+                    <input class="q1i" id="q1i10" type="checkbox"><label for="q1i10">Fashion</label><br>
+                    <input class="q1i" id="q1i11" type="checkbox"><label for="q1i11">Sports</label><br>
+                    <input class="q1i" id="q1i12" type="checkbox"><label for="q1i12">Arts</label><br>
+                  </div>
+                  <label>
+                    Other:
+                    <input class="q1i" id="q1i10" type="text">
+                  </label>
+                </div>
+              </div>
+              <div class="registration-body-form-question-section">
+                <h3 class="contains-clarification q2">What role do you expect to play on the team?</h3>
+                <div class="registration-form-role-response row">
+                  <div class="">
+                    <input class="q2i" id="q2i1" type="checkbox"><label for="q2i1">Front-end Engineer</label><br>
+                    <input class="q2i" id="q2i2" type="checkbox"><label for="q2i2">Back-end Engineer</label><br>
+                    <input class="q2i" id="q2i3" type="checkbox"><label for="q2i3">Data Scientist</label><br>
+                    <input class="q2i" id="q2i4" type="checkbox"><label for="q2i4">Designer</label><br>
+                    <input class="q2i" id="q2i5" type="checkbox"><label for="q2i5">iOS</label><br>
+                    <input class="q2i" id="q2i6" type="checkbox"><label for="q2i6">Android</label><br>
+                  </div>
+                  <label>
+                    Other:
+                    <input class="q2i" id="q2i10" type="text">
+                  </label>
+                </div>
+              </div>
+              <div class="registration-body-form-question-section">
+                <h3 class="contains-clarification">What technology are you insterested in?</h3>
+                <div class="registration-form-technology-response row">
+                  <div>
+                    <% var sliderId = 'technology-slider-1'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                    <div>
+                    <% var sliderId = 'technology-slider-2'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="question">
+              <h3> Is this your first hackathon? </h3>
+              <input type="radio" name="firstHackathon" value="true" required> Yes<br>
+              <input type="radio" name="firstHackathon" value="false"> No<br>
+            </div>
+            <div class="question">
+              <h3 class="contains-clarification"> Would you like to include your resume? (Optional) </h3>
+              <h4 class="question-clarification"> Make sure your file type is either a .jpg, .jpeg, .pdf, .png, or .gif </h4>
+              <input type="file" name="resume" class="resume-input">
+            </div>
+            <div class="question">
+              <h3> Do you need travel reimbursement? </h3>
+              <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="true" id="reimbursementYes" required> Yes<br>
+              <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="false" id="reimbursementNo"> No<br>
+              
+              <div id="reimbursement-followup-questions">
+                <h4> Where are you coming from? </h4>
+                <input type="text" name="reimbursementLocation" value=""><br>
+                
+                <h4> How much are you seeking for reimbursement? (USD) </h4>
+                <input type="number" name="reimbursementAmount" value="10"><br>
+              </div>
+            </div>
+            <div class="question">
+              <h3> Comments? Questions? Concerns? </h3>
+              <textarea name="additional" rows="4" cols="50"></textarea>
+            </div>
+            <input type="submit" value="Submit" class="submit-application">
+          </form>
+        </div>
+      </div>
     </div>
-</div>
-</body>
-
-<footer>
-    <% include ../partials/footer %>
-    <script src="js/registration.js"></script> 
-</footer>
+  </body>
+  <footer>
+    <script src="/js/vendor/foundation.js"></script>
+    <script src="/js/app.js"></script>
+    <script src="js/registration.js"></script>
+    <script src="js/slider-local.js"></script>
+  </footer>
 </html>
