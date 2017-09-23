@@ -55,9 +55,11 @@ input[type="radio"] {
   display: none;
 }
 
-.registration-slider-option {
+.experience .registration-slider-option {
   left:-100%;
+  font-size: 12px!important;
 }
+
 .registration-slider-wrapper {
   width: 50%;
 }
