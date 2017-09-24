@@ -64,6 +64,6 @@ input[type="radio"] {
   width: 50%;
 }
 
-.teammates, .hasNoTeam{
+.teammates, .create-team, .existing-team{
   display: none;
 } 
