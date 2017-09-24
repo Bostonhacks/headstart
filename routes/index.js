@@ -100,9 +100,9 @@ router.get('/registrationForm', function (req, res, next) {
   })
 });
 
-router.get('/registrationFormPartTwo', function (req, res, next) {
-  console.log("registrationTest");
-  res.render('pages/applicationPartTwo', {
+
+router.get('/createNewTeam', function (req, res, next) {
+  res.render('pages/registrationCreateNewTeam', {
     errormessage: req.flash('mlhErrorMessage')
   })
 });
