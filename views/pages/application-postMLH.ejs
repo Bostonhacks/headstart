@@ -7,10 +7,8 @@
     <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/registration.css">
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-    
-    <script src="js/vendor/slider.js"></script>
-    
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
+    <script src="js/vendor/slider.js"></script>    
   </head>
   <body>
     <div class="container registration-body">
@@ -33,7 +31,7 @@
           <form action="/submit-application" method="POST" enctype="multipart/form-data">
             <div id="registration-body-form-skills">
               <!-- q1 -->
-              <div class="registration-body-form-question-section registraion-interest-areas">
+              <div class="registration-body-form-question-section interest-areas">
                 <div class="registration-form-skills-response row">
                   <span class="q1 small-12 question columns">What areas are you most interested in?</span>
                   <div class="small-6 areas-options columns">
@@ -61,7 +59,7 @@
                 </div>
               </div>
               <!-- q2 -->
-              <div class="registration-body-form-question-section registraion-roles">
+              <div class="registration-body-form-question-section roles">
                 <div class="registration-form-role-response row">
                   <span class="q2 small-12 question columns">What role do you expect to play on the team?</span>
                   <div class="small-12 columns role-options">
@@ -81,7 +79,7 @@
                 </div>
               </div>
               <!-- q3 -->
-              <div class="registration-body-form-question-section registraion-technologies">
+              <div class="registration-body-form-question-section technologies">
                 <div class="row">
                   <span class="q3 small-12 question columns">Rate your experience with the following technologies:</span>
                   <div id="technology-slider-row">
@@ -143,7 +141,7 @@
                 </div>
               </div>
               <!-- q4 -->
-              <div class="registration-body-form-question-section registraion-languages">
+              <div class="registration-body-form-question-section languages">
                 <div class="row">
                   <span class="q4 small-12 columns question">Rate your experience with the following languages:</span>
                   <div class="language-slider-row">
@@ -205,7 +203,7 @@
                 </div>
               </div>
               <!-- q5 -->
-              <div class="registration-body-form-question-section registraion-soft-skills">
+              <div class="registration-body-form-question-section soft-skills">
                 <div class="row">
                   <span class="q5 small-12 columns question">Rate your skills (worse - better):</span>
                   <div class="soft-skills-slider-row">
@@ -213,25 +211,129 @@
                     <% var sliderId = 'soft-skills-slider-1'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
-                    <span class="technology-option q5i">Design Skills</span>
+                  <div id="soft-skills-slider-row">
+                    <span class="soft-skills-option q5i">Design Skills</span>
                     <% var sliderId = 'soft-skills-slider-2'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
-                    <span class="technology-option q5i">Presentation Skills</span>
+                  <div id="soft-skills-slider-row">
+                    <span class="soft-skills-option q5i">Presentation Skills</span>
                     <% var sliderId = 'soft-skills-slider-3'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
-                    <span class="technology-option q5i">Project Management Skills</span>
+                  <div id="soft-skills-slider-row">
+                    <span class="soft-skills-option q5i">Project Management Skills</span>
                     <% var sliderId = 'soft-skills-slider-4'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
                 </div>
-              <!-- q6 --> 
+              </div>
+              <!-- q6 -->
+              <div class="registration-body-form-question-section hackathon-goals">
+                <div class="row">
+                  <span class="q6 small-12 columns question">Why are you attending BostonHacks? (Rate)</span>
+                  <div class="hackathon-goals-slider-row">
+                    <span class="hackathon-goals-option q6i">Have fun!</span>
+                    <% var sliderId = 'hackathon-goals-slider-1'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div id="hackathon-goals-slider-row">
+                    <span class="hackathon-goals-option q6i">Gain technical skills</span>
+                    <% var sliderId = 'hackathon-goals-slider-2'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div id="hackathon-goals-slider-row">
+                    <span class="hackathon-goals-option q6i">Win</span>
+                    <% var sliderId = 'hackathon-goals-slider-3'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div id="hackathon-goals-slider-row">
+                    <span class="hackathon-goals-option q6i">Meet new people</span>
+                    <% var sliderId = 'hackathon-goals-slider-4'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                </div>
+              </div>
+              <!-- q7 -->
+              <div class="registration-body-form-question-section final-project">
+                <div class="row">
+                  <span class="q7 small-12 columns question">Why are you attending BostonHacks? (Rate)</span>
+                  <div class="final-project-slider-row">
+                    <span class="final-project-option q7i">Have fun!</span>
+                    <% var sliderId = 'final-project-slider-1'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div id="final-project-slider-row">
+                    <span class="final-project-option q7i">Gain technical skills</span>
+                    <% var sliderId = 'final-project-slider-2'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div id="final-project-slider-row">
+                    <span class="final-project-option q7i">Win</span>
+                    <% var sliderId = 'final-project-slider-3'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div id="final-project-slider-row">
+                    <span class="final-project-option q7i">Meet new people</span>
+                    <% var sliderId = 'final-project-slider-4'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                </div>
+              </div>
+              <!-- q8 -->
+              <div class="registration-body-form-question-section team-fork">
+                <div class="row">
+                  <span class="q8 small-12 columns question">Do you have a team?</span>
+                  <div class="grid-x grid-padding-x">
+                    <fieldset class="large-6 cell">
+                      <input type="radio" name="team" value="true" class="team-radio" id="teamTrue"><label for="teamTrue">Yes</label>
+                      <input type="radio" name="team" value="false" class="team-radio" id="teamFalse"><label for="teamFalse">No</label>
+                    </fieldset>
+                </div>
+              </div>
+              <!-- q9 -->
+              <div class="registration-body-form-question-section teammates">
+                <div class="row">
+                  <span class="q9 small-12 columns question">Are you looking for more people to join your team?</span>
+                  <div class="grid-x grid-padding-x">
+                    <fieldset class="large-6 cell">
+                      <input type="radio" name="teammates" value="true" class="teammates-radio" id="teammatesTrue"><label for="teammatesTrue">Yes</label>
+                      <input type="radio" name="teammates" value="false" class="teammates-radio" id="teammatesFalse"><label for="teammatesFalse">No</label>
+                    </fieldset>
+                  </div>
+                </div>
+              </div>         
+                            
+              <div class="hasNoTeam">
+                <!-- q10 -->
+                <div class="registration-body-form-question-section existing-team">
+                  <div class="row">
+                    <span class="q10 small-12 columns question">Would you like to join an existing team or project?</span>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell">
+                        <input type="radio" name="existing-team" value="true" class="existing-team" id="existingTeamTrue"><label for="existingTeamTrue">Yes</label>
+                        <input type="radio" name="existing-team" value="false" class="existing-team" id="existingTeamFalse"><label for="existingTeamFalse">No</label>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>                
+                <!-- q11 -->
+                <div class="registration-body-form-question-section create-team">
+                  <div class="row">
+                    <span class="q11 small-12 columns question">Would you like to create your own team?</span>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell">
+                        <input type="radio" name="create-team" value="true" class="create-team" id="createTeamTrue"><label for="createTeamTrue">Yes</label>
+                        <input type="radio" name="create-team" value="false" class="create-team" id="createTeamFalse"><label for="createTeamFalse">No</label>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
               </div>
 
+              <div class="">                
+                <a href="#" id="registrationButton" class="button">Finish</a>
+              </div>
 
               <div class="question">
                 <h3> Is this your first hackathon? </h3>

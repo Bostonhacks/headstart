@@ -100,6 +100,13 @@ router.get('/registrationForm', function (req, res, next) {
   })
 });
 
+router.get('/registrationFormPartTwo', function (req, res, next) {
+  console.log("registrationTest");
+  res.render('pages/applicationPartTwo', {
+    errormessage: req.flash('mlhErrorMessage')
+  })
+});
+
 router.get('/home', isLoggedIn, function (req, res, next) {
   // If user is admin
   // if (req.user.local.email === process.env.ADMIN_EMAIL) {
