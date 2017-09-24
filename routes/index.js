@@ -107,6 +107,18 @@ router.get('/registrationFormPartTwo', function (req, res, next) {
   })
 });
 
+router.get('/joinExistingTeam', function (req, res, next) {
+  res.render('pages/registrationJoinExistingTeam', {
+    errormessage: req.flash('mlhErrorMessage')
+  })
+});
+
+router.get('/findNewTeammates', function (req, res, next) {
+  res.render('pages/registrationFindNewTeammates', {
+    errormessage: req.flash('mlhErrorMessage')
+  })
+});
+
 router.get('/home', isLoggedIn, function (req, res, next) {
   // If user is admin
   // if (req.user.local.email === process.env.ADMIN_EMAIL) {
