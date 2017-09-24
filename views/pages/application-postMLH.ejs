@@ -7,8 +7,8 @@
     <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/registration.css">
     <script src="http://code.jquery.com/jquery.js"></script>
-    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>    
-    <script src="js/vendor/slider.js"></script>    
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/vendor/slider.js"></script>
   </head>
   <body>
     <div class="container registration-body">
@@ -289,89 +289,63 @@
                       <input type="radio" name="team" value="true" class="team-radio" id="teamTrue"><label for="teamTrue">Yes</label>
                       <input type="radio" name="team" value="false" class="team-radio" id="teamFalse"><label for="teamFalse">No</label>
                     </fieldset>
-                </div>
-              </div>
-              <!-- q9 -->
-              <div class="registration-body-form-question-section teammates">
-                <div class="row">
-                  <span class="q9 small-12 columns question">Are you looking for more people to join your team?</span>
-                  <div class="grid-x grid-padding-x">
-                    <fieldset class="large-6 cell">
-                      <input type="radio" name="teammates" value="true" class="teammates-radio" id="teammatesTrue"><label for="teammatesTrue">Yes</label>
-                      <input type="radio" name="teammates" value="false" class="teammates-radio" id="teammatesFalse"><label for="teammatesFalse">No</label>
-                    </fieldset>
                   </div>
                 </div>
-              </div>         
-                                          
-              <!-- q10 -->
-              <div class="registration-body-form-question-section existing-team">
-                <div class="row">
-                  <span class="q10 small-12 columns question">Would you like to join an existing team or project?</span>
-                  <div class="grid-x grid-padding-x">
-                    <fieldset class="large-6 cell">
-                      <input type="radio" name="existing-team" value="true" class="existing-team-radio" id="existingTeamTrue"><label for="existingTeamTrue">Yes</label>
-                      <input type="radio" name="existing-team" value="false" class="existing-team-radio" id="existingTeamFalse"><label for="existingTeamFalse">No</label>
-                    </fieldset>
+                <!-- q9 -->
+                <div class="registration-body-form-question-section teammates">
+                  <div class="row">
+                    <span class="q9 small-12 columns question">Are you looking for more people to join your team?</span>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell">
+                        <input type="radio" name="teammates" value="true" class="teammates-radio" id="teammatesTrue"><label for="teammatesTrue">Yes</label>
+                        <input type="radio" name="teammates" value="false" class="teammates-radio" id="teammatesFalse"><label for="teammatesFalse">No</label>
+                      </fieldset>
+                    </div>
                   </div>
                 </div>
-              </div>                
-              <!-- q11 -->
-              <div class="registration-body-form-question-section create-team">
-                <div class="row">
-                  <span class="q11 small-12 columns question">Would you like to create your own team?</span>
-                  <div class="grid-x grid-padding-x">
-                    <fieldset class="large-6 cell">
-                      <input type="radio" name="create-team" value="true" class="create-team-radio" id="createTeamTrue"><label for="createTeamTrue">Yes</label>
-                      <input type="radio" name="create-team" value="false" class="create-team-radio" id="createTeamFalse"><label for="createTeamFalse">No</label>
-                    </fieldset>
-                  </div>
-                </div>
-              </div>
-
-              <div class="">                
-                <a href="#" id="registrationButton" class="button">Finish</a>
-              </div>
-
-
-
-              <div class="question">
-                <h3> Is this your first hackathon? </h3>
-                <input type="radio" name="firstHackathon" value="true" required> Yes<br>
-                <input type="radio" name="firstHackathon" value="false"> No<br>
-              </div>
-              <div class="question">
-                <h3 class="contains-clarification"> Would you like to include your resume? (Optional) </h3>
-                <h4 class="question-clarification"> Make sure your file type is either a .jpg, .jpeg, .pdf, .png, or .gif </h4>
-                <input type="file" name="resume" class="resume-input">
-              </div>
-              <div class="question">
-                <h3> Do you need travel reimbursement? </h3>
-                <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="true" id="reimbursementYes" required> Yes<br>
-                <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="false" id="reimbursementNo"> No<br>
                 
-                <div id="reimbursement-followup-questions">
-                  <h4> Where are you coming from? </h4>
-                  <input type="text" name="reimbursementLocation" value=""><br>
-                  
-                  <h4> How much are you seeking for reimbursement? (USD) </h4>
-                  <input type="number" name="reimbursementAmount" value="10"><br>
+                <!-- q10 -->
+                <div class="registration-body-form-question-section existing-team">
+                  <div class="row">
+                    <span class="q10 small-12 columns question">Would you like to join an existing team or project?</span>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell">
+                        <input type="radio" name="existing-team" value="true" class="existing-team-radio" id="existingTeamTrue"><label for="existingTeamTrue">Yes</label>
+                        <input type="radio" name="existing-team" value="false" class="existing-team-radio" id="existingTeamFalse"><label for="existingTeamFalse">No</label>
+                      </fieldset>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <!-- q11 -->
+                <div class="registration-body-form-question-section create-team">
+                  <div class="row">
+                    <span class="q11 small-12 columns question">Would you like to create your own team?</span>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell">
+                        <input type="radio" name="create-team" value="true" class="create-team-radio" id="createTeamTrue"><label for="createTeamTrue">Yes</label>
+                        <input type="radio" name="create-team" value="false" class="create-team-radio" id="createTeamFalse"><label for="createTeamFalse">No</label>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+                <div class="">
+                  <a href="#" id="registrationButton" class="button">Finish</a>
+                </div>
+              </form>
+              
+              <!-- TODO: This could go into finish registration form -->
               <div class="question">
                 <h3> Comments? Questions? Concerns? </h3>
                 <textarea name="additional" rows="4" cols="50"></textarea>
               </div>
-              <input type="submit" value="Submit" class="submit-application">
-            </form>
+            </div>
           </div>
         </div>
-      </div>
-    </body>
-    <footer>
-      <script src="/js/vendor/foundation.js"></script>
-      <script src="/js/app.js"></script>
-      <script src="js/registration.js"></script>
-      <script src="js/slider-local.js"></script>
-    </footer>
-  </html>
+      </body>
+      <footer>
+        <script src="/js/vendor/foundation.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="js/registration.js"></script>
+        <script src="js/slider-local.js"></script>
+      </footer>
+    </html>
