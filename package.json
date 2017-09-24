@@ -4,17 +4,16 @@
   "author": "Nicolas Hinderling <nicolas.hinderling@gmail.com>",
   "version": "0.0.1",
   "repository": {
-    "type": "git",
-    "url": "git://github.com/username/repository.git"
+    "type": "git"
   },
   "license": "MIT",
   "dependencies": {
     "bases": "^0.2.1",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "~1.0.0",
-    "connect-firebase": "0.0.9",
     "connect-flash": "~0.1.1",
     "cookie-parser": "~1.0.0",
+    "debug": "^3.0.1",
     "dotenv": "^2.0.0",
     "ejs": "^2.4.1",
     "express": "~4.14.0",
@@ -36,13 +35,14 @@
     "validator": "^6.2.1"
   },
   "devDependencies": {
-    "nodemon": "^1.10.2 ",
-    "standard": "^8.6.0"
+    "mocha": "^3.5.3",
+    "standard": "^8.6.0",
+    "supertest": "^3.0.0"
   },
-  "engine": "node >= 0.6.6",
+  "engine": "node >= 6.9.0",
   "scripts": {
-    "start": "node server.js",
-    "test": "nodemon server.js"
+    "start": "node ./bin/www",
+    "test": "./node_modules/mocha/bin/mocha testing/"
   },
   "standard": {
     "ignore": [

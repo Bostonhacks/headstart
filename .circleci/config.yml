@@ -1,0 +1,37 @@
+version: 2
+jobs:
+  build:
+    working_directory: ~/headstart
+    docker:
+      - image: circleci/node:7
+      - image: mongo:3.4.4
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+      - run:
+          name: install-npm
+          command: npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "package.json" }}
+          paths:
+            - ./node_modules
+      - run:
+          name: test
+          command: npm test
+      - deploy:
+          name: deploy-bostonhacks-headstart-prod
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              scp -o StrictHostKeyChecking=no -r ~/headstart/bin circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/config circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/models circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/multer circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/public circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/routes circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/scripts circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/views circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/app.js circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              scp -o StrictHostKeyChecking=no -r ~/headstart/package.json circleci@${BOSTONHACKS_IP_ADDR}:/var/www/headstart/
+              cat ~/headstart/scripts/restart.sh | ssh -o StrictHostKeyChecking=no -tt circleci@${BOSTONHACKS_IP_ADDR}
+            fi
