@@ -35,9 +35,10 @@ input[type="radio"] {
 
 .question {
   color: var(--dark-grey-color);
-  margin-top: 10px;
+  margin: 10px 0 15px 0;
   font-family: 'Open Sans', sans-serif;
-  font-weight: 300;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .contains-clarification {
@@ -64,6 +65,7 @@ input[type="radio"] {
 
 .registration-slider-wrapper {
   width: 100%;
+  color: var(--light-grey-color);
 }
 
 .teammates, .create-team, .existing-team{
@@ -72,4 +74,28 @@ input[type="radio"] {
 
 .technology-slider-row, .language-slider-row, .soft-skills-slider-row, .final-project-slider-row, .hackathon-goals-slider-row {
   padding: 0 5% 0 5%;
+}
+
+fieldset {
+  padding: 0 5% 0 5%;
+}
+
+.slider-answer-option {
+  font-size: 18px;
+  margin: 5px 0px 10px 0;
+  color: var(--medium-grey-color);
+}
+
+#q3other, #q4other {
+  width: 100%;
+}
+
+label {
+  color: var(--medium-grey-color);
+}
+
+.registration-button {
+  margin: 0 5% 0 5%;
+  text-align: center;
+  margin: 10px 0;
 }
