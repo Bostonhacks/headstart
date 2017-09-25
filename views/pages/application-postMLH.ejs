@@ -19,9 +19,9 @@
         </span>
       </div>
       <div class="questions-container">
-        <span class="registration-heading">
-          <h2> Awesome! Just a few last questions:</h2>
-        </span>
+        <div class="registration-heading">
+          Awesome! Just a few last questions.          
+        </div>
         <% if (errormessage.length > 0) { %>
         <div class="text-center">
           <div class="serverMessageError"> <%= errormessage %> </div>
@@ -82,57 +82,57 @@
               <div class="registration-body-form-question-section technologies">
                 <div class="row">
                   <span class="q3 small-12 question columns">Rate your experience with the following technologies:</span>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Web Application Development</span>
                     <% var sliderId = 'technology-slider-1'; var sliderType = 'experience';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Mobile Application Development</span>
                     <% var sliderId = 'technology-slider-2'; var sliderType = 'experience';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Data Analytics/Mining</span>
                     <% var sliderId = 'technology-slider-3'; var sliderType = 'experience';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Machine Intelligence</span>
                     <% var sliderId = 'technology-slider-4'; var sliderType = 'experience';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Computer Networks</span>
                     <% var sliderId = 'technology-slider-5'; var sliderType = 'experience';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Algorithm Design</span>
                     <% var sliderId = 'technology-slider-6'; var sliderType = 'experience';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Virtual/Augmented Reality</span>
                     <% var sliderId = 'technology-slider-7'; var sliderType = 'experience'; %>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Hardware</span>
                     <% var sliderId = 'technology-slider-8'; var sliderType = 'experience'; %>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Internet of Things (IoT)</span>
                     <% var sliderId = 'technology-slider-9'; var sliderType = 'experience'; %>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <span class="technology-option q3i">Game Development</span>
                     <% var sliderId = 'technology-slider-10'; var sliderType = 'experience'; %>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="technology-slider-row">
+                  <div class="technology-slider-row">
                     <label>
                       Other:
                       <input class="q3i" id="q3other" type="text">
@@ -211,17 +211,17 @@
                     <% var sliderId = 'soft-skills-slider-1'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="soft-skills-slider-row">
+                  <div class="soft-skills-slider-row">
                     <span class="soft-skills-option q5i">Design Skills</span>
                     <% var sliderId = 'soft-skills-slider-2'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="soft-skills-slider-row">
+                  <div class="soft-skills-slider-row">
                     <span class="soft-skills-option q5i">Presentation Skills</span>
                     <% var sliderId = 'soft-skills-slider-3'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="soft-skills-slider-row">
+                  <div class="soft-skills-slider-row">
                     <span class="soft-skills-option q5i">Project Management Skills</span>
                     <% var sliderId = 'soft-skills-slider-4'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
@@ -237,17 +237,17 @@
                     <% var sliderId = 'hackathon-goals-slider-1'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="hackathon-goals-slider-row">
+                  <div class="hackathon-goals-slider-row">
                     <span class="hackathon-goals-option q6i">Gain technical skills</span>
                     <% var sliderId = 'hackathon-goals-slider-2'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="hackathon-goals-slider-row">
+                  <div class="hackathon-goals-slider-row">
                     <span class="hackathon-goals-option q6i">Win</span>
                     <% var sliderId = 'hackathon-goals-slider-3'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="hackathon-goals-slider-row">
+                  <div class="hackathon-goals-slider-row">
                     <span class="hackathon-goals-option q6i">Meet new people</span>
                     <% var sliderId = 'hackathon-goals-slider-4'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
@@ -263,17 +263,17 @@
                     <% var sliderId = 'final-project-slider-1'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="final-project-slider-row">
+                  <div class="final-project-slider-row">
                     <span class="final-project-option q7i">Great concept</span>
                     <% var sliderId = 'final-project-slider-2'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="final-project-slider-row">
+                  <div class="final-project-slider-row">
                     <span class="final-project-option q7i">Great design</span>
                     <% var sliderId = 'final-project-slider-3'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
                   </div>
-                  <div id="final-project-slider-row">
+                  <div class="final-project-slider-row">
                     <span class="final-project-option q7i">Great presentation</span>
                     <% var sliderId = 'final-project-slider-4'; var sliderType = 'rate';%>
                     <% include ../partials/slider %>
