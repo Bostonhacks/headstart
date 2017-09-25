@@ -14,20 +14,6 @@
   text-align: center;
 }
 
-
-/* Post MLH View */
-
-input[type="text"],
-input[type="number"],
-textarea {
-  width: 500px;
-  max-width: 100%;
-}
-
-input[type="radio"] {
-  margin-bottom: 0px;
-}
-
 .registration-body-form {
   background-color: var(--darker-white-color);
   padding: 2% 20%;
@@ -98,4 +84,9 @@ label {
   margin: 0 5% 0 5%;
   text-align: center;
   margin: 10px 0;
+}
+
+/*New teammates css*/
+.new-teammates-input {
+  width: 80%;
 }
