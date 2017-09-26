@@ -7,6 +7,7 @@ const errorhandler = require('../config/errorhandler')
 const forgot = require('../config/forgot')
 const updateUser = require('../config/update')
 const upload = require('../multer')
+const adminFunc = require('../config/admin')
 
 const express = require('express')
 const router = express.Router()
@@ -93,48 +94,11 @@ router.post('/change-password/:ident/:timestamp-:hash', function (req, res, next
   })
 })
 
-router.get('/registrationForm', function (req, res, next) {
-  res.render('pages/application-postMLH', {
-    errormessage: req.flash('mlhErrorMessage')
-  })
-});
-
-router.get('/registration', function (req, res, next) {
-  res.render('pages/registration', {
-    errormessage: req.flash('mlhErrorMessage')
-  })
-});
-
-
-router.get('/registrationForm', function (req, res, next) {
-  res.render('pages/application-postMLH', {
-    errormessage: req.flash('mlhErrorMessage')
-  })
-});
-
-router.get('/createNewTeam', function (req, res, next) {
-  res.render('pages/registrationCreateNewTeam', {
-    errormessage: req.flash('mlhErrorMessage')
-  })
-});
-
-router.get('/joinExistingTeam', function (req, res, next) {
-  res.render('pages/registrationJoinExistingTeam', {
-    errormessage: req.flash('mlhErrorMessage')
-  })
-});
-
-router.get('/findNewTeammates', function (req, res, next) {
-  res.render('pages/registrationFindNewTeammates', {
-    errormessage: req.flash('mlhErrorMessage')
-  })
-});
-
 router.get('/home', isLoggedIn, function (req, res, next) {
   // If user is admin
-  // if (req.user.local.email === process.env.ADMIN_EMAIL) {
-  //   return res.redirect('/admin')
-  // }
+  if (req.user.local.email === process.env.ADMIN_EMAIL) {
+    return res.redirect('/admin')
+  }
 
   // If user has already registered
   if (req.user.local.registered) {
@@ -213,7 +177,6 @@ router.get('/almost-done', isLoggedIn, function (req, res, next) {
 })
 
 router.post('/submit-application', isLoggedIn, upload.single('resume'), function (req, res, next) {
-  debug("got a submitted applicationn")
   // Check for location & amount (since those are required). Checking for frontend tampering
   if (!req.body.firstHackathon || !req.body.reimbursementSeeking) {
     res.render('pages/application-postMLH.ejs', { errormessage: 'There was an error with your response. Please try again.' })
@@ -252,6 +215,26 @@ router.get('/admin', isLoggedIn, function (req, res, next) {
   }
   res.render('pages/admin-console.ejs')
 })
+
+router.get('/admin-all-registrants', isLoggedIn, function(req, res, next) {
+  if(req.user.local.email !== process.env.ADMIN_EMAIL) {
+    res.redirect('/')
+    return
+  }
+  adminFunc.getAllUsers(req, res, function(responseData) {
+    res.json(responseData)
+  })
+})
+
+router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
+  if (req.user.local.email !== process.env.ADMIN_EMAIL) {
+    return res.redirect('/')
+  }
+  adminFunc.changeStatus(req.params.userid, req.params.stat, function() {
+    return res.sendStatus(200)
+  })
+})
+
 
 function isLoggedIn (req, res, next) {
   debug(req)
