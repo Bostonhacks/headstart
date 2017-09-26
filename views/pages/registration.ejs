@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+  <head>
+    <% include ../partials/head %>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/registration.css">
+    <link rel="stylesheet" href="css/registration-basic.css">
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/vendor/slider.js"></script>
+  </head>
+  <body>
+    <div class="container registration-body">
+      <% include ../partials/profile-nav %>
+      <div class="page-header text-center">
+        <div class="registration-heading">
+          <h1>Registration</h1>
+        </div>
+        <div class="registration-heading">
+          Awesome! Just a few last questions.
+        </div>
+      </div>
+      <div class="questions-container">
+        <% if (errormessage.length > 0) { %>
+        <div class="text-center">
+          <div class="serverMessageError"> <%= errormessage %> </div>
+        </div>
+        <% } %>
+        <div class="registration-body-form">
+          <form action="/submit-application" method="POST" enctype="multipart/form-data">
+            <div id="registration-body-form-skills">
+              <!-- q1 -->
+              <div class="registration-body-form-question-section first-hackathon">
+                <div class="row">
+                  <div class="q1 small-12 columns question question-first-hackahon">Is this your first hackathon?</div>
+                  <div class="grid-x grid-padding-x">
+                    <fieldset class="large-6 cell answer-options">
+                      <input type="radio" name="first-hackathon-response" value="true" class="first-hackathon-response" id="first-hackathon-response-true"><label for="first-hackathon-true">Yes</label>
+                      <br>
+                      <input type="radio" name="first-hackathon-response" value="false" class="first-hackathon-response" id="first-hackathon-response-false"><label for="first-hackathon-false">No</label>
+                    </fieldset>
+                  </div>
+                </div>
+                <!-- q2 -->
+                <div class="registration-body-form-question-section resume-upload">
+                  <div class="row">
+                    <div class="q2 small-12 columns question question-resume-upload">Would you like to upload your resume? (Optional)</div>
+                    <div class="grid-x grid-padding-x">
+                      <input type="file" name="resume" id="resume-input" class="show-for-sr"> 
+                    </div>
+                  </div>
+                </div>
+                <!-- q3 -->
+                <div class="registration-body-form-question-section travel-reimbursement">
+                  <div class="row">
+                    <div class="q1 small-12 columns question question-travel-reimbursement">Do you need travel reimbursement?</div>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell answer-options">
+                        <input type="radio" onclick="travelReimbursementCheck()" id="reimbursementYes" name="travel-reimbursement-response" value="true" class="travel-reimbursement-response" required><label for="reimbursementYes">Yes</label>
+                        <br>
+                        <input type="radio" onclick="travelReimbursementCheck()" name="travel-reimbursement-response" value="false" class="travel-reimbursement-response" id="reimbursementNo"><label for="reimbursementNo">No</label>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+                <!-- q4 -->
+                <div class="registration-body-form-question-section travel-reimbursement-location">
+                  <div class="row">
+                    <div class="q1 small-12 columns question question-travel-reimbursement-location">Where are you coming from?</div>
+                    <div class="grid-x grid-padding-x">
+                      <input name="reimbursementLocation" value="" type="text">                      
+                    </div>
+                  </div>
+                </div>
+                <!-- q5 -->
+                <div class="registration-body-form-question-section travel-reimbursement-location">
+                  <div class="row">
+                    <div class="q1 small-12 columns question question-travel-reimbursement-location">How much are you seeking for reimbursement? (USD)</div>
+                    <div class="grid-x grid-padding-x">
+                      <input name="reimbursementAmount" value="" type="number">                      
+                    </div>
+                  </div>
+                </div>
+                <div class="registration-button">
+                  <input type="submit" value="Submit" class="submit-application button">
+                </div>
+              </form>            
+            </div>
+          </div>
+        </div>
+      </body>
+      <footer>
+        <script src="/js/vendor/foundation.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="js/registration-basic.js"></script>
+        <script src="js/slider-local.js"></script>
+      </footer>
+    </html>

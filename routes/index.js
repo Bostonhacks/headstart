@@ -94,12 +94,23 @@ router.post('/change-password/:ident/:timestamp-:hash', function (req, res, next
 })
 
 router.get('/registrationForm', function (req, res, next) {
-  console.log("registrationTest");
   res.render('pages/application-postMLH', {
     errormessage: req.flash('mlhErrorMessage')
   })
 });
 
+router.get('/registration', function (req, res, next) {
+  res.render('pages/registration', {
+    errormessage: req.flash('mlhErrorMessage')
+  })
+});
+
+
+router.get('/registrationForm', function (req, res, next) {
+  res.render('pages/application-postMLH', {
+    errormessage: req.flash('mlhErrorMessage')
+  })
+});
 
 router.get('/createNewTeam', function (req, res, next) {
   res.render('pages/registrationCreateNewTeam', {
@@ -202,6 +213,7 @@ router.get('/almost-done', isLoggedIn, function (req, res, next) {
 })
 
 router.post('/submit-application', isLoggedIn, upload.single('resume'), function (req, res, next) {
+  debug("got a submitted applicationn")
   // Check for location & amount (since those are required). Checking for frontend tampering
   if (!req.body.firstHackathon || !req.body.reimbursementSeeking) {
     res.render('pages/application-postMLH.ejs', { errormessage: 'There was an error with your response. Please try again.' })
