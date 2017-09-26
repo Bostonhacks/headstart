@@ -10,6 +10,7 @@ const userSchema = mongoose.Schema({
   email: String,
   first_name: String,
   last_name: String,
+  survery_id: mongoose.Schema.Types.ObjectId,
   level_of_study: String,
   major: String,
   shirt_size: String,

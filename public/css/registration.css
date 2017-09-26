@@ -4,6 +4,10 @@
   margin: 20px 0px 20px 0px;
 }
 
+.serverMessageError {
+  color: white;
+}
+
 .registration-body {
   background-color: var(--dark-color);
 }
