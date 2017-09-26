@@ -228,8 +228,7 @@ router.get('/admin-all-registrants', isLoggedIn, function(req, res, next) {
 
 router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
   if (req.user.local.email !== process.env.ADMIN_EMAIL) {
-    res.redirect('/')
-    return
+    return res.redirect('/')
   }
   adminFunc.changeStatus(req.params.userid, req.params.stat, function() {
     return res.sendStatus(200)
