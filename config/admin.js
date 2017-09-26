@@ -10,5 +10,18 @@ module.exports = {
       if (err) errorhandler.logErrorMsg('admin.userQuery', err)
       return users
     })
+  },
+  getAllUsers: function(req, res, next) {
+  	// {"local.registered": false}
+  	User.find({}, function(err, users) {
+      // Not sure this is the right error message to log, just doing it based on the above function.
+      if (err) errorhandler.logErrorMsg('admin.userQuery', err)
+      return next(users)
+    })
+  },
+  changeStatus: function(userid, stat, next) {
+    User.update({_id: userid}, {$set: {status: stat}}, function(err, raw){
+      return next()
+    })
   }
 }

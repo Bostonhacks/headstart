@@ -7,6 +7,7 @@ const errorhandler = require('../config/errorhandler')
 const forgot = require('../config/forgot')
 const updateUser = require('../config/update')
 const upload = require('../multer')
+const adminFunc = require('../config/admin')
 
 const express = require('express')
 const router = express.Router()
@@ -214,6 +215,26 @@ router.get('/admin', isLoggedIn, function (req, res, next) {
   }
   res.render('pages/admin-console.ejs')
 })
+
+router.get('/admin-all-registrants', isLoggedIn, function(req, res, next) {
+  if(req.user.local.email !== process.env.ADMIN_EMAIL) {
+    res.redirect('/')
+    return
+  }
+  adminFunc.getAllUsers(req, res, function(responseData) {
+    res.json(responseData)
+  })
+})
+
+router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
+  if (req.user.local.email !== process.env.ADMIN_EMAIL) {
+    return res.redirect('/')
+  }
+  adminFunc.changeStatus(req.params.userid, req.params.stat, function() {
+    return res.sendStatus(200)
+  })
+})
+
 
 function isLoggedIn (req, res, next) {
   debug(req)

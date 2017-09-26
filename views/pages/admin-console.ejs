@@ -1,15 +1,82 @@
 <!doctype html>
 <html>
 <head>
-    <% include ../partials/head %>
-    <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body>
-    <% include ../partials/profile-nav %>
-    <h1 class="text-center" id="admin-title"> Admin Console </h1>
+  <h1 class="text-center" id="admin-title"> <a href='/'>BostonHacks</a> Admin Console </h1>
 
-    <% include ../partials/profile-footer %>
+  <div id="app">
+    <p>
+      Notify All...
+      <button v-on:click='notify()'>Accepted</button>
+      <button v-on:click='notify()'>Pending</button>
+      <button v-on:click='notify()'>Rejected</button>
+      <button v-on:click='notify()'>Not yet Notified</button>
+      <button v-on:click='notify()'>Accepted / Rejected and not yet Notified</button>
+      <button v-on:click='notify()'>Pending and not yet Notified</button>
+    </p>
+    <p>
+      Sort by...
+      <button v-on:click='sortUsers("status")'>Status</button>
+      <button v-on:click='sortUsers("school")'>School</button>
+      <button v-on:click='sortUsers("major")'>Major</button>
+      <!-- <button v-on:click='sortUsers("level_of_study")'>Level of Study</button> -->
+      <button v-on:click='sortUsers("reimbursementAmount")'>Reimbursement</button>
+    </p>
+    <p><button v-on:click='getCSV()'>Export to CSV</button></p>
+    <p>Applicants: {{ users.length }}, &nbsp Accepted: {{ acceptedNum }} </p>
+    <p>A - Accept, P - Set Pending, R - Reject, N - Notify of Status</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Change<br>Status</th>
+          <th>Status</th>
+          <th>Name</th>
+          <th>School</th>
+          <th>Major</th>
+          <!-- <th>Level of<br>Study</th> -->
+          <th>Reimburse</th>
+          <th>Additional</th>
+          <th>Gender</th>
+          <th>First<br>Hackathon?</th>
+          <th>Notified</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in users">
+          <td v-if='user.status != "Not Attending"' style="min-width:150px">
+            <button v-on:click='changeStatus(user._id, "Accepted")'>A</button> <!-- Accept -->
+            <button v-on:click='changeStatus(user._id, "Denied")'>R</button> <!-- Reject -->
+            <button v-on:click='changeStatus(user._id, "Pending")'>P</button> <!-- Put on Pending -->
+            <button>N</button> <!-- Notify (send email) -->
+          </td>
+          <td v-else> {{ user.status }} </td>
+          <td v-if='user.status == "Accepted"' style='background-color: green'> {{ user.status }} </td>
+          <td v-else-if='user.status == "Denied"' style='background-color: red'> {{ user.status }} </td>
+          <td v-else style='background-color: #f90'> {{ user.status }} </td>
+          <td> {{ user.first_name }} {{ user.last_name }} </td>
+          <td v-if='user.school'> {{ user.school.name }} </td>
+          <td v-else> none </td>
+          <td> {{ user.major }} </td>
+          <!-- <td> {{ user.level_of_study }} </td> -->
+          <td>
+            <div v-if="user.reimbursementSeeking"> 
+              {{ user.reimbursementAmount }}, {{ user.reimbursementLocation }}
+            </div>
+          </td>
+          <td> {{ user.additional }} </td>
+          <td> {{ user.gender }} </td>
+          <td> {{ user.firstHackathon }} </td>
+          <td>No.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="/js/vue.js"></script>
+  <script src="/js/admin-page-js.js"></script>
 </body>
 
 <script src="https://use.fontawesome.com/fae771462f.js"></script>
