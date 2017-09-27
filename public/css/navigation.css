@@ -1,13 +1,12 @@
+@import url("main.css");
+
 #nav--burger {
     display: none;
 }
 
 #navContainer {
   background: #252F42;
-  position: fixed;
-
-/*   width: fit-content; */
-  
+  position: fixed;  
   left: 50%;
   transform: translate(-50%,0%);
   white-space: nowrap;

@@ -1,3 +1,4 @@
+@import url("main.css");
 /* General*/
 .row {
   max-width: none !important; }
@@ -9,13 +10,13 @@
   float: left !important; }
 
 .text-orange {
-  color: #F58549; }
+  color: var(--light-orange-color); }
 
 h1,
 h2,
 h3,
 h4 {
-  color: #F9F5EF;
+  color: var(--white-color);
   font-family: 'Open Sans', sans-serif;
   font-weight: 300; }
 
@@ -24,21 +25,21 @@ svg {
   height: auto; }
 
 a {
-  color: #F58549;
+  color: var(--light-orange-color);
   text-decoration: none; }
 
 a:hover, a:focus {
-  color: #C16C3E;
+  color: var(--dark-organge-color);
   text-decoration: none; }
 
 .text {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  color: #F9F5EF; }
+  color: var(--white-color); }
 
 .p-text {
   font-weight: 500;
-  color: #F9F5EF;
+  color: var(--white-color);
   font-size: 1.1em; }
 
 h1 {
@@ -55,7 +56,7 @@ h4 {
   font-size: 14px; }
 
 body {
-  background-color: #212939; }
+  background-color: var(--dark-color); }
 
 #bg-image {
   background: url("/public/img/homebg3.jpg");
@@ -64,7 +65,7 @@ body {
   background-position: center center; }
 
 #bg-overlay {
-  background-color: rgba(42, 45, 60, 0.9); }
+  background-color: var(--bg-color-config); }
 
 #home {
   padding-bottom: 20px; }
@@ -267,7 +268,7 @@ label {
   bottom: 16px; }
 
 .track-question {
-  color: #727478;
+  color: #727478; /* --medium-grey-color */
   width: 100%;
   text-align: center; }
 

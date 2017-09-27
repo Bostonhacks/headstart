@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/registration.css">
 </head>
-<body>
+<body class="dark-background">
     <% include ../partials/profile-nav %>
 
     <div class="account-extras-container">
@@ -20,7 +20,8 @@
                 <div class="question">
                     <input type="checkbox" name="notAttending" value="true" required> I can no longer attend Bostonhacks<br>
                 </div>
-                <input type="submit" value="Submit" class="submit">
+                <input type="submit" value="Submit" class="submit button">
+                <a href="/home" class="button button-cancel"> Cancel </a>
             </form>
         </div>
     </div>

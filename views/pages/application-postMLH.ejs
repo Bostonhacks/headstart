@@ -1,66 +1,349 @@
 <!doctype html>
 <html>
-<head>
+  <head>
     <% include ../partials/head %>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/slider.css">
     <link rel="stylesheet" href="css/registration.css">
-</head>
-<body>
-<div class="container">
-    <% include ../partials/profile-nav %>
-
-    <div class="page-header text-center">
-        <h1>Registration</h1>
-    </div>
-
-    <div class="questions-container">
-        <h2> Awesome! Just a few last questions:</h2>
+    <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/vendor/slider.js"></script>
+  </head>
+  <body>
+    <div class="container registration-body">
+      <% include ../partials/profile-nav %>
+      <div class="page-header text-center">
+        <div class="registration-heading">
+          <h1>Registration</h1>
+        </div>
+        <div class="registration-heading">
+          Awesome! Just a few last questions.
+        </div>
+      </div>
+      <div class="questions-container">
         <% if (errormessage.length > 0) { %>
-            <div class="text-center">
-                <div class="serverMessageError"> <%= errormessage %> </div>
-            </div>
+        <div class="text-center">
+          <div class="serverMessageError"> <%= errormessage %> </div>
+        </div>
         <% } %>
-
-        <form action="/submit-application" method="POST" enctype="multipart/form-data">
-            <div class="question">
-                <h3> Is this your first hackathon? </h3>
-                <input type="radio" name="firstHackathon" value="true" required> Yes<br>
-                <input type="radio" name="firstHackathon" value="false"> No<br>
-            </div>
-
-            <div class="question">
-                <h3 class="contains-clarification"> Would you like to include your resume? (Optional) </h3>
-                <h4 class="question-clarification"> Make sure your file type is either a .jpg, .jpeg, .pdf, .png, or .gif </h4>
-                    <input type="file" name="resume" class="resume-input"> 
-            </div>
-
-            <div class="question">
-                <h3> Do you need travel reimbursement? </h3>
-                <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="true" id="reimbursementYes" required> Yes<br>
-                <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="false" id="reimbursementNo"> No<br>
-                
-                <div id="reimbursement-followup-questions">
-                    <h4> Where are you coming from? </h4>
-                    <input type="text" name="reimbursementLocation" value=""><br>
-                    
-                    <h4> How much are you seeking for reimbursement? (USD) </h4>
-                    <input type="number" name="reimbursementAmount" value="10"><br>
+        <div class="registration-body-form">
+          <form action="/submit-application" method="POST" enctype="multipart/form-data">
+            <div id="registration-body-form-skills">
+              <!-- q1 -->
+              <div class="registration-body-form-question-section interest-areas">
+                <div class="registration-form-skills-response row">
+                  <div class="q1 small-12 question columns">What areas are you most interested in?</div>
+                  <div class="small-6 areas-options columns">
+                    <input class="q1i" id="q1i1" type="checkbox"><label for="q1i1">Finance</label><br>
+                    <input class="q1i" id="q1i2" type="checkbox"><label for="q1i2">Politics</label><br>
+                    <input class="q1i" id="q1i3" type="checkbox"><label for="q1i3">Health</label><br>
+                    <input class="q1i" id="q1i4" type="checkbox"><label for="q1i4">Travel</label><br>
+                    <input class="q1i" id="q1i5" type="checkbox"><label for="q1i5">Entertainment</label><br>
+                    <input class="q1i" id="q1i6" type="checkbox"><label for="q1i6">Music</label>
+                  </div>
+                  <div class="small-6 areas-options columns">
+                    <input class="q1i" id="q1i7" type="checkbox"><label for="q1i7">Economics</label><br>
+                    <input class="q1i" id="q1i8" type="checkbox"><label for="q1i8">Social Issues</label><br>
+                    <input class="q1i" id="q1i9" type="checkbox"><label for="q1i9">Gaming</label><br>
+                    <input class="q1i" id="q1i10" type="checkbox"><label for="q1i10">Fashion</label><br>
+                    <input class="q1i" id="q1i11" type="checkbox"><label for="q1i11">Sports</label><br>
+                    <input class="q1i" id="q1i12" type="checkbox"><label for="q1i12">Arts</label><br>
+                  </div>
+                  <div class="small-12 columns">
+                    <label>
+                      Other:
+                      <input class="q1i" id="q1i10" type="text">
+                    </label>
+                  </div>
                 </div>
+              </div>
+              <!-- q2 -->
+              <div class="registration-body-form-question-section roles">
+                <div class="registration-form-role-response row">
+                  <div class="q2 small-12 question columns">What role do you expect to play on the team?</div>
+                  <div class="small-12 columns role-options">
+                    <input class="q2i" id="q2i1" type="checkbox"><label for="q2i1">Front-end Engineer</label><br>
+                    <input class="q2i" id="q2i2" type="checkbox"><label for="q2i2">Back-end Engineer</label><br>
+                    <input class="q2i" id="q2i3" type="checkbox"><label for="q2i3">Data Scientist</label><br>
+                    <input class="q2i" id="q2i4" type="checkbox"><label for="q2i4">Designer</label><br>
+                    <input class="q2i" id="q2i5" type="checkbox"><label for="q2i5">iOS</label><br>
+                    <input class="q2i" id="q2i6" type="checkbox"><label for="q2i6">Android</label><br>
+                  </div>
+                  <div class="small-12 columns">
+                    <label>
+                      Other:
+                      <input class="q2i" id="q2i7" type="text">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- q3 -->
+              <div class="registration-body-form-question-section technologies">
+                <div class="row">
+                  <div class="q3 small-12 question columns">Rate your experience with the following technologies:</div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Web Application Development</div>
+                    <% var sliderId = 'technology-slider-1'; var sliderType = 'experience';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Mobile Application Development</div>
+                    <% var sliderId = 'technology-slider-2'; var sliderType = 'experience';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Data Analytics/Mining</div>
+                    <% var sliderId = 'technology-slider-3'; var sliderType = 'experience';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Machine Intelligence</div>
+                    <% var sliderId = 'technology-slider-4'; var sliderType = 'experience';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Computer Networks</div>
+                    <% var sliderId = 'technology-slider-5'; var sliderType = 'experience';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Algorithm Design</div>
+                    <% var sliderId = 'technology-slider-6'; var sliderType = 'experience';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Virtual/Augmented Reality</div>
+                    <% var sliderId = 'technology-slider-7'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Hardware</div>
+                    <% var sliderId = 'technology-slider-8'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Internet of Things (IoT)</div>
+                    <% var sliderId = 'technology-slider-9'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <div class="technology-option slider-answer-option q3i">Game Development</div>
+                    <% var sliderId = 'technology-slider-10'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="technology-slider-row">
+                    <label>
+                      Other:
+                      <input class="q3i" id="q3other" type="text">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- q4 -->
+              <div class="registration-body-form-question-section languages">
+                <div class="row">
+                  <div class="q4 small-12 columns question">Rate your experience with the following languages:</div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">HTML/CSS</div>
+                    <% var sliderId = 'language-slider-1'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">JavaScript</div>
+                    <% var sliderId = 'language-slider-2'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">Java</div>
+                    <% var sliderId = 'experience-slider-3'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">C++</div>
+                    <% var sliderId = 'experience-slider-4'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">Python</div>
+                    <% var sliderId = 'experience-slider-5'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">Ruby</div>
+                    <% var sliderId = 'experience-slider-6'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">C#</div>
+                    <% var sliderId = 'experience-slider-7'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">SQL</div>
+                    <% var sliderId = 'experience-slider-8'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">Swift</div>
+                    <% var sliderId = 'experience-slider-9'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <div class="language-option slider-answer-option q4i">Scala</div>
+                    <% var sliderId = 'experience-slider-10'; var sliderType = 'experience'; %>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="language-slider-row">
+                    <label>
+                      Other:
+                      <input class="q4i" id="q4other" type="text">
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <!-- q5 -->
+              <div class="registration-body-form-question-section soft-skills">
+                <div class="row">
+                  <div class="q5 small-12 columns question">Rate your skills (worse - better):</div>
+                  <div class="soft-skills-slider-row">
+                    <div class="soft-skills-option slider-answer-option q5i">Communication Skills</div>
+                    <% var sliderId = 'soft-skills-slider-1'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="soft-skills-slider-row">
+                    <div class="soft-skills-option slider-answer-option q5i">Design Skills</div>
+                    <% var sliderId = 'soft-skills-slider-2'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="soft-skills-slider-row">
+                    <div class="soft-skills-option slider-answer-option q5i">Presentation Skills</div>
+                    <% var sliderId = 'soft-skills-slider-3'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="soft-skills-slider-row">
+                    <div class="soft-skills-option slider-answer-option q5i">Project Management Skills</div>
+                    <% var sliderId = 'soft-skills-slider-4'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                </div>
+              </div>
+              <!-- q6 -->
+              <div class="registration-body-form-question-section hackathon-goals">
+                <div class="row">
+                  <div class="q6 small-12 columns question">Why are you attending BostonHacks? (Rate)</div>
+                  <div class="hackathon-goals-slider-row">
+                    <div class="hackathon-goals-option slider-answer-option q6i">Have fun!</div>
+                    <% var sliderId = 'hackathon-goals-slider-1'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="hackathon-goals-slider-row">
+                    <div class="hackathon-goals-option slider-answer-option q6i">Gain technical skills</div>
+                    <% var sliderId = 'hackathon-goals-slider-2'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="hackathon-goals-slider-row">
+                    <div class="hackathon-goals-option slider-answer-option q6i">Win</div>
+                    <% var sliderId = 'hackathon-goals-slider-3'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="hackathon-goals-slider-row">
+                    <div class="hackathon-goals-option slider-answer-option q6i">Meet new people</div>
+                    <% var sliderId = 'hackathon-goals-slider-4'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                </div>
+              </div>
+              <!-- q7 -->
+              <div class="registration-body-form-question-section final-project">
+                <div class="row">
+                  <div class="q7 small-12 columns question">Rate how important the following is for your final project? (Rate)</div>
+                  <div class="final-project-slider-row">
+                    <div class="final-project-option slider-answer-option q7i">Great code</div>
+                    <% var sliderId = 'final-project-slider-1'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="final-project-slider-row">
+                    <div class="final-project-option slider-answer-option q7i">Great concept</div>
+                    <% var sliderId = 'final-project-slider-2'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="final-project-slider-row">
+                    <div class="final-project-option slider-answer-option q7i">Great design</div>
+                    <% var sliderId = 'final-project-slider-3'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                  <div class="final-project-slider-row">
+                    <div class="final-project-option slider-answer-option q7i">Great presentation</div>
+                    <% var sliderId = 'final-project-slider-4'; var sliderType = 'rate';%>
+                    <% include ../partials/slider %>
+                  </div>
+                </div>
+              </div>
+              <!-- q8 -->
+              <div class="registration-body-form-question-section team-fork">
+                <div class="row">
+                  <div class="q8 small-12 columns question">Do you have a team?</div>
+                  <div class="grid-x grid-padding-x">
+                    <fieldset class="large-6 cell answer-options">
+                      <input type="radio" name="team" value="true" class="team-radio" id="teamTrue"><label for="teamTrue">Yes</label>
+                      <br>
+                      <input type="radio" name="team" value="false" class="team-radio" id="teamFalse"><label for="teamFalse">No</label>
+                    </fieldset>
+                  </div>
+                </div>
+                <!-- q9 -->
+                <div class="registration-body-form-question-section teammates">
+                  <div class="row">
+                    <div class="q9 small-12 columns question">Are you looking for more people to join your team?</div>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell answer-options">
+                        <input type="radio" name="teammates" value="true" class="teammates-radio" id="teammatesTrue"><label for="teammatesTrue">Yes</label>
+                        <br>
+                        <input type="radio" name="teammates" value="false" class="teammates-radio" id="teammatesFalse"><label for="teammatesFalse">No</label>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+                
+                <!-- q10 -->
+                <div class="registration-body-form-question-section existing-team">
+                  <div class="row">
+                    <div class="q10 small-12 columns question">Would you like to join an existing team or project?</div>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell answer-options">
+                        <input type="radio" name="existing-team" value="true" class="existing-team-radio" id="existingTeamTrue"><label for="existingTeamTrue">Yes</label>
+                        <br>
+                        <input type="radio" name="existing-team" value="false" class="existing-team-radio" id="existingTeamFalse"><label for="existingTeamFalse">No</label>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+                <!-- q11 -->
+                <div class="registration-body-form-question-section create-team">
+                  <div class="row">
+                    <div class="q11 small-12 columns question">Would you like to create your own team?</div>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-6 cell answer-options">
+                        <input type="radio" name="create-team" value="true" class="create-team-radio" id="createTeamTrue"><label for="createTeamTrue">Yes</label>
+                        <br>
+                        <input type="radio" name="create-team" value="false" class="create-team-radio" id="createTeamFalse"><label for="createTeamFalse">No</label>
+                      </fieldset>
+                    </div>
+                  </div>
+                </div>
+                <div class="registration-button">
+                  <a href="#" id="registrationButton" class="button">Finish</a>
+                </div>
+              </form>            
             </div>
-
-            <div class="question">
-                <h3> Comments? Questions? Concerns? </h3>
-                <textarea name="additional" rows="4" cols="50"></textarea>
-            </div>
-
-            <input type="submit" value="Submit" class="submit-application">
-        </form>
-    </div>
-</div>
-</body>
-
-<footer>
-    <% include ../partials/footer %>
-    <script src="js/registration.js"></script> 
-</footer>
-</html>
+          </div>
+        </div>
+      </body>
+      <footer>
+        <script src="/js/vendor/foundation.js"></script>
+        <script src="/js/app.js"></script>
+        <script src="js/registration.js"></script>
+        <script src="js/slider-local.js"></script>
+      </footer>
+    </html>

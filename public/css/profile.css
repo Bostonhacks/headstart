@@ -1,17 +1,33 @@
-#navContainer {
+@import url("main.css");
+
+#profile-nav {
     width: 100%;
     position: static;
-
     left: 0;
     transform: none;
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
-    background: #EF6262;
+    background: var(--light-orange-color);
     overflow: hidden;
+}
+
+.dark-background {
+  background-color: var(--dark-color);
+  color: var(--white-color);
+}
+
+.profile-nav-text {
+    transition: color 0.1s;
+    color: var(--dark-color);
+}
+
+.profile-nav-text:hover, .profile-nav-text:focus {
+    color: var(--white-color); 
 }
 
 .profile-nav-left {
     float: left;
+    margin: 15px 0px 10px 20px;
 }
 
 .profile-nav-terrier {
@@ -22,7 +38,7 @@
 
 .profile-nav-right {
     float: right;
-    margin: 15px 20px 0 0;
+    margin: 15px 20px 10px 0;
 }
 
 .profile-nav-left h2,
@@ -36,13 +52,15 @@
 }
 
 .profile-info-header {
-    background: #EF6262;
+    background: var(--light-orange-color);
+    color: var(--white-color);
     padding-left: 5px;
     margin-right: 50px;
 }
 
 .profile-app-header {
-    background: #EF6262;
+    background: var(--light-orange-color);
+    color: var(--white-color);
     padding-left: 5px;
     margin-right: 50px;   
 }
@@ -54,7 +72,7 @@
 
 #profile-footer h3,
 .social-media-icons i {
-     color: #000000;
+     color: var(--white-color);
 }
 
 .fa-facebook-official {
@@ -66,24 +84,20 @@
 }
 
 #profile-footer {
-    background: #A1DEFF;
+    background-color: var(--light-blue);
     position: absolute;
     bottom: 0;
 }
 
 @media only screen and (max-width: 900px) {
-    #profile-footer {
-        display: none;
-    }
+  
     .profile-container {
-        margin: 20px 20px 0px 20px;
+        margin: 40px 20px 0px 20px;
     }
 
     .profile-info-header, .profile-app-header {
         margin-right: 0px;
     }
-
-
 }
 
 .profile-info-details {

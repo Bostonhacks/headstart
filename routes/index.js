@@ -173,15 +173,16 @@ router.get('/auth/mlh/callback', isLoggedIn, function (req, res, next) {
 
 router.get('/almost-done', isLoggedIn, function (req, res, next) {
   if (req.user.local.registered) return renderProfile(req, res)
-  res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''})
+  res.render('pages/registration.ejs', {errormessage: '', uploadsuccess: ''})
 })
 
 router.post('/submit-application', isLoggedIn, upload.single('resume'), function (req, res, next) {
   // Check for location & amount (since those are required). Checking for frontend tampering
   if (!req.body.firstHackathon || !req.body.reimbursementSeeking) {
-    res.render('pages/application-postMLH.ejs', { errormessage: 'There was an error with your response. Please try again.' })
+    console.log(req.body)
+    res.render('pages/registration.ejs', { errormessage: 'There was an error with your response. Please try again.' })
   } else if (req.fileAccepted === false) {
-    res.render('pages/application-postMLH.ejs', { errormessage: 'Please only upload images of type .jpg, .jpeg, .pdf, .png, or .gif' })
+    res.render('pages/registration.ejs', { errormessage: 'Please only upload images of type .jpg, .jpeg, .pdf, .png, or .gif' })
   } else {
     updateUser.additionalUpdate(req.user.id, req.body)
     updateUser.registered(req.user.id)

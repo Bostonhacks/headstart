@@ -1,47 +1,112 @@
+@import url("main.css");
+
 .page-header {
-    margin: 20px 0px 20px 0px;
+  margin: 20px 0px 20px 0px;
 }
 
-
-/* Post MLH View */
-input[type="text"], input[type="number"], textarea {
-    width: 500px;
-    max-width: 100%;
+.button-cancel {
+  background-color: var(--dark-grey-color);
 }
 
-input[type="radio"] {
-    margin-bottom: 0px;
+.serverMessageError {
+  color: white;
+  padding-bottom: 20px;
 }
 
-.questions-container {
-    margin-left: 50px;
+.registration-body {
+  background-color: var(--dark-color);
+}
+
+.dark-background {
+  background-color: var(--dark-color);
+}
+
+.dark-background h1, .dark-background h3 {
+  color: var(--white-color);
+}
+
+.registration-heading {
+  color: var(--light-orange-color);
+  font-size: 32px;
+  text-align: center;
+}
+
+.registration-body-form {
+  background-color: var(--darker-white-color);
+  padding: 2% 20%;
 }
 
 .question {
-    color: #FFFFFF;
-    margin-top: 10px;
-    font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+  margin: 10px 0 15px 0;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 22px;
+  font-weight: bold;
 }
 
 .contains-clarification {
-    margin-bottom: 0px;
+  margin-bottom: 0px;
 }
 
 .question-clarification {
-    margin-left: 20px;
+  margin-left: 20px;
 }
 
 .resume-input {
-    margin: 20px 0px 20px 30px;
+  margin: 20px 0px 20px 30px;
 }
 
 #reimbursement-followup-questions {
-    margin-top: 30px;
-    display: none;
+  margin-top: 30px;
+  display: none;
 }
 
-input[type="submit"] {
-    margin-bottom: 20px;
-    background: #FFFFFF;
+.experience .registration-slider-option {
+  left:-100%;
+  font-size: 12px!important;
+}
+
+.registration-slider-wrapper {
+  width: 100%;
+  color: var(--light-grey-color);
+}
+
+.teammates, .create-team, .existing-team{
+  display: none;
+} 
+
+.technology-slider-row, .language-slider-row, .soft-skills-slider-row, .final-project-slider-row, .hackathon-goals-slider-row {
+  padding: 0 5% 0 5%;
+}
+
+fieldset {
+  padding: 0 5% 0 5%;
+}
+
+.slider-answer-option {
+  font-size: 18px;
+  margin: 5px 0px 10px 0;
+  color: var(--medium-grey-color);
+}
+
+#q3other, #q4other {
+  width: 100%;
+}
+
+label {
+  color: var(--medium-grey-color);
+}
+
+.registration-button {
+  margin: 0 5% 0 5%;
+  text-align: center;
+  margin: 10px 0;
+}
+
+/*New teammates css*/
+.new-teammates-input {
+  width: 80%;
+}
+
+.redirect-text {
+  color: var(--light-orange-color) !important;
 }

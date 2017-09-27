@@ -6,16 +6,10 @@
 </head>
 <body>
     <section>
-        <% include ../partials/clouds %>
+        <% include ../partials/halloween %>
         <div id="loginContainer" class="authContainer">
             <a href="/"><img src="img/terrierLogo.png" id="terrierLogo"></a>
-
             <h1 id="loginThemeTitle"></h1>
-
-            <!-- April 10th: Adding this now -->
-            <!-- <h2 id="buRegistrationMessage">Note: Registration is now only open to local Boston students. Global registration has closed.</h2> -->
-
-            <!-- Server Messages -->
             <div class="text-center">
                 <% if (message.length > 0) { %>
                     <h3 class="serverMessageError loginSignupMessage"> <%= message %></h3>
@@ -30,11 +24,11 @@
 
             <div id="inputContainer">
                 <div class="form-group">
-                    <h2> Email: </h2>
+                    <h3> Email: </h3>
                     <input type="email" class="textForm" name="email" id="emailInput" placeholder="you@bostonhacks.io">
                 </div>
                 <div class="form-group" id="passwordField">
-                    <h2> Password: </h2>
+                    <h3> Password: </h3>
                     <input type="password" class="textForm" name="password" id="passwordInput" placeholder=">= 9 characters">
                 </div>
                 <br>
@@ -42,8 +36,8 @@
             </div>
 
             <div id="additionalOptions">
-                <a id="signupRedirect"><h3 class="authLinkText">Need to make an Account?</h3></a>
-                <a id="forgotRedirect"><h3 class="authLinkText">Forgot Password?</h3></a>
+                <a id="signupRedirect"><h3 class="authLinkText clickableText">Need to make an Account?</h3></a>
+                <a id="forgotRedirect"><h3 class="authLinkText clickableText">Forgot Password?</h3></a>
             </div>
         </div>
     </body>
