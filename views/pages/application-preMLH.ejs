@@ -5,11 +5,11 @@
     <link rel="stylesheet" href="css/profile.css">
     <link rel="stylesheet" href="css/registration.css">
 </head>
-<body>
+<body class="dark-background">
 <div class="container preMLH">
     <% include ../partials/profile-nav %>
     <div class="page-header text-center">
-        <h1>Registration</h1>
+        <h1 class="redirect-text">Registration</h1>
     
         <% if (errormessage.length > 0) { %>
             <div class="text-center">
@@ -17,7 +17,7 @@
             </div>
         <% } %>
     
-        <h3> We use MyMLH to speed up your application process. <br>You'll be redirected now....</h3>
+        <h4 class="redirect-text"> We use MyMLH to speed up your application process. <br> You'll be redirected now....</h4>
     </div>
 
 </div>

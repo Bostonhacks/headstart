@@ -5,13 +5,13 @@
     <link rel="stylesheet" href="css/profile.css">
 
 </head>
-<body>
+<body class="dark-background">
     <% include ../partials/profile-nav %>
 
     <div class="profile-container">
         <% if (notAttendingMessageSuccess.length > 0) { %>
             <div class="text-center">
-                <h3 class="serverMessageSuccess"> <%= notAttendingMessageSuccess %> </h3>
+                <h4 class="serverMessageSuccess"> <%= notAttendingMessageSuccess %> </h4>
             </div>
         <% } %>
 
@@ -22,7 +22,7 @@
         </div>
         <div class="large-8 columns" id="actions">
                 <h2 class="profile-app-header"> Actions: </h2>
-                <a href="https://bostonhacks17.slack.com/shared_invite/MTY1MDIxMDM4NDU1LTE0OTEzMjI0MTYtM2Y0YThiYTJiMw"><h4 class="profile-info-details">Join Our Slack!</h4></a>
+                <a href="https://join.slack.com/t/bostonhacks-f17/shared_invite/enQtMjQ3Mjk1NjIyNTMxLTI3ZDU5YzAxN2I4ZjUzMDNhNWU4NDVhNWJmYzFmNTg4NDI1YmE0ZjRkMGE3YjU1YmQzYjBkYjliMzE4MDc0NWE"><h4 class="profile-info-details">Join Our Slack!</h4></a>
                 <a href=/not-attending-confirmation><h4 class="profile-info-details"> "I can no longer attend"</h4></a>
         </div>
     </div>

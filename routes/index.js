@@ -179,6 +179,7 @@ router.get('/almost-done', isLoggedIn, function (req, res, next) {
 router.post('/submit-application', isLoggedIn, upload.single('resume'), function (req, res, next) {
   // Check for location & amount (since those are required). Checking for frontend tampering
   if (!req.body.firstHackathon || !req.body.reimbursementSeeking) {
+    console.log(req.body)
     res.render('pages/registration.ejs', { errormessage: 'There was an error with your response. Please try again.' })
   } else if (req.fileAccepted === false) {
     res.render('pages/registration.ejs', { errormessage: 'Please only upload images of type .jpg, .jpeg, .pdf, .png, or .gif' })

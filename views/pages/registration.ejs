@@ -37,16 +37,16 @@
                   <div class="q1 small-12 columns question question-first-hackahon">Is this your first hackathon?</div>
                   <div class="grid-x grid-padding-x">
                     <fieldset class="large-6 cell answer-options">
-                      <input type="radio" name="first-hackathon-response" value="true" class="first-hackathon-response" id="first-hackathon-response-true"><label for="first-hackathon-true">Yes</label>
+                      <input type="radio" name="firstHackathon" value="true" class="first-hackathon-response" id="first-hackathon-response-true"><label for="first-hackathon-true">Yes</label>
                       <br>
-                      <input type="radio" name="first-hackathon-response" value="false" class="first-hackathon-response" id="first-hackathon-response-false"><label for="first-hackathon-false">No</label>
+                      <input type="radio" name="firstHackathon" value="false" class="first-hackathon-response" id="first-hackathon-response-false"><label for="first-hackathon-false">No</label>
                     </fieldset>
                   </div>
                 </div>
                 <!-- q2 -->
                 <div class="registration-body-form-question-section resume-upload">
                   <div class="row">
-                    <div class="q2 small-12 columns question question-resume-upload">Would you like to upload your resume? (Optional)</div>
+                    <div class="q2 small-12 columns question question-resume-upload">Upload your resume (Optional)</div>
                     <div class="grid-x grid-padding-x">
                       <input type="file" name="resume" id="resume-input" class="show-for-sr"> 
                     </div>
@@ -58,9 +58,9 @@
                     <div class="q1 small-12 columns question question-travel-reimbursement">Do you need travel reimbursement?</div>
                     <div class="grid-x grid-padding-x">
                       <fieldset class="large-6 cell answer-options">
-                        <input type="radio" onclick="travelReimbursementCheck()" id="reimbursementYes" name="travel-reimbursement-response" value="true" class="travel-reimbursement-response" required><label for="reimbursementYes">Yes</label>
+                        <input type="radio" onclick="travelReimbursementCheck()" id="reimbursementYes" name="reimbursementSeeking" value="true" class="travel-reimbursement-response" required><label for="reimbursementYes">Yes</label>
                         <br>
-                        <input type="radio" onclick="travelReimbursementCheck()" name="travel-reimbursement-response" value="false" class="travel-reimbursement-response" id="reimbursementNo"><label for="reimbursementNo">No</label>
+                        <input type="radio" onclick="travelReimbursementCheck()" name="reimbursementSeeking" value="false" class="travel-reimbursement-response" id="reimbursementNo"><label for="reimbursementNo">No</label>
                       </fieldset>
                     </div>
                   </div>
@@ -80,6 +80,19 @@
                     <div class="q1 small-12 columns question question-travel-reimbursement-location">How much are you seeking for reimbursement? (USD)</div>
                     <div class="grid-x grid-padding-x">
                       <input name="reimbursementAmount" value="" type="number">                      
+                    </div>
+                  </div>
+                </div>
+                <!-- q6 -->
+                <div class="registration-body-form-question-section">
+                  <div class="row">
+                    <div class="q1 small-12 columns question">Data Sharing</div>
+                    <div class="grid-x grid-padding-x">
+                      <fieldset class="large-12 cell answer-options">
+                        <label>
+                          <input type="checkbox" id="dataSharing" name="dataSharingAgreed" required>I agree to the terms of both the MLH Contest Terms and Conditions and the MLH Privacy Policy. Please note that you may receive pre and post-event informational e-mails and occasional messages about hackathons from MLH as per the MLH Privacy Policy.
+                        </label>
+                      </fieldset>
                     </div>
                   </div>
                 </div>

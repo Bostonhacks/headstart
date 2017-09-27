@@ -4,12 +4,25 @@
   margin: 20px 0px 20px 0px;
 }
 
+.button-cancel {
+  background-color: var(--dark-grey-color);
+}
+
 .serverMessageError {
   color: white;
+  padding-bottom: 20px;
 }
 
 .registration-body {
   background-color: var(--dark-color);
+}
+
+.dark-background {
+  background-color: var(--dark-color);
+}
+
+.dark-background h1, .dark-background h3 {
+  color: var(--white-color);
 }
 
 .registration-heading {
@@ -24,7 +37,6 @@
 }
 
 .question {
-  color: var(--dark-grey-color);
   margin: 10px 0 15px 0;
   font-family: 'Open Sans', sans-serif;
   font-size: 22px;
@@ -93,4 +105,8 @@ label {
 /*New teammates css*/
 .new-teammates-input {
   width: 80%;
+}
+
+.redirect-text {
+  color: var(--light-orange-color) !important;
 }

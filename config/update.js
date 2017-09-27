@@ -15,7 +15,7 @@ module.exports = {
     })
   },
   registered: function (id) {
-    User.findOneAndUpdate({ '_id': id }, {'local.registered': true, 'status': 'Pending'}, {upsert: true}, function (err, raw) {
+    User.findOneAndUpdate({ '_id': id }, {'local.registered': true, 'status': 'Pending', 'dateRegistered':Date.now()}, {upsert: true}, function (err, raw) {
       if (err) errorhandler.logErrorMsg('update.registered', err)
       return raw
     })

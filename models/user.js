@@ -7,6 +7,7 @@ const userSchema = mongoose.Schema({
     password: String,
     registered: Boolean
   },
+  dateRegistered: Date,
   email: String,
   first_name: String,
   last_name: String,
@@ -29,7 +30,8 @@ const userSchema = mongoose.Schema({
   reimbursementAmount: Number,
   additional: String,
   status: String, // Possible values so far: {'Pending', 'Not Attending'}
-  notAttendingReason: String
+  notAttendingReason: String,
+  dataSharingAgreed: Boolean
 })
 
 // Hash Generation
