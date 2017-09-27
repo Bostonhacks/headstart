@@ -13,7 +13,7 @@ const express = require('express')
 const router = express.Router()
 
 router.get('/', function (req, res, next) {
-  return res.render('pages/index')
+  return res.redirect('/signup')
 })
 
 router.get('/login', function (req, res, next) {
