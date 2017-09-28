@@ -85,13 +85,25 @@
 
 #profile-footer {
     background-color: var(--light-blue);
-    position: absolute;
+    position: fixed;
     bottom: 0;
+}
+
+.account-extras-container {
+    margin: 20px 200px 0px 200px;
+}
+
+.account-extras-container > .columns {
+    padding-bottom: 200px; 
 }
 
 @media only screen and (max-width: 900px) {
   
     .profile-container {
+        margin: 40px 20px 0px 20px;
+    }
+    
+    .account-extras-container {
         margin: 40px 20px 0px 20px;
     }
 
@@ -108,8 +120,4 @@
 
 a h4:hover {
     color: #d9d9d9;
-}
-
-.account-extras-container {
-    margin: 20px 200px 0px 200px;
 }

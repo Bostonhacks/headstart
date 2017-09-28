@@ -11,7 +11,7 @@ function generateLink (user, next) {
 
   // Doing this replace because bcrypt uses forward slashes which we can't use for data in URLs
   const hash = bcrypt.hashSync(user.local.email + user.local.password).replace(/\//g, '~')
-  next('bostonhacks.io/change-password/' + user._id + '/' + bases.toBase36(d.getTime()) + '-' + hash)
+  next('my.bostonhacks.io/change-password/' + user._id + '/' + bases.toBase36(d.getTime()) + '-' + hash)
 }
 
 function sendForgotPasswordEmail (user) {
