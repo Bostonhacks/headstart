@@ -32,14 +32,14 @@ function post(path, params, method) {
 function login() {
     email = document.getElementById('emailInput').value;
     password = document.getElementById('passwordInput').value;
-    post('/login', {email: email, password: password});
+    post('/login', {email: email.toLowerCase(), password: password});
 }
 
 function signup() {
   email = document.getElementById('emailInput').value;
   password = document.getElementById('passwordInput').value;
 
-  post('/signup', {email: email, password: password});
+  post('/signup', {email: email.toLowerCase(), password: password});
 }
 
 function reset() {
