@@ -24,7 +24,7 @@ app.use('/css', sassMiddleware({
   src: path.join(__dirname, 'public/scss'),
   dest: path.join(__dirname, 'public/css'),
   outputStyle: 'compressed',
-  sourceMap: true,
+  sourceMap: true
 }))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')))
