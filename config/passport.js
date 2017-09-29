@@ -34,7 +34,7 @@ module.exports = function (passport) {
         errorhandler.logErrorMsg('passport.signup.lookup', err)
         return done(err)
       }
-      if (user) return done(null, false, req.flash('signupMessage', 'That email is already taken.'))
+      if (user) return done(null, false, req.flash('signupMessage', 'That email is already taken. Try resetting your password.'))
       if (password.length < 9) return done(null, false, req.flash('signupMessage', 'Password must be at least 9 characters.'))
 
       let newUser = new User()
