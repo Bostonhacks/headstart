@@ -87,7 +87,8 @@ function configureSettings(view, callback) {
             settings.pathname = '/login';
             settings.buttonLabel = 'Login';
             settings.submitFunction = 'login';
-            $('#additionalOptions').html('<a id="signupRedirect"><h3 class="authLinkText">Need to make an Account?</h3></a><a id="forgotRedirect"><h3 class="authLinkText">Forgot Password?</h3></a>');
+            settings.pageTitle = 'Login';
+            $('#additionalOptions').html('<a id="signupRedirect"><h3 class="authLinkText clickableText">Need to make an Account?</h3></a><a id="forgotRedirect"><h3 class="authLinkText clickableText">Forgot Password?</h3></a>');
             break;
         case 'signup':
             settings.buRegistrationMessage = 'Note: Registration is now only open to BU students';
@@ -96,14 +97,14 @@ function configureSettings(view, callback) {
             settings.buttonLabel = 'Register';
             settings.submitFunction = 'signup';
             settings.pageTitle = 'Registration';
-            $('#additionalOptions').html('<a id="loginRedirect"><h3 class="authLinkText">Have an Account?</h3></a>');
+            $('#additionalOptions').html('<a id="loginRedirect"><h3 class="authLinkText clickableText">Have an Account?</h3></a>');
             break;
         case 'forgot':
             settings.pathname = '/forgot-password';
             settings.buttonLabel = 'Reset';
             settings.submitFunction = 'reset';
             settings.pageTitle = 'Forgot Password';
-            $('#additionalOptions').html('<a id="loginRedirect"><h3 class="authLinkText">Back to Login</h3></a>');
+            $('#additionalOptions').html('<a id="loginRedirect"><h3 class="authLinkText clickableText">Back to Login</h3></a>');
     }
 
     callback(settings);
