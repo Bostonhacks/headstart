@@ -8,11 +8,11 @@ body {
 }
 
 .clickableText {
-  transition: color 0.1s;
+  transition: color 0.2s;
 }
 
 .clickableText:hover, .clickableText:active {
-  color: white;
+  color: var(--medium-grey-color);
   text-decoration: underline;
 }
 
@@ -64,7 +64,7 @@ body {
 .textForm {
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  color: var(--light-grey-color);
+  color: var(--dark-grey-color);
   background-color: var(--white-color);
   border: 0;
   border-radius: 5px;
