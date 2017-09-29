@@ -1,38 +1,33 @@
 @import url("main.css");
 
 #nav--burger {
-    display: none;
+  display: none;
 }
 
 #navContainer {
   background: #252F42;
-  position: fixed;  
+  position: fixed;
   left: 50%;
-  transform: translate(-50%,0%);
+  transform: translate(-50%, 0%);
   white-space: nowrap;
-    
   z-index: 100;
-
   border-left: 3px solid #F58549;
   border-right: 3px solid #F58549;
   border-bottom: 3px solid #F58549;
   border-bottom-left-radius: 25px;
   border-bottom-right-radius: 25px;
-
   padding: 20px 50px 15px 50px;
-}
-
-#navContainer h3 {
-  display: inline-block;
+  h3 {
+    display: inline-block;
+  }
 }
 
 .nav-separator {
-    height: 2px;
-    width: 8px;
-    background: #F58549;
-
-    display: inline-block;
-    margin: 0px 10px 5px 10px;
+  height: 2px;
+  width: 8px;
+  background: #F58549;
+  display: inline-block;
+  margin: 0px 10px 5px 10px;
 }
 
 .force-left-margin {
@@ -47,9 +42,8 @@
 
 @media (max-width: 1024px) {
   .force-right-align {
-    padding-right: 40px !important;  
+    padding-right: 40px !important;
   }
-  
   .force-left-margin {
     padding-left: 40px !important;
     padding-right: 40px !important;

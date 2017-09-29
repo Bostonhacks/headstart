@@ -19,10 +19,9 @@
 
 .dark-background {
   background-color: var(--dark-color);
-}
-
-.dark-background h1, .dark-background h3 {
-  color: var(--white-color);
+  h1, h3 {
+    color: var(--white-color);
+  }
 }
 
 .registration-heading {
@@ -61,8 +60,8 @@
 }
 
 .experience .registration-slider-option {
-  left:-100%;
-  font-size: 12px!important;
+  left: -100%;
+  font-size: 12px !important;
 }
 
 .registration-slider-wrapper {
@@ -70,15 +69,11 @@
   color: var(--light-grey-color);
 }
 
-.teammates, .create-team, .existing-team{
+.teammates, .create-team, .existing-team {
   display: none;
-} 
-
-.technology-slider-row, .language-slider-row, .soft-skills-slider-row, .final-project-slider-row, .hackathon-goals-slider-row {
-  padding: 0 5% 0 5%;
 }
 
-fieldset {
+.technology-slider-row, .language-slider-row, .soft-skills-slider-row, .final-project-slider-row, .hackathon-goals-slider-row, fieldset {
   padding: 0 5% 0 5%;
 }
 
@@ -103,6 +98,7 @@ label {
 }
 
 /*New teammates css*/
+
 .new-teammates-input {
   width: 80%;
 }

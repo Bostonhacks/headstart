@@ -9,25 +9,22 @@ body {
 
 .clickableText {
   transition: color 0.1s;
-}
-
-.clickableText:hover, .clickableText:active {
-  color: white;
-  text-decoration: underline;
+  &:hover, &:active {
+    color: white;
+    text-decoration: underline;
+  }
 }
 
 .authContainer {
   position: absolute;
   margin: 0 auto;
   text-align: center;
-  top:0;
-  left:0;
-  right:0;
-
+  top: 0;
+  left: 0;
+  right: 0;
   padding-top: 15px;
   width: 400px;
   background-color: var(--darker-white-color);
-
   border: 5px solid var(--light-grey-color);
   -moz-border-radius: 5px;
   border-radius: 5px;
@@ -74,16 +71,13 @@ body {
 /* If you know the correct way to combine 
 the following two pieces, pls make PR :) ... 
 otherwise I'll clean this up later */
-input[type=email]:focus {
-  background-color: var(--white-color);
-  border: 0px solid var(--light-grey-color);
-  border-bottom-width: 2px;
-}
 
-input[type=password]:focus {
-  background-color: var(--white-color);;
-  border: 0px solid var(--light-grey-color);
-  border-bottom-width: 2px;  
+input {
+  &[type=email]:focus, &[type=password]:focus {
+    background-color: var(--white-color);
+    border: 0px solid var(--light-grey-color);
+    border-bottom-width: 2px;
+  }
 }
 
 .loginButtons {
@@ -93,41 +87,38 @@ input[type=password]:focus {
   border-radius: 5px;
   background-color: var(--light-orange-color);
   border-color: var(--dark-orange-color);
-  color: var(--dark-grey-color);;
+  color: var(--dark-grey-color);
   font-size: 24px;
   font-family: 'Open Sans', sans-serif;
   font-weight: 300;
-  text-align:center;
-}
-
-.loginButtons:hover,
-.loginButtons:focus {
-  background-color:  var(--dark-orange-color);
-  color: var(--dark-grey-color);;
-  outline: 0;
+  text-align: center;
+  &:hover, &:focus {
+    background-color: var(--dark-orange-color);
+    color: var(--dark-grey-color);
+    outline: 0;
+  }
 }
 
 #additionalOptions {
   padding-top: 5px;
   padding-bottom: 15px;
-}
-
-#additionalOptions:hover{
-  color: #e6e6e6;
+  &:hover {
+    color: #e6e6e6;
+  }
 }
 
 #loginThemeTitle {
-    margin-bottom: 15px;
+  margin-bottom: 15px;
 }
 
 @media only screen and (max-width: 900px) {
-    #loginContainer {
-        margin-top: 30px;  
-    }
+  #loginContainer {
+    margin-top: 30px;
+  }
 }
 
-
 /* April 10th: Added this now */
+
 #buRegistrationMessage {
   border: 1px solid #f58a8a;
   padding: 5px 5px 5px 5px;

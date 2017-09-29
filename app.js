@@ -9,6 +9,7 @@ const morgan = require('morgan')
 const passport = require('passport')
 const path = require('path')
 const session = require('express-session')
+const sassMiddleware = require('node-sass-middleware')
 
 const index = require('./routes/index')
 const app = express()
@@ -19,6 +20,12 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
 app.use(session({secret: process.env.SESSION, resave: true, saveUninitialized: true}))
 
+app.use('/css', sassMiddleware({
+  src: path.join(__dirname, 'public/scss'),
+  dest: path.join(__dirname, 'public/css'),
+  outputStyle: 'compressed',
+  sourceMap: true
+}))
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(favicon(path.join(__dirname, 'public', 'img', 'favicon.ico')))
 

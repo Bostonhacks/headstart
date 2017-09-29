@@ -10,6 +10,7 @@
   position: relative;
   margin: 33px 0 0 0;
 }
+
 .medium-fast-item {
   -webkit-animation: item 45s infinite linear;
   -moz-animation: item 45s infinite linear;
@@ -19,7 +20,7 @@
   border-radius: 10px;
   position: relative;
   margin: 33px 0 0 0;
-  width:200px;
+  width: 200px;
 }
 
 .medium-item {
@@ -31,7 +32,7 @@
   border-radius: 10px;
   position: relative;
   margin: 33px 0 0 0;
-  width:200px;
+  width: 200px;
 }
 
 .slow-item {
@@ -43,60 +44,67 @@
   border-radius: 10px;
   position: relative;
   margin: 33px 0 0 0;
-  width:200px;
+  width: 200px;
 }
 
 .xs-small {
-	width:40px;
-	height: 40;
+  width: 40px;
+  height: 40;
 }
 
 .small {
-	width:75px;
-	height: 75px;
+  width: 75px;
+  height: 75px;
 }
 
 .medium {
-	width:100px; 
-	height: 100px;
+  width: 100px;
+  height: 100px;
 }
 
 .large {
-	width: 150px; 
-	height: 150px;
+  width: 150px;
+  height: 150px;
 }
 
 @-webkit-keyframes item {
   0% {
     left: -5%;
   }
+
   100% {
     left: 105%;
   }
 }
+
 
 @-moz-keyframes item {
   0% {
     left: -5%;
   }
+
   100% {
     left: 105%;
   }
 }
+
 
 @-ms-keyframes item {
   0% {
     left: -5%;
   }
+
   100% {
     left: 105%;
   }
 }
 
+
 @keyframes item {
   0% {
     left: -5%;
   }
+
   100% {
     left: 105%;
   }
