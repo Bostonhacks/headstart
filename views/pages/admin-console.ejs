@@ -55,6 +55,7 @@
           <td v-else> {{ user.status }} </td>
           <td v-if='user.status == "Accepted"' style='background-color: green'> {{ user.status }} </td>
           <td v-else-if='user.status == "Denied"' style='background-color: red'> {{ user.status }} </td>
+          <td v-else-if='user.local.registered == false' style='background-color: cyan'> Not Registered </td>
           <td v-else style='background-color: #f90'> {{ user.status }} </td>
           <td> {{ user.first_name }} {{ user.last_name }} </td>
           <td v-if='user.school'> {{ user.school.name }} </td>
