@@ -9,6 +9,12 @@ const debug = require('debug')('cloud-client:server')
 const http = require('http')
 
 /**
+ * Separate admin emails into a list of emails.
+ */
+
+process.env.ADMIN_EMAILS = process.env.ADMIN_EMAIL.split(',')
+
+/**
  * Get port from environment and store in Express.
  */
 
