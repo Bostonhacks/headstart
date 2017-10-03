@@ -46,15 +46,17 @@
       </thead>
       <tbody>
         <tr v-for="user in users">
-          <td v-if='user.status != "Not Attending"' style="min-width:150px">
+          <td v-if='user.status != "Not Attending" && user.local.registered' style="min-width:150px">
             <button v-on:click='changeStatus(user._id, "Accepted")'>A</button> <!-- Accept -->
             <button v-on:click='changeStatus(user._id, "Denied")'>R</button> <!-- Reject -->
             <button v-on:click='changeStatus(user._id, "Pending")'>P</button> <!-- Put on Pending -->
             <button>N</button> <!-- Notify (send email) -->
           </td>
-          <td v-else> {{ user.status }} </td>
+          <td v-else> </td>
           <td v-if='user.status == "Accepted"' style='background-color: green'> {{ user.status }} </td>
           <td v-else-if='user.status == "Denied"' style='background-color: red'> {{ user.status }} </td>
+          <td v-else-if='user.local.registered == false' style='background-color: cyan'> Not Registered </td>
+          <td v-else-if='user.status == "Not Attending"' style='background-color: pink'> Not Attending </td>
           <td v-else style='background-color: #f90'> {{ user.status }} </td>
           <td> {{ user.first_name }} {{ user.last_name }} </td>
           <td v-if='user.school'> {{ user.school.name }} </td>

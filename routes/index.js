@@ -96,7 +96,7 @@ router.post('/change-password/:ident/:timestamp-:hash', function (req, res, next
 
 router.get('/home', isLoggedIn, function (req, res, next) {
   // If user is admin
-  if (req.user.local.email === process.env.ADMIN_EMAIL) {
+  if (adminFunc.isAdmin(req.user.local.email)) {
     return res.redirect('/admin')
   }
 
@@ -210,7 +210,7 @@ router.post('/not-attending-confirmation', isLoggedIn, function (req, res, next)
 })
 
 router.get('/admin', isLoggedIn, function (req, res, next) {
-  if (req.user.local.email !== process.env.ADMIN_EMAIL) {
+  if (!adminFunc.isAdmin(req.user.local.email)) {
     res.redirect('/')
     return
   }
@@ -218,7 +218,7 @@ router.get('/admin', isLoggedIn, function (req, res, next) {
 })
 
 router.get('/admin-all-registrants', isLoggedIn, function(req, res, next) {
-  if(req.user.local.email !== process.env.ADMIN_EMAIL) {
+  if (!adminFunc.isAdmin(req.user.local.email)) {
     res.redirect('/')
     return
   }
@@ -228,14 +228,13 @@ router.get('/admin-all-registrants', isLoggedIn, function(req, res, next) {
 })
 
 router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
-  if (req.user.local.email !== process.env.ADMIN_EMAIL) {
+  if (!adminFunc.isAdmin(req.user.local.email)) {
     return res.redirect('/')
   }
   adminFunc.changeStatus(req.params.userid, req.params.stat, function() {
     return res.sendStatus(200)
   })
 })
-
 
 function isLoggedIn (req, res, next) {
   debug(req)

@@ -23,5 +23,9 @@ module.exports = {
     User.update({_id: userid}, {$set: {status: stat}}, function(err, raw){
       return next()
     })
+  },
+  // returns true if the email given is an admin email
+  isAdmin: function(emailAddr) {
+    return process.env.ADMIN_EMAILS.includes(emailAddr)
   }
 }
