@@ -35,14 +35,17 @@
     "validator": "^6.2.1"
   },
   "devDependencies": {
+    "chai": "^4.1.2",
+    "chai-http": "^3.0.0",
     "mocha": "^3.5.3",
+    "should": "^13.1.0",
     "standard": "^8.6.0",
     "supertest": "^3.0.0"
   },
   "engine": "node >= 6.9.0",
   "scripts": {
     "start": "node ./bin/www",
-    "test": "./node_modules/mocha/bin/mocha testing/"
+    "test": "./node_modules/mocha/bin/mocha"
   },
   "standard": {
     "ignore": [
