@@ -45,11 +45,41 @@ httpGetAsync('/admin-all-registrants', function(result) {
         alert("Notifications don't work yet!")
       },
       getCSV: function() {
-        // var data = [["name1", "city1", "some other info"], ["name2", "city2", "more info"]];
         var csvContent = "data:text/csv;charset=utf-8," + "\n"
-        csvContent += Object.keys(app.users[10]).join(",")
-        app.users.forEach(function(user, index){
-          dataString = Object.keys(user).map(function(k){return user[k]}).join(",")
+        var keys = ["_id", "__v", "email", "first_name", "last_name", "major", "shirt_size", 
+          "dietary_restrictions", "special_needs", "date_of_birth", "gender", 
+          "phone_number", "level_of_study", "firstHackathon", "reimbursementSeeking", 
+          "reimbursementLocation", "reimbursementAmount", "dataSharingAgreed", 
+          "status", "dateRegistered", "school", "local"]
+        var header = keys.join(",").
+          replace("school","school.id,school.name").
+          replace("local","local.email,local.password,local.registered")
+        csvContent += header + "\n"
+        // used for escaping commas in user input
+        var esc = (str) => '"' + str + '"'
+        app.users.forEach(function(user){
+          var dataString = ""
+          for (var i = 0; i < keys.length; i++) {
+            var k = keys[i]
+            if (k == 'local') {
+              if (user[k])
+                dataString += user[k].email + "," + user[k].password + "," + user[k].registered + ","
+              else 
+                dataString += "None,None,None,"
+            } 
+            else if (k == 'school') {
+              if (user[k])
+                dataString += user[k].id + "," + esc(user[k].name) + ","
+              else
+                dataString += "None,None,"
+            } 
+            else {
+              if (user[k])
+                dataString += esc(user[k]) + ","
+              else
+                dataString += "None,"
+            }
+          }
           csvContent += dataString + "\n"
         })
         var encodedUri = encodeURI(csvContent);
