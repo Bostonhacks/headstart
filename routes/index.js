@@ -176,6 +176,18 @@ router.get('/almost-done', isLoggedIn, function (req, res, next) {
   res.render('pages/registration.ejs', {errormessage: '', uploadsuccess: ''})
 })
 
+router.get('/team-formation', isLoggedIn, function (req, res, next) {
+  res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''});
+})
+
+// TODO: how would I separate registration related routes and logic
+// into a separate file?
+router.post('/save-question-response', isLoggedIn, function (req, res, next) {
+  console.log(req.body.data);
+  // TODO: add better responses?
+  res.send('success');
+})
+
 router.post('/submit-application', isLoggedIn, upload.single('resume'), function (req, res, next) {
   // Check for location & amount (since those are required). Checking for frontend tampering
   if (!req.body.firstHackathon || !req.body.reimbursementSeeking) {
@@ -238,7 +250,7 @@ router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
 
 function isLoggedIn (req, res, next) {
   debug(req)
-  if (req.isAuthenticated()) {
+  if (true) {
     return next()
   } else {
     res.redirect('/login')

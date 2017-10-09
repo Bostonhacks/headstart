@@ -15,10 +15,10 @@
       <% include ../partials/profile-nav %>
       <div class="page-header text-center">
         <div class="registration-heading">
-          <h1>Registration</h1>
+          <h1>Team Formation</h1>
         </div>
         <div class="registration-heading">
-          Awesome! Just a few last questions.
+          Awesome! Just a few last questions. If you are looking for or already have a team, please fill out all of the questions.
         </div>
       </div>
       <div class="questions-container">
@@ -33,8 +33,8 @@
               <!-- q1 -->
               <div class="registration-body-form-question-section interest-areas">
                 <div class="registration-form-skills-response row">
-                  <div class="q1 small-12 question columns">What areas are you most interested in?</div>
-                  <div class="small-6 areas-options columns">
+                  <div class="small-12 question columns" id="q1">What areas are you most interested in?</div>
+                  <div class="small-6 areas-options columns q q1">
                     <input class="q1i" id="q1i1" type="checkbox"><label for="q1i1">Finance</label><br>
                     <input class="q1i" id="q1i2" type="checkbox"><label for="q1i2">Politics</label><br>
                     <input class="q1i" id="q1i3" type="checkbox"><label for="q1i3">Health</label><br>
@@ -42,7 +42,7 @@
                     <input class="q1i" id="q1i5" type="checkbox"><label for="q1i5">Entertainment</label><br>
                     <input class="q1i" id="q1i6" type="checkbox"><label for="q1i6">Music</label>
                   </div>
-                  <div class="small-6 areas-options columns">
+                  <div class="small-6 areas-options columns q q1">
                     <input class="q1i" id="q1i7" type="checkbox"><label for="q1i7">Economics</label><br>
                     <input class="q1i" id="q1i8" type="checkbox"><label for="q1i8">Social Issues</label><br>
                     <input class="q1i" id="q1i9" type="checkbox"><label for="q1i9">Gaming</label><br>
@@ -50,10 +50,10 @@
                     <input class="q1i" id="q1i11" type="checkbox"><label for="q1i11">Sports</label><br>
                     <input class="q1i" id="q1i12" type="checkbox"><label for="q1i12">Arts</label><br>
                   </div>
-                  <div class="small-12 columns">
+                  <div class="small-12 columns q q1">
                     <label>
                       Other:
-                      <input class="q1i" id="q1i10" type="text">
+                      <input class="q1i other" id="q1i13" type="text">
                     </label>
                   </div>
                 </div>
@@ -61,8 +61,8 @@
               <!-- q2 -->
               <div class="registration-body-form-question-section roles">
                 <div class="registration-form-role-response row">
-                  <div class="q2 small-12 question columns">What role do you expect to play on the team?</div>
-                  <div class="small-12 columns role-options">
+                  <div class="small-12 columns question" id="q2">What role do you expect to play on the team?</div>
+                  <div class="small-12 columns role-options q q2">
                     <input class="q2i" id="q2i1" type="checkbox"><label for="q2i1">Front-end Engineer</label><br>
                     <input class="q2i" id="q2i2" type="checkbox"><label for="q2i2">Back-end Engineer</label><br>
                     <input class="q2i" id="q2i3" type="checkbox"><label for="q2i3">Data Scientist</label><br>
@@ -70,10 +70,10 @@
                     <input class="q2i" id="q2i5" type="checkbox"><label for="q2i5">iOS</label><br>
                     <input class="q2i" id="q2i6" type="checkbox"><label for="q2i6">Android</label><br>
                   </div>
-                  <div class="small-12 columns">
+                  <div class="small-12 columns q">
                     <label>
                       Other:
-                      <input class="q2i" id="q2i7" type="text">
+                      <input class="q2i other" id="q2i7" type="text">
                     </label>
                   </div>
                 </div>
@@ -343,7 +343,8 @@
       <footer>
         <script src="/js/vendor/foundation.js"></script>
         <script src="/js/app.js"></script>
-        <script src="js/registration.js"></script>
+        <script src="js/registration-logic.js"></script>
+        <script src="js/registration-gather-data.js"></script>
         <script src="js/slider-local.js"></script>
       </footer>
     </html>
