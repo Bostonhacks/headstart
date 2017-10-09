@@ -1,14 +1,9 @@
-'use es6';
-/* Ajax set-up for saving user's responses as they fill out the team forming questionairre */
+/** Ajax set-up for saving user's responses as they fill out the team forming questionairre
+  If its .q, then these are the check boxes. If its .slider-answer-option, 
+  then its the sliders. If its .question-options, then its the radios
+*/
 $(document).ready(function() {
-  /*
-   	Divs that contain answer to questions have a general q class and 
-   	qX class where X is the number of the question. The div that contains 
-   	question formulation has an id of qX. Therefore, when a user clicks
-   	on a question response, we get the qX by first getting a list of classes of
-   	a clicked object, then finding a string that starts with q and has 
-   	length > 1 (qX), and then get the question with id=qX.	 		
-  */
+
 
   /**
   Creates and populates a dictionary containing information 
@@ -26,11 +21,11 @@ $(document).ready(function() {
   /**
   Helper for getting the question id to get the question itself.
   */
-  var getQuestionId = function(questionClasses) {
-    for (var i = 0; i < questionClasses.length; i++) {
-      if (questionClasses[i].charAt(0) == 'q') {
-        if (questionClasses[i].length > 1) {
-          return questionClasses[i];
+  var getQuestionId = function(classes) {
+    for (var i = 0; i < classes.length; i++) {
+      if (classes[i].charAt(0) == 'q') {
+        if (classes[i].length > 1) {
+          return classes[i];
         }
       }
     }
@@ -43,57 +38,51 @@ $(document).ready(function() {
     return $("#" + questionId).text();
   };
 
-  var processCustomInputFromOtherField = function(questionId) {
-    return $("#" + questionId).text();
-  };
 
-  var checkTypeOfInput = function(questionClasses) {
-    for (var i = 0; i < questionClasses.length; i++) {
-      if (questionClasses[i].charAt(0) == 'q') {
-        if (questionClasses[i].length > 1) {
-          return questionClasses[i];
-        }
-      }
-    }
-  };
-
-  var processUserPreference = function(event) {
-    // debugger;
-    var questionClasses = event.target.parentElement.classList;
-    var questionId = getQuestionId(questionClasses);
+  var processCheckboxResponse = function(event) {
+    var classes = event.target.parentElement.classList;
+    var questionId = getQuestionId(classes);
     if (questionId == undefined) return;
     var question = getQuestionText(questionId);
-    
+
     var responseId = event.target.id;
-    var response;
-    if(questionClasses.indexOf("other") > 0) {
-			response = $('#' + responseId).val();
-    } else {
-    	response = $($('#' + responseId)[0].labels[0]).text(); // cause javascript
-    }
-        
-    return createQuestionObject(questionId, question, responseId, response);
+    var response = $($('#' + responseId)[0].labels[0]).text(); // cause javascript
+
+    return createQuestionObject(questionId, question, responseId, response);    
   }
 
+	/**
+	Makes an ajax post request to the server.
+	*/
   var saveResponse = function(userPreferenceObject) {
-    var data = {'data': 	JSON.stringify(userPreferenceObject) };
-    $.post("/save-question-response", data, function(data, status){
-    	console.log(data);
+    var data = { 'data': JSON.stringify(userPreferenceObject) };
+    $.post("/save-question-response", data, function(data, status) {
+      console.log(data);
       console.log(status);
     });
   }
 
   /**
-  On click listener for when a user interacts with the 
-  items in the survey. Calls the driver function processUserPreference
-  which is responsible for program flow and returns the object that
-  could be sent to the backend.
+	Listens to click actions on the checkbox elements
   */
   $('.q').click(function(event) {
-    var userPreferenceObject = processUserPreference(event);
+    var userPreferenceObject = processCheckboxResponse(event);
     console.log(userPreferenceObject);
     if (userPreferenceObject != undefined) return saveResponse(userPreferenceObject);
-    // debugger;
   });
+  
+  /**
+	Listens to keypress actions on 'Other' input fields.
+  */
+  $('.other').keypress(function(event) {
+    var classes = event.target.parentElement.classList;
+    var questionId = getQuestionId(classes);
+    var question = getQuestionText(questionId);
+    var responseId = event.target.id;
+    var response = $('#' + responseId).val();
+    var userResponse = createQuestionObject(questionId, question, responseId, response);
+    console.log(userResponse);
+    if (userResponse != undefined) return saveResponse(userResponse);
+  })
 
 });
