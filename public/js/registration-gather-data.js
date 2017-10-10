@@ -113,6 +113,20 @@ $(document).ready(function() {
 
 	$(".registration-slider-wrapper").click(function(event) {
   })
-  
+
+  /**
+	* Get data from team selection preferences at the end of the form
+	*/ 
+
+	$('.radio').click(function(event) {
+		var classes = event.target.classList;
+		var questionId = getQuestionId(classes);
+		var question = getQuestionText(questionId);
+		var response = event.target.value;
+		var responseId = event.target.id;
+		var userResponse = createQuestionObject(questionId, question, responseId, response);
+		console.log(userResponse);
+    if (userResponse != undefined) return saveResponse(userResponse);
+	})
 
 });

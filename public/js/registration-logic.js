@@ -32,8 +32,8 @@ $().ready(function() {
     }
   });
 
-  $('.existing-team-radio').click(function() {
-    var joinExistingTeam = $('.existing-team-radio:checked').val();
+  $('.join-team-radio').click(function() {
+    var joinExistingTeam = $('.join-team-radio:checked').val();
     if (joinExistingTeam == 'true') {
       $("#registrationButton").html("Join Existing Team");
       $("#registrationButton").attr("href", "/joinExistingTeam");
