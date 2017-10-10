@@ -83,6 +83,24 @@ $(document).ready(function() {
     var userResponse = createQuestionObject(questionId, question, responseId, response);
     console.log(userResponse);
     if (userResponse != undefined) return saveResponse(userResponse);
+  });
+
+  $('.ui-slider-handle').click(function(event) {
+  	console.log("click");
+  	// var values = $( ".selector" ).slider( "option", "values" );
+  });
+
+  $('.ui-slider-wrapper').click(function(event) {  
+  });
+
+  $('.ui-slider').click(function(event) {
+  });
+
+  $("#q3-i1").click(function(event) {
   })
+
+	$(".registration-slider-wrapper").click(function(event) {
+  })
+  
 
 });
