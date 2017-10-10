@@ -85,22 +85,20 @@ $(document).ready(function() {
     if (userResponse != undefined) return saveResponse(userResponse);
   });
 
-  $('.ui-slider-handle').click(function(event) {
-  	console.log("click");
-  	// var values = $( ".selector" ).slider( "option", "values" );
-  });
+  /**
+	* Get data from team selection preferences at the end of the form
+	*/ 
 
-  $('.ui-slider-wrapper').click(function(event) {  
-  });
-
-  $('.ui-slider').click(function(event) {
-  });
-
-  $("#q3-i1").click(function(event) {
-  })
-
-	$(".registration-slider-wrapper").click(function(event) {
-  })
+	$('.radio').click(function(event) {
+		var classes = event.target.classList;
+		var questionId = getQuestionId(classes);
+		var question = getQuestionText(questionId);
+		var response = event.target.value;
+		var responseId = event.target.id;
+		var userResponse = createQuestionObject(questionId, question, responseId, response);
+		console.log(userResponse);
+    if (userResponse != undefined) return saveResponse(userResponse);
+	})
   
 
 });

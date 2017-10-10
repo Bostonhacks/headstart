@@ -1,3 +1,8 @@
+/**
+  This file is responsible for getting data from the sliders in the 
+  form and sending it to the server.
+*/
+
 $(function() {
 
   /**
