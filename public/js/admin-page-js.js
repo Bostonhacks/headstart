@@ -80,14 +80,17 @@ httpGetAsync('/admin-all-registrants', function(result) {
                 dataString += "None,"
             }
           }
+          // get rid of the trailing comma
+          dataString = dataString.slice(0, dataString.length - 1)
+          // add this line to the file, and add a newline character
           csvContent += dataString + "\n"
         })
         var encodedUri = encodeURI(csvContent);
         var link = document.createElement("a");
         link.setAttribute("href", encodedUri);
         link.setAttribute("download", "bostonhacks_userdata.csv");
-            document.body.appendChild(link); // Required for FF
-            link.click(); // This will download the data file named "my_data.csv".  
+            document.body.appendChild(link);
+            link.click();  
           }
         }
       })
