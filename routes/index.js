@@ -8,7 +8,7 @@ const forgot = require('../config/forgot')
 const updateUser = require('../config/update')
 const upload = require('../multer')
 const adminFunc = require('../config/admin')
-const teamFormation = require('../config/teamFormation')
+const teamFormation = require('../config/teamform')
 
 const express = require('express')
 const router = express.Router()
@@ -106,7 +106,7 @@ router.get('/home', isLoggedIn, function (req, res, next) {
     return renderProfile(req, res)
   }
 
-  // Format according to Authorization Code Flow: https://my.mlh.io/docs#oauth_flows
+  // Format according to Authorization form: https://my.mlh.io/docs#oauth_flows
   var redirectUrl = 'https://my.mlh.io/oauth/authorize?' +
     querystring.stringify({
       client_id: process.env.MLH_ID,
@@ -187,8 +187,8 @@ router.get('/team-formation', isLoggedIn, function (req, res, next) {
 router.post('/save-question-response', isLoggedIn, function (req, res, next) {
   // console.log(req.body.data);
   // console.log(req.user.id);
-   teamFormation.submitAnswer(req.user.id, req.body.data, function() {
-    return res.send('success');
+  teamFormation.submitAnswer(req, res, function() {
+    res.send('success');
   }) 
 })
 

@@ -9,4 +9,3 @@ const teamFormationSchema = mongoose.Schema({
 })
 
 module.exports = mongoose.model('Formation', teamFormationSchema)
-
