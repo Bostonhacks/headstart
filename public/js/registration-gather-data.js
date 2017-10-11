@@ -46,9 +46,13 @@ $(document).ready(function() {
     var question = getQuestionText(questionId);
 
     var responseId = event.target.id;
+    //var response = $("label[for='" + responseId + "']").text();
     var response = $($('#' + responseId)[0].labels[0]).text(); // cause javascript
-
-    return createQuestionObject(questionId, question, responseId, response);    
+    
+    userResponse = createQuestionObject(questionId, question, responseId, response);
+    // if the user unchecked the box, mark that
+    if (!event.target.checked) userResponse.unchecked = true;
+    return userResponse;
   }
 
 	/**
@@ -57,8 +61,8 @@ $(document).ready(function() {
   var saveResponse = function(userPreferenceObject) {
     var data = { 'data': JSON.stringify(userPreferenceObject) };
     $.post("/save-question-response", data, function(data, status) {
-      console.log(data);
-      console.log(status);
+      // console.log(data);
+      // console.log(status);
     });
   }
 
@@ -67,23 +71,48 @@ $(document).ready(function() {
   */
   $('.q').click(function(event) {
     var userPreferenceObject = processCheckboxResponse(event);
-    console.log(userPreferenceObject);
+    // console.log(userPreferenceObject);
     if (userPreferenceObject != undefined) return saveResponse(userPreferenceObject);
   });
   
   /**
 	Listens to keypress actions on 'Other' input fields.
+  Debounce (don't send a request every keypress, only when they stop typing)
   */
   $('.other').keypress(function(event) {
-    var classes = event.target.parentElement.classList;
-    var questionId = getQuestionId(classes);
-    var question = getQuestionText(questionId);
-    var responseId = event.target.id;
-    var response = $('#' + responseId).val();
-    var userResponse = createQuestionObject(questionId, question, responseId, response);
-    console.log(userResponse);
-    if (userResponse != undefined) return saveResponse(userResponse);
+    // if there's a function scheduled (global variable)
+    if (typeof typeFunc !== 'undefined') {
+      window.clearTimeout(typeFunc);
+    }
+    // schedule a submission
+    typeFunc = window.setTimeout(function(event) {
+      var classes = event.target.parentElement.classList;
+      var questionId = getQuestionId(classes);
+      var question = getQuestionText(questionId);
+      var responseId = event.target.id;
+      var response = $('#' + responseId).val();
+      var userResponse = createQuestionObject(questionId, question, responseId, response);
+      // console.log(userResponse);
+      if (userResponse != undefined) return saveResponse(userResponse);
+    }.bind(null, event), 350);
   });
+
+  $('.ui-slider-handle').click(function(event) {
+  	// console.log("click");
+  	// var values = $( ".selector" ).slider( "option", "values" );
+  });
+
+  $('.ui-slider-wrapper').click(function(event) {  
+  });
+
+  $('.ui-slider').click(function(event) {
+  });
+
+  $("#q3-i1").click(function(event) {
+  })
+
+	$(".registration-slider-wrapper").click(function(event) {
+  })
 
   /**
 	* Get data from team selection preferences at the end of the form
@@ -99,6 +128,5 @@ $(document).ready(function() {
 		console.log(userResponse);
     if (userResponse != undefined) return saveResponse(userResponse);
 	})
-  
 
 });
