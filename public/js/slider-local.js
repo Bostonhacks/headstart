@@ -10,6 +10,7 @@ $(function() {
   */
   var saveResponse = function(userPreferenceObject) {
     var data = { 'data': JSON.stringify(userPreferenceObject) };
+
     $.post("/save-question-response", data, function(data, status) {
       console.log(data);
       console.log(status);
@@ -54,7 +55,7 @@ $(function() {
     min: 0,
     max: 3,
     change: function(event, ui) {
-      var userRespone = processExperienceSlider(event, ui);
+      var userResponse = processExperienceSlider(event, ui);
       if (userResponse != undefined) return saveResponse(userResponse);
     },
     tickArray: [0, 1, 2, 3],
