@@ -2,9 +2,13 @@
 <html>
   <head>
     <% include ../partials/head %>
+    <link rel="stylesheet" type="text/css" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
     <link rel="stylesheet" href="css/profile.css">
-    <link rel="stylesheet" href="css/registration.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/registration.css">    
     <script src="http://code.jquery.com/jquery.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <script src="js/vendor/slider.js"></script>
   </head>
   <body>
     <div class="container registration-body">
@@ -17,68 +21,71 @@
     <div class="questions-container">
       <div class="registration-body-form">
         <div class="registration-body-form-new-team">
-          <div class="registration-body-form-question-section new-team">
-            
+          <div class="registration-body-form-question-section new-team">            
             <div class="registration-form-new-team-response row">
-              <span class="q1-new-team small-12 question columns">What is the name of your team?</span>
-              <input id="q1-new-team-i1" type="text">
+              <div class="cr1-question small-12 question columns" id="cr1">What is the name of your team?</div>
+              <input class="cr1 cr-other" id="cr1-cr-other" type="text">
             </div>
             <div class="registration-form-new-team-response row">
-              <span class="q2-new-team small-12 question columns">Describe your idea</span>
-              <textarea id="q2-new-team-i1"></textarea>
+              <div class="cr2-question small-12 question columns cr2" id="cr2">Describe your idea</div>
+              <textarea class="cr2 cr-other" id="cr2-cr-other"></textarea>
             </div>
             <div class="registration-form-new-team-response row">
-              <span class="q3-new-team small-12 question columns">Who are you looking for?</span>
+              <div class="cr3-question small-12 question columns" id="cr3">Who are you looking for?</div>
               <div class="small-12 columns new-team-role-options">
-                <input class="q3-new-team-i" id="q3-new-team-i1" type="checkbox"><label for="q3-new-team-i1">Front-end Engineer</label><br>
-                <input class="q3-new-team-i" id="q3-new-team-i2" type="checkbox"><label for="q3-new-team-i2">Back-end Engineer</label><br>
-                <input class="q3-new-team-i" id="q3-new-team-i3" type="checkbox"><label for="q3-new-team-i3">Data Scientist</label><br>
-                <input class="q3-new-team-i" id="q3-new-team-i4" type="checkbox"><label for="q3-new-team-i4">Designer</label><br>
-                <input class="q3-new-team-i" id="q3-new-team-i5" type="checkbox"><label for="q3-new-team-i5">iOS</label><br>
-                <input class="q3-new-team-i" id="q3-new-team-i6" type="checkbox"><label for="q3-new-team-i6">Android</label><br>
+                <input class="cr3 i1" id="cr3-i1" type="checkbox"><label for="cr3-i1">Front-end Engineer</label><br>
+                <input class="cr3 i2" id="cr3-i2" type="checkbox"><label for="cr3-i2">Back-end Engineer</label><br>
+                <input class="cr3 i3" id="cr3-i3" type="checkbox"><label for="cr3-i3">Data Scientist</label><br>
+                <input class="cr3 i4" id="cr3-i4" type="checkbox"><label for="cr3-i4">Designer</label><br>
+                <input class="cr3 i5" id="cr3-i5" type="checkbox"><label for="cr3-i5">iOS</label><br>
+                <input class="cr3 i6" id="cr3-i6" type="checkbox"><label for="cr3-i6">Android</label><br>
               </div>
               <div class="small-12 columns">
                 <label>
                   Other:
-                  <input class="q3-new-team-i" id="q3-new-team-i7" type="text">
+                  <input class="cr3 cr-other" id="cr3-cr-other" type="text">
                 </label>
               </div>
             </div>
             <div class="registration-form-new-team-response row">
-              <span class="q4-new-team small-12 question columns">What technologies do you plan to use for your project?</span>
-              <textarea id="q4-new-team-i1"></textarea>
+              <div class="cr4-question small-12 question columns" id="cr4">What technologies do you plan to use for your project?</div>
+              <textarea class="cr4 cr-other" id="cr4-cr-other"></textarea>
             </div>
             <div class="registration-body-form-question-section interest-areas">
               <div class="registration-form-new-team-response row">
-                <span class="q5-new-team small-12 question columns">If relevant, select your project's theme(s)?</span>
+                <div class="cr5-question small-12 question columns" id="cr5">If relevant, select your project's theme(s)?</div>
                 <div class="small-6 areas-options columns">
-                  <input class="q5-new-team-i" id="q5-new-team-i1" type="checkbox"><label for="q5-new-team-i1">Finance</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i2" type="checkbox"><label for="q5-new-team-i2">Politics</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i3" type="checkbox"><label for="q5-new-team-i3">Health</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i4" type="checkbox"><label for="q5-new-team-i4">Travel</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i5" type="checkbox"><label for="q5-new-team-i5">Entertainment</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i6" type="checkbox"><label for="q5-new-team-i6">Music</label>
+                  <input class="cr5 i1" id="cr5-i1" type="checkbox"><label for="cr5-i1">Finance</label><br>
+                  <input class="cr5 i2" id="cr5-i2" type="checkbox"><label for="cr5-i2">Politics</label><br>
+                  <input class="cr5 i3" id="cr5-i3" type="checkbox"><label for="cr5-i3">Health</label><br>
+                  <input class="cr5 i4" id="cr5-i4" type="checkbox"><label for="cr5-i4">Travel</label><br>
+                  <input class="cr5 i5" id="cr5-i5" type="checkbox"><label for="cr5-i5">Entertainment</label><br>
+                  <input class="cr5 i6" id="cr5-i6" type="checkbox"><label for="cr5-i6">Music</label>
                 </div>
                 <div class="small-6 areas-options columns">
-                  <input class="q5-new-team-i" id="q5-new-team-i7" type="checkbox"><label for="q5-new-team-i7">Economics</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i8" type="checkbox"><label for="q5-new-team-i8">Social Issues</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i9" type="checkbox"><label for="q5-new-team-i9">Gaming</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i10" type="checkbox"><label for="q5-new-team-i10">Fashion</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i11" type="checkbox"><label for="q5-new-team-i11">Sports</label><br>
-                  <input class="q5-new-team-i" id="q5-new-team-i12" type="checkbox"><label for="q5-new-team-i12">Arts</label><br>
+                  <input class="cr5 i7" id="cr5-i7" type="checkbox"><label for="cr5-i7">Economics</label><br>
+                  <input class="cr5 i8" id="cr5-i8"  type="checkbox"><label for="cr5-i8">Social Issues</label><br>
+                  <input class="cr5 i9" id="cr5-i9" type="checkbox"><label for="cr5-i9">Gaming</label><br>
+                  <input class="cr5 i10" id="cr5-i10" type="checkbox"><label for="cr5-i10">Fashion</label><br>
+                  <input class="cr5 i11" id="cr5-i11" type="checkbox"><label for="cr5-i11">Sports</label><br>
+                  <input class="cr5 i12" id="cr5-i12" type="checkbox"><label for="cr5-i12">Arts</label><br>
                 </div>
                 <div class="small-12 columns">
                   <label>
                     Other:
-                    <input class="q5-new-team-i" id="q1-new-team-i10" type="text">
+                    <input class="cr5 cr-other" id="cr5-cr-other" type="text">
                   </label>
                 </div>
               </div>
             </div>
             
             <div class="registration-form-new-team-response row">
-              <span class="q6-new-team small-12 question columns">How experienced is your team?</span>
-              <textarea id="q6-new-team-i1"></textarea>
+              <div class="cr5-question small-12 question columns" id="cr5">How experienced is your team?</div>
+                <div>
+                  <div class="cr5 i1 slider-answer-option cr5i">HTML/CSS</div>
+                  <% var sliderId='cr5-i1'; var sliderType = 'experience'; %>
+                  <% include ../partials/slider %>
+                </div>
             </div>
             
           </div>
@@ -89,4 +96,10 @@
       </div>
     </div>
   </body>
+  <footer>        
+        <script src="/js/vendor/foundation.js"></script>
+        <script type='module' src="/js/registration-gather-data.js"></script>
+        <script type='module' src="/js/registration-create-new-team.js"></script>
+        <script src="/js/slider-local.js"></script>
+      </footer>
 </html>
