@@ -125,7 +125,6 @@ $(document).ready(function() {
 		var response = event.target.value;
 		var responseId = event.target.id;
 		var userResponse = createQuestionObject(questionId, question, responseId, response);
-		console.log(userResponse);
     if (userResponse != undefined) return saveResponse(userResponse);
 	})
 

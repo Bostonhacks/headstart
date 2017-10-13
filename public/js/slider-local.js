@@ -10,6 +10,7 @@ $(function() {
   */
   var saveResponse = function(userPreferenceObject) {
     var data = { 'data': JSON.stringify(userPreferenceObject) };
+    // console.log(JSON.parse(data.data))
     $.post("/save-question-response", data, function(data, status) {
       console.log(data);
       console.log(status);
@@ -19,11 +20,14 @@ $(function() {
   var createResponseObject = function(responseId, response, questionClasses, question, fullQuestion) {
     var result = {};
     var questionObject = {};
-    questionObject['fullQuestion'] = fullQuestion;
-    questionObject['category'] = question;
-    result['question'] = questionObject;
+    // questionObject['fullQuestion'] = fullQuestion;
+    // questionObject['category'] = question;
+    // result['question'] = questionObject;
+    result['question'] = fullQuestion
+    result['subQuestion'] = question
     result['response'] = response;
-    result['questionClasses'] = questionClasses;
+    result['questionId'] = responseId.split('-')[0]
+    // result['questionClasses'] = questionClasses;
     result['responseId'] = responseId;
     return result;
   }
@@ -54,7 +58,7 @@ $(function() {
     min: 0,
     max: 3,
     change: function(event, ui) {
-      var userRespone = processExperienceSlider(event, ui);
+      var userResponse = processExperienceSlider(event, ui);
       if (userResponse != undefined) return saveResponse(userResponse);
     },
     tickArray: [0, 1, 2, 3],

@@ -4,6 +4,8 @@ const Formation = require('../models/formation')
 module.exports = {
   submitAnswer: function (req, res, next) {
     var userResponse = JSON.parse(req.body.data)
+    console.log("User Response: ")
+    console.log(userResponse)
     var userId = req.user.id
     if (userResponse.unchecked) {
       Formation.remove({
@@ -26,10 +28,11 @@ module.exports = {
         responseId: userResponse.responseId
       }, 
       {
-        $set: {
-          question: userResponse.question,
-          response: userResponse.response
-        }
+        $set: userResponse
+        // {
+        //   question: userResponse.question,
+        //   response: userResponse.response,
+        // }
       }, 
       { upsert : true }, 
       function(err) {
