@@ -1,10 +1,10 @@
-$().ready(function() {
+$(document).ready(function() {
 
   $('.team-radio').click(function() {
     // get value of team
     var hasTeam = $('.team-radio:checked').val();
     $("#registrationButton").html("Finish");
-    $("#registrationButton").attr("href", "/finishRegistration");
+    $("#registrationButton").attr("href", "/finish-registration");
     if (hasTeam == 'true') {
       $('.teammates').slideDown("slow");
       $('.existing-team').slideUp("slow");
@@ -19,13 +19,13 @@ $().ready(function() {
     var lookingForTeammates = $('.teammates-radio:checked').val();
     if (lookingForTeammates == 'true') {
       $("#registrationButton").html("Find New Teammates");
-      $("#registrationButton").attr("href", "/findNewTeammates");
+      $("#registrationButton").attr("href", "/find-new-teammates");
     } else {
       var hasTeam = $('.team-radio:checked').val();
       if (hasTeam == 'true') {
         $('.create-team').slideUp("slow");
         $("#registrationButton").html("Finish");
-        $("#registrationButton").attr("href", "/finishRegistration");
+        $("#registrationButton").attr("href", "/finish-registration");
       } else {
         $('.create-team').slideDown("slow");
       }
@@ -36,11 +36,11 @@ $().ready(function() {
     var joinExistingTeam = $('.join-team-radio:checked').val();
     if (joinExistingTeam == 'true') {
       $("#registrationButton").html("Join Existing Team");
-      $("#registrationButton").attr("href", "/joinExistingTeam");
+      $("#registrationButton").attr("href", "/join-existing-team");
       $('.create-team').slideUp("slow");
     } else {
       $("#registrationButton").html("Finish");
-      $("#registrationButton").attr("href", "/finishRegistration");
+      $("#registrationButton").attr("href", "/finish-registration");
       $('.create-team').slideDown("slow");
     }
   });
@@ -49,10 +49,10 @@ $().ready(function() {
     var wantToCreateMyOwnTeam = $('.create-team-radio:checked').val();
     if (wantToCreateMyOwnTeam == 'true') {
       $("#registrationButton").html("Create New Team");
-      $("#registrationButton").attr("href", "/createNewTeam");
+      $("#registrationButton").attr("href", "/create-new-team");
     } else {
       $("#registrationButton").html("Finish");
-      $("#registrationButton").attr("href", "/finishRegistration");
+      $("#registrationButton").attr("href", "/finish-registration");
     }
   });
 });

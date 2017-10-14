@@ -51,7 +51,6 @@ var processCheckboxResponse = function(event) {
   var responseId = event.target.id;
   //var response = $("label[for='" + responseId + "']").text();
   var response = $($('#' + responseId)[0].labels[0]).text(); // cause javascript
-  
   userResponse = createQuestionObject(questionId, question, responseId, response);
   // if the user unchecked the box, mark that
   if (!event.target.checked) userResponse.unchecked = true;
@@ -77,7 +76,7 @@ $('.q').click(function(event) {
   // console.log(userPreferenceObject);
   if (userPreferenceObject != undefined) return saveResponse(userPreferenceObject);
 });
-  
+
 /**
   Listens to keypress actions on 'Other' input fields.
   Debounce (don't send a request every keypress, only when they stop typing)

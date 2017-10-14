@@ -10,6 +10,7 @@ $(function() {
   */
   var saveResponse = function(userPreferenceObject) {
     var data = { 'data': JSON.stringify(userPreferenceObject) };
+
     $.post("/save-question-response", data, function(data, status) {
       console.log(data);
       console.log(status);
