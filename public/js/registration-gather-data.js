@@ -1,7 +1,7 @@
 /** Ajax set-up for saving user's responses as they fill out the team forming questionairre
   If its .q, then these are the check boxes. If its .slider-answer-option, 
   then its the sliders. If its .question-options, then its the radios
-  */
+*/
 
 /**
 Creates and populates a dictionary containing information 
@@ -38,14 +38,14 @@ export function getQuestionId(classes, type) {
 /**
 Gets the text inside an element with the passed in id
 */
-var getQuestionText = function(questionId) {
+export function getQuestionText(questionId) {
   return $("#" + questionId).text();
 };
 
 
 var processCheckboxResponse = function(event) {
   var classes = event.target.parentElement.classList;
-  var questionId = getQuestionId(classes);
+  var questionId = getQuestionId(classes, 'q');
   if (questionId == undefined) return;
   var question = getQuestionText(questionId);
   var responseId = event.target.id;
@@ -70,8 +70,8 @@ var saveResponse = function(userPreferenceObject) {
 }
 
 /**
-Listens to click actions on the checkbox elements
-*/
+  Listens to click actions on the checkbox elements
+  */
 $('.q').click(function(event) {
   var userPreferenceObject = processCheckboxResponse(event);
   // console.log(userPreferenceObject);
@@ -79,9 +79,9 @@ $('.q').click(function(event) {
 });
   
 /**
-Listens to keypress actions on 'Other' input fields.
-Debounce (don't send a request every keypress, only when they stop typing)
-*/
+  Listens to keypress actions on 'Other' input fields.
+  Debounce (don't send a request every keypress, only when they stop typing)
+  */
 $('.other').keypress(function(event) {
   // if there's a function scheduled (global variable)
   if (typeof typeFunc !== 'undefined') {
@@ -99,33 +99,16 @@ $('.other').keypress(function(event) {
   }.bind(null, event), 350);
 });
 
-$('.ui-slider-handle').click(function(event) {
-	// console.log("click");
-	// var values = $( ".selector" ).slider( "option", "values" );
-});
-
-$('.ui-slider-wrapper').click(function(event) {  
-});
-
-$('.ui-slider').click(function(event) {
-});
-
-$("#q3-i1").click(function(event) {
-})
-
-$(".registration-slider-wrapper").click(function(event) {
-})
-
 /**
-* Get data from team selection preferences at the end of the form
-*/ 
+ * Get data from team selection preferences at the end of the form
+ */
+
 $('.radio').click(function(event) {
 	var classes = event.target.classList;
-	var questionId = getQuestionId(classes);
+	var questionId = getQuestionId(classes, 'q');
 	var question = getQuestionText(questionId);
 	var response = event.target.value;
 	var responseId = event.target.id;
 	var userResponse = createQuestionObject(questionId, question, responseId, response);
   if (userResponse != undefined) return saveResponse(userResponse);
 })
-
