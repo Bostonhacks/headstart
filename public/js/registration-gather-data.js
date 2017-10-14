@@ -7,7 +7,7 @@
 Creates and populates a dictionary containing information 
 about the question and the user's response.
 */
-var createQuestionObject = function(questionId, question, responseId, response) {
+export var createQuestionObject = function(questionId, question, responseId, response) {
   var questionResponse = {};
   questionResponse['questionId'] = questionId;
   questionResponse['responseId'] = responseId;
@@ -25,9 +25,7 @@ in the github repo for more information.
 export function getQuestionId(classes, type) {
   var typeLength = type.length
   for (var i = 0; i < classes.length; i++) {
-    console.log(classes[i].substr(0,typeLength));
     if (classes[i].substr(0, typeLength) == type) {
-      debugger
       if (classes[i].length > 1) {
         return classes[i];
       }
@@ -43,7 +41,7 @@ export function getQuestionText(questionId) {
 };
 
 
-var processCheckboxResponse = function(event) {
+export function processCheckboxResponse(event) {
   var classes = event.target.parentElement.classList;
   var questionId = getQuestionId(classes, 'q');
   if (questionId == undefined) return;
@@ -60,7 +58,7 @@ var processCheckboxResponse = function(event) {
 /**
 Makes an ajax post request to the server.
 */
-var saveResponse = function(userPreferenceObject) {
+export var saveResponse = function(userPreferenceObject) {
   var data = { 'data': JSON.stringify(userPreferenceObject) };
   $.post("/save-question-response", data, function(data, status) {
     // console.log(data);
@@ -89,7 +87,7 @@ $('.other').keypress(function(event) {
   // schedule a submission
   typeFunc = window.setTimeout(function(event) {
     var classes = event.target.parentElement.classList;
-    var questionId = getQuestionId(classes);
+    var questionId = getQuestionId(classes, 'q');
     var question = getQuestionText(questionId);
     var responseId = event.target.id;
     var response = $('#' + responseId).val();

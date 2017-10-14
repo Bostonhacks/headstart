@@ -178,33 +178,37 @@ router.get('/almost-done', isLoggedIn, function (req, res, next) {
 })
 
 router.get('/team-formation', isLoggedIn, function (req, res, next) {
-  // if (req.user == undefined) res.redirect('/login')
+  if (req.user == undefined) res.redirect('/login')
   res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/create-new-team', isLoggedIn, function (req, res, next) {
   // TODO: add a finishing page??
+  if (req.user == undefined) res.redirect('/login')
   res.render('pages/registration-create-new-team.ejs', {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/join-existing-team', isLoggedIn, function (req, res, next) {
   // TODO: add a finishing page??
+  if (req.user == undefined) res.redirect('/login')
   res.render('pages/registration-join-existing-team.ejs', {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/find-new-teammates', isLoggedIn, function (req, res, next) {
   // TODO: add a finishing page??
+  if (req.user == undefined) res.redirect('/login')
   res.render('pages/find-new-teammates.ejs', {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/finish-registration', isLoggedIn, function (req, res, next) {
   // TODO: add a finishing page??
+  res.redirect('/login')
 })
 
 // TODO: how would I separate registration related routes and logic
 // into a separate file?
 router.post('/save-question-response', isLoggedIn, function (req, res, next) {
-  console.log(req.body.data);
+  // console.log(req.body.data);
   // console.log(req.user.id);
   teamFormation.submitAnswer(req, res, function() {
     res.send('success');
