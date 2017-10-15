@@ -8,7 +8,7 @@ const forgot = require('../config/forgot')
 const updateUser = require('../config/update')
 const upload = require('../multer')
 const adminFunc = require('../config/admin')
-const teamFormation = require('../config/teamFormation')
+const teamFormation = require('../config/teamform')
 
 const express = require('express')
 const router = express.Router()
@@ -200,8 +200,8 @@ router.get('/finish-registration', isLoggedIn, function (req, res, next) {
 // TODO: how would I separate registration related routes and logic
 // into a separate file?
 router.post('/save-question-response', isLoggedIn, function (req, res, next) {
-  console.log(req.body.data);  
-  teamFormation.submitAnswer(req.user.id, req.body.data, function() {
+  // console.log(req.body.data);
+  teamFormation.submitAnswer(req, res, function() {
     return res.send('success');
   }) 
 })
