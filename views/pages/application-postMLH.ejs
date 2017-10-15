@@ -59,7 +59,7 @@
               <!-- q2 -->
               <div class="registration-body-form-question-section roles">
                 <div class="registration-form-role-response row">
-                  <div class="q2-question small-12 columns question" id="q2">What role do you expect to play on the team?</div>
+                  <div class="q2 q2-question small-12 columns question" id="q2">What role do you expect to play on the team?</div>
                   <div class="q q2 small-12 columns role-options">
                     <input class="q2 i1" id="q2-i1" type="checkbox"><label for="q2-i1">Front-end Engineer</label><br>
                     <input class="q2 i2" id="q2-i2" type="checkbox"><label for="q2-i2">Back-end Engineer</label><br>
@@ -77,7 +77,7 @@
               <!-- q3 -->
               <div class="registration-body-form-question-section technology">
                 <div class="row">
-                  <div class="q3-question small-12 question columns ">Rate your experience with the following technologies:</div>
+                  <div class="q3-question small-12 question columns" id="q3">Rate your experience with the following technologies:</div>
                   <div class="technology-slider-row">
                     <div class="q3 i1 slider-answer-option">Web Application Development</div>
                     <% var sliderId = 'q3-i1'; var sliderType = 'experience';%>
@@ -137,7 +137,7 @@
               <!-- q4 -->
               <div class="registration-body-form-question-section languages">
                 <div class="row">
-                  <div class="q4-question small-12 columns question">Rate your experience with the following languages:</div>
+                  <div class="q4-question small-12 columns question" id="q4">Rate your experience with the following languages:</div>
                   <div class="language-slider-row">
                     <div class="q4 i1 slider-answer-option q4i">HTML/CSS</div>
                     <% var sliderId='q4-i1'; var sliderType = 'experience'; %>
@@ -190,7 +190,7 @@
                   </div>
                   <div class="language-slider-row">
                     <label>Other:</label>
-                      <input class="q4 other slider" id="q4" type="text">                    
+                      <input class="q4 other" id="q4-other" type="text">                    
                   </div>
                 </div>
               </div>
@@ -335,6 +335,6 @@
         <script src="/js/vendor/foundation.js"></script>        
         <script src="js/registration-logic.js"></script>        
         <script src="js/slider-local.js"></script>        
-        <script src="js/registration-gather-data.js"></script>
+        <script type="module" src="js/registration-gather-data.js"></script>
       </footer>
     </html>

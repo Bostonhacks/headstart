@@ -2,7 +2,7 @@
   If its .q, then these are the check boxes. If its .slider-answer-option, 
   then its the sliders. If its .question-options, then its the radios
 */
-
+var timer;
 /**
 Creates and populates a dictionary containing information 
 about the question and the user's response.
@@ -25,7 +25,6 @@ in the github repo for more information.
 export function getQuestionId(classes, type) {
   var typeLength = type.length
   for (var i = 0; i < classes.length; i++) {
-    console.log(classes[i].substr(0, typeLength));
     if (classes[i].substr(0, typeLength) == type) {
       if (classes[i].length > typeLength) {
         return classes[i];
@@ -43,7 +42,6 @@ export function getQuestionText(questionId) {
 
 
 export var processCheckboxResponse = function(event, type) {
-  debugger
   var classes = event.target.parentElement.classList;
   var questionId = getQuestionId(classes, type);
   if (questionId == undefined) return;
@@ -70,7 +68,7 @@ export var saveResponse = function(userPreferenceObject) {
   Listens to click actions on the checkbox elements
   */
 $('.q').click(function(event) {
-  var userPreferenceObject = processCheckboxResponse(event);
+  var userPreferenceObject = processCheckboxResponse(event, 'q');
   // console.log(userPreferenceObject);
   if (userPreferenceObject != undefined) return saveResponse(userPreferenceObject);
 });
@@ -81,8 +79,8 @@ $('.q').click(function(event) {
   */
 $('.other').keyup(function(event) {
   clearTimeout(timer);
-  timer = setTimeout(function() {  
-    var classes = event.target.parentElement.classList;
+  timer = setTimeout(function() {
+    var classes = event.target.classList;
     var questionId = getQuestionId(classes, 'q');
     var question = getQuestionText(questionId);
     var responseId = event.target.id;
