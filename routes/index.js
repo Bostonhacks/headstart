@@ -178,19 +178,19 @@ router.get('/almost-done', isLoggedIn, function (req, res, next) {
 })
 
 router.get('/team-formation', isLoggedIn, function (req, res, next) {
-  res.render('pages/application-postMLH.ejs');
+  res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/create-new-team', isLoggedIn, function (req, res, next) {
-  res.render('pages/registration-create-new-team.ejs');
+  res.render('pages/registration-create-new-team.ejs',  {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/join-existing-team', isLoggedIn, function (req, res, next) {
-  res.render('pages/registration-join-existing-team.ejs');
+  res.render('pages/registration-join-existing-team.ejs',  {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/find-new-teammates', isLoggedIn, function (req, res, next) {
-  res.render('pages/registration-find-new-teammates.ejs');
+  res.render('pages/registration-find-new-teammates.ejs',  {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/finish-registration', isLoggedIn, function (req, res, next) {
