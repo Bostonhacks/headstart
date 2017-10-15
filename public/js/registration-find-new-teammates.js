@@ -10,11 +10,11 @@ import {
 
 var timer;
 
-$('.cr-other').keyup(function(event) {  
+$('.ft-other').keyup(function(event) {  
   clearTimeout(timer);
   timer = setTimeout(function() {
     var classes = event.target.classList;
-    var questionId = getQuestionId(classes, 'cr');
+    var questionId = getQuestionId(classes, 'ft');
     var question = getQuestionText(questionId);
     var responseId = event.target.id;
     var response = $('#' + responseId).val();
@@ -23,7 +23,8 @@ $('.cr-other').keyup(function(event) {
   }, 500);
 });
 
-$('.cr').click(function(event) {
-  var userPreferenceObject = processCheckboxResponse(event, 'cr');
+$('.ft').click(function(event) {
+  var userPreferenceObject = processCheckboxResponse(event, 'ft');
+  debugger
   if (userPreferenceObject != undefined) return saveResponse(userPreferenceObject);
 });

@@ -7,7 +7,7 @@
 Creates and populates a dictionary containing information 
 about the question and the user's response.
 */
-var createQuestionObject = function(questionId, question, responseId, response) {
+export var createQuestionObject = function(questionId, question, responseId, response) {
   var questionResponse = {};
   questionResponse['questionId'] = questionId;
   questionResponse['responseId'] = responseId;
@@ -25,10 +25,9 @@ in the github repo for more information.
 export function getQuestionId(classes, type) {
   var typeLength = type.length
   for (var i = 0; i < classes.length; i++) {
-    console.log(classes[i].substr(0,typeLength));
+    console.log(classes[i].substr(0, typeLength));
     if (classes[i].substr(0, typeLength) == type) {
-      debugger
-      if (classes[i].length > 1) {
+      if (classes[i].length > typeLength) {
         return classes[i];
       }
     }
@@ -43,17 +42,14 @@ export function getQuestionText(questionId) {
 };
 
 
-var processCheckboxResponse = function(event) {
+export var processCheckboxResponse = function(event, type) {
   var classes = event.target.parentElement.classList;
-  var questionId = getQuestionId(classes, 'q');
+  var questionId = getQuestionId(classes, type);
   if (questionId == undefined) return;
   var question = getQuestionText(questionId);
-
   var responseId = event.target.id;
-  //var response = $("label[for='" + responseId + "']").text();
   var response = $($('#' + responseId)[0].labels[0]).text(); // cause javascript
-
-  userResponse = createQuestionObject(questionId, question, responseId, response);
+  var userResponse = createQuestionObject(questionId, question, responseId, response);
   // if the user unchecked the box, mark that
   if (!event.target.checked) userResponse.unchecked = true;
   return userResponse;
@@ -62,11 +58,10 @@ var processCheckboxResponse = function(event) {
 /**
 Makes an ajax post request to the server.
 */
-var saveResponse = function(userPreferenceObject) {
+export var saveResponse = function(userPreferenceObject) {
   var data = { 'data': JSON.stringify(userPreferenceObject) };
   $.post("/save-question-response", data, function(data, status) {
-    // console.log(data);
-    // console.log(status);
+    console.log(status);
   });
 }
 
@@ -83,18 +78,17 @@ $('.q').click(function(event) {
   Listens to keypress actions on 'Other' input fields.
   Debounce (don't send a request every keypress, only when they stop typing)
   */
-$('.other').keypress(function(event) {
-  // if there's a function scheduled (global variable)
-
-  debugger
-  // schedule a submission
-  var classes = event.target.parentElement.classList;
-  var questionId = getQuestionId(classes, 'q');
-  var question = getQuestionText(questionId);
-  var responseId = event.target.id;
-  var response = $('#' + responseId).val();
-  var userResponse = createQuestionObject(questionId, question, responseId, response);
-  if (userResponse != undefined) return saveResponse(userResponse);
+$('.other').keyup(function(event) {
+  clearTimeout(timer);
+  timer = setTimeout(function() {  
+    var classes = event.target.parentElement.classList;
+    var questionId = getQuestionId(classes, 'q');
+    var question = getQuestionText(questionId);
+    var responseId = event.target.id;
+    var response = $('#' + responseId).val();
+    var userResponse = createQuestionObject(questionId, question, responseId, response);
+    if (userResponse != undefined) return saveResponse(userResponse);
+  }, 500);
 });
 
 /**
@@ -108,6 +102,5 @@ $('.radio').click(function(event) {
   var response = event.target.value;
   var responseId = event.target.id;
   var userResponse = createQuestionObject(questionId, question, responseId, response);
-  console.log(userResponse);
   if (userResponse != undefined) return saveResponse(userResponse);
-})
+});

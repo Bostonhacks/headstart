@@ -194,7 +194,7 @@ router.get('/join-existing-team', isLoggedIn, function (req, res, next) {
 
 router.get('/find-new-teammates', isLoggedIn, function (req, res, next) {
   // TODO: add a finishing page??
-  res.render('pages/find-new-teammates.ejs', {errormessage: '', uploadsuccess: ''});
+  res.render('pages/registration-find-new-teammates.ejs', {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/finish-registration', isLoggedIn, function (req, res, next) {
@@ -206,9 +206,9 @@ router.get('/finish-registration', isLoggedIn, function (req, res, next) {
 router.post('/save-question-response', isLoggedIn, function (req, res, next) {
   console.log(req.body.data);
   // console.log(req.user.id);
-   teamFormation.submitAnswer(req.user.id, req.body.data, function() {
-    return res.send('success');
-  }) 
+  //  teamFormation.submitAnswer(req.user.id, req.body.data, function() {
+  //   return res.send('success');
+  // }) 
 })
 
 router.post('/submit-application', isLoggedIn, upload.single('resume'), function (req, res, next) {

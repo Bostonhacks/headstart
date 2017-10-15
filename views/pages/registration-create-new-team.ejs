@@ -15,7 +15,7 @@
       <% include ../partials/profile-nav %>
       <div class="page-header text-center">
         <div class="registration-heading">
-          Fill out below to add your team to our database.
+          Fill out the form below to add your team to our database.
         </div>
       </div>
     <div class="questions-container">
@@ -32,7 +32,7 @@
             </div>
             <div class="registration-form-new-team-response row">
               <div class="cr3-question small-12 question columns" id="cr3">Who are you looking for?</div>
-              <div class="small-12 columns new-team-role-options">
+              <div class="cr cr3 small-12 columns new-team-role-options">
                 <input class="cr3 i1" id="cr3-i1" type="checkbox"><label for="cr3-i1">Front-end Engineer</label><br>
                 <input class="cr3 i2" id="cr3-i2" type="checkbox"><label for="cr3-i2">Back-end Engineer</label><br>
                 <input class="cr3 i3" id="cr3-i3" type="checkbox"><label for="cr3-i3">Data Scientist</label><br>
@@ -54,7 +54,7 @@
             <div class="registration-body-form-question-section interest-areas">
               <div class="registration-form-new-team-response row">
                 <div class="cr5-question small-12 question columns" id="cr5">If relevant, select your project's theme(s)?</div>
-                <div class="small-6 areas-options columns">
+                <div class="cr cr5 small-6 areas-options columns">
                   <input class="cr5 i1" id="cr5-i1" type="checkbox"><label for="cr5-i1">Finance</label><br>
                   <input class="cr5 i2" id="cr5-i2" type="checkbox"><label for="cr5-i2">Politics</label><br>
                   <input class="cr5 i3" id="cr5-i3" type="checkbox"><label for="cr5-i3">Health</label><br>
@@ -62,7 +62,7 @@
                   <input class="cr5 i5" id="cr5-i5" type="checkbox"><label for="cr5-i5">Entertainment</label><br>
                   <input class="cr5 i6" id="cr5-i6" type="checkbox"><label for="cr5-i6">Music</label>
                 </div>
-                <div class="small-6 areas-options columns">
+                <div class="cr cr5 small-6 areas-options columns">
                   <input class="cr5 i7" id="cr5-i7" type="checkbox"><label for="cr5-i7">Economics</label><br>
                   <input class="cr5 i8" id="cr5-i8"  type="checkbox"><label for="cr5-i8">Social Issues</label><br>
                   <input class="cr5 i9" id="cr5-i9" type="checkbox"><label for="cr5-i9">Gaming</label><br>
@@ -80,10 +80,10 @@
             </div>
             
             <div class="registration-form-new-team-response row">
-              <div class="cr5-question small-12 question columns" id="cr5">How experienced is your team?</div>
+              <div class="cr6-question small-12 question columns" id="cr6">How experienced is your team?</div>
                 <div>
-                  <div class="cr5 i1 slider-answer-option cr5i">HTML/CSS</div>
-                  <% var sliderId='cr5-i1'; var sliderType = 'experience'; %>
+                  <div class="cr6 i1 slider-answer-option cr5i">Team Experience</div>
+                  <% var sliderId='cr6-i1'; var sliderType = 'experience'; %>
                   <% include ../partials/slider %>
                 </div>
             </div>
@@ -97,9 +97,9 @@
     </div>
   </body>
   <footer>        
-        <script src="/js/vendor/foundation.js"></script>
-        <script type='module' src="/js/registration-gather-data.js"></script>
-        <script type='module' src="/js/registration-create-new-team.js"></script>
-        <script src="/js/slider-local.js"></script>
-      </footer>
+    <script src="/js/vendor/foundation.js"></script>
+    <script type='module' src="/js/registration-gather-data.js"></script>
+    <script type='module' src="/js/registration-create-new-team.js"></script>
+    <script src="/js/slider-local.js"></script>
+  </footer>
 </html>

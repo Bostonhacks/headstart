@@ -17,42 +17,45 @@
       <div class="questions-container">
         <div class="registration-body-form">
           <div class="registration-body-form-new-teammates">
-            <div class="registration-body-form-question-section new-teammates">
-              
+            <div class="registration-body-form-question-section new-teammates">             
               <div class="registration-form-new-teammates-response row">
-                <div class="q1-new-teammates small-12 question columns">How many more people are you looking for?</div>
-                <input class="q1-new-teammates-i1 new-teammates-input" id="q1-new-teammates-i1" type="number">
+                <div class="ft1-question small-12 question columns" id="ft1">How many more people are you looking for?</div>
+                <input class="ft1 ft-other" id="ft1-ft-other" type="number">
               </div>
               <div class="registration-form-new-teammates-response row">
-                <div class="q2-new-teammates small-12 question columns">What is the name of your team?</div>
-                <input class="new-teammates-input" id="q2-new-teammates-i1" type="text">
+                <div class="ft2-question small-12 question columns" id="ft2">What is the name of your team?</div>
+                <input class="ft2 ft-other" id="ft2-ft-other" type="text">
               </div>
               <div class="registration-form-new-teammates-response row">
-                <div class="q3-new-teammates small-12 question columns">What is the focus of your team's project?</div>
-                <input class = "new-teammates-input" id="q3-new-teammates-i1" type="text">
+                <div class="ft3-question small-12 question columns" id="ft3">What is the focus of your team's project?</div>
+                <input class = "ft3 ft-other" id="ft3-ft-other" type="text">
               </div>
               <div class="registration-form-new-teammates-response row">
-                <div class="q4-new-teammates small-12 question columns">What technologies do you plan to use for your project?</div>
-                <input class = "new-teammates-input" id="q4-new-teammates-i1 new-teammates-input" type="text">
+                <div class="ft4-question small-12 question columns" id="ft4">What technologies do you plan to use for your project?</div>
+                <input class = "ft4 ft-other" id="ft4-ft-other" type="text">
               </div>
               <div class="registration-form-new-teammates-response row">
-                <div class="q5-new-teammates small-12 question columns">Who are you looking for?</div>
-                <div class="small-12 columns new-teammates-role-options">
-                  <input class="q5-new-teammates-i" id="q5-new-teammates-i1" type="checkbox"><label for="q5-new-teammates-i1">Front-end Engineer</label><br>
-                  <input class="q5-new-teammates-i" id="q5-new-teammates-i2" type="checkbox"><label for="q5-new-teammates-i2">Back-end Engineer</label><br>
-                  <input class="q5-new-teammates-i" id="q5-new-teammates-i3" type="checkbox"><label for="q5-new-teammates-i3">Data Scientist</label><br>
-                  <input class="q5-new-teammates-i" id="q5-new-teammates-i4" type="checkbox"><label for="q5-new-teammates-i4">Designer</label><br>
-                  <input class="q5-new-teammates-i" id="q5-new-teammates-i5" type="checkbox"><label for="q5-new-teammates-i5">iOS</label><br>
-                  <input class="q5-new-teammates-i" id="q5-new-teammates-i6" type="checkbox"><label for="q5-new-teammates-i6">Android</label><br>
+                <div class="ft5-new-teammates small-12 question columns" id="ft5">Who are you looking for?</div>
+                <div class="ft small-12 columns new-teammates-role-options">
+                  <input class="ft5-i1" id="ft5-i1" type="checkbox"><label for="ft5-i1">Front-end Engineer</label><br>
+                  <input class="ft5-i2" id="ft5-i2" type="checkbox"><label for="ft5-i2">Back-end Engineer</label><br>
+                  <input class="ft5-i3" id="ft5-i3" type="checkbox"><label for="ft5-i3">Data Scientist</label><br>
+                  <input class="ft5 i4" id="ft5-i4" type="checkbox"><label for="ft5-i4">Designer</label><br>
+                  <input class="ft5 i5" id="ft5-i5" type="checkbox"><label for="ft5-i5">iOS</label><br>
+                  <input class="ft5 i6" id="ft5-i6" type="checkbox"><label for="q5-new-teammates-i6">Android</label><br>
                 </div>
                 <label>
                     Other:
-                    <input class="new-teammates-input" class="q5-new-teammates-i" id="q5-new-teammates-i7" type="text">
+                    <input class="ft5 i7 ft-other" id="ft5-i7" type="text">
                   </label>
               </div>
               <div class="registration-form-new-teammates-response row">
-                <div class="q6-new-teammates small-12 question columns">How experienced is your team?</div>
-                <input class="new-teammates-input" id="q6-new-teammates-i1" type="text">
+                <div class="ft6-question small-12 question columns" id="ft6">How experienced is your team?</div>
+                <textarea class="ft6 ft-other" id="ft6-ft-other" type="text"></textarea>
+              </div>
+              <div class="registration-form-new-teammates-response row">
+                <div class="ft7-question small-12 question columns" id="ft7">If you already have teammates, may you provide their email addresses? (separated by a comma)</div>
+                <textarea class="ft7 ft-other" id="ft7-ft-other" type="text"></textarea>
               </div>
             </div>
           </div>
@@ -63,4 +66,9 @@
       </div>
     </div>
   </body>
+  <footer>        
+    <script src="/js/vendor/foundation.js"></script>
+    <script type='module' src="/js/registration-gather-data.js"></script>
+    <script type='module' src="/js/registration-find-new-teammates.js"></script>
+  </footer>
 </html>
