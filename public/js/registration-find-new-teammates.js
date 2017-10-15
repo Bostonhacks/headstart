@@ -25,6 +25,5 @@ $('.ft-other').keyup(function(event) {
 
 $('.ft').click(function(event) {
   var userPreferenceObject = processCheckboxResponse(event, 'ft');
-  debugger
   if (userPreferenceObject != undefined) return saveResponse(userPreferenceObject);
 });

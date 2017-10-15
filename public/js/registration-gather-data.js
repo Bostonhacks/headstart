@@ -43,6 +43,7 @@ export function getQuestionText(questionId) {
 
 
 export var processCheckboxResponse = function(event, type) {
+  debugger
   var classes = event.target.parentElement.classList;
   var questionId = getQuestionId(classes, type);
   if (questionId == undefined) return;
