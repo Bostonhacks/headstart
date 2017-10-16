@@ -4,13 +4,14 @@ $(document).ready(function() {
     // get value of team
     var hasTeam = $('.team-radio:checked').val();
     $("#registrationButton").html("Finish");
-    $("#registrationButton").attr("href", "/finish-registration");
+    $("#registrationButton").attr("href", "/home");
     if (hasTeam == 'true') {
       $('.teammates').slideDown("slow");
       $('.existing-team').slideUp("slow");
       $('.create-team').slideUp("slow");
+       $('.join-team').slideUp("slow");
     } else {
-      $('.existing-team').slideDown("slow");
+      $('.join-team').slideDown("slow");
       $('.teammates').slideUp("slow");
     }
   });
@@ -25,7 +26,7 @@ $(document).ready(function() {
       if (hasTeam == 'true') {
         $('.create-team').slideUp("slow");
         $("#registrationButton").html("Finish");
-        $("#registrationButton").attr("href", "/finish-registration");
+        $("#registrationButton").attr("href", "/home");
       } else {
         $('.create-team').slideDown("slow");
       }
@@ -37,10 +38,11 @@ $(document).ready(function() {
     if (joinExistingTeam == 'true') {
       $("#registrationButton").html("Join Existing Team");
       $("#registrationButton").attr("href", "/join-existing-team");
+      $('.existing-team').slideDown("slow");
       $('.create-team').slideUp("slow");
     } else {
       $("#registrationButton").html("Finish");
-      $("#registrationButton").attr("href", "/finish-registration");
+      $("#registrationButton").attr("href", "/home");
       $('.create-team').slideDown("slow");
     }
   });
@@ -52,7 +54,7 @@ $(document).ready(function() {
       $("#registrationButton").attr("href", "/create-new-team");
     } else {
       $("#registrationButton").html("Finish");
-      $("#registrationButton").attr("href", "/finish-registration");
+      $("#registrationButton").attr("href", "/home");
     }
   });
 });
