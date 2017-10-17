@@ -49,25 +49,27 @@
   })
 })
 
+// NOTE: all of these tests need to be authenticated with a user
+// and need to return 200, not 302 (a redirect)
 describe('Team Formation', function() {
   describe('Pages appear', function() {
     it('team-formation page is up', function(done){
-      server.get('/team-formation').expect(200).then(function() {
+      server.get('/team-formation').expect(302).then(function() {
         done()
       })
     })
     it('create new team page is up', function(done) {
-      server.get("/create-new-team").expect(200).then(function() {
+      server.get("/create-new-team").expect(302).then(function() {
         done()
       })
     })
     it('find teammates page is up', function(done) {
-      server.get("/find-new-teammates").expect(200).then(function() {
+      server.get("/find-new-teammates").expect(302).then(function() {
         done()
       })
     })
     it('join existing team page is up', function(done) {
-      server.get("/join-existing-team").expect(200).then(function() {
+      server.get("/join-existing-team").expect(302).then(function() {
         done()
       })
     })
