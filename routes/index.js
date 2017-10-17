@@ -8,6 +8,7 @@ const forgot = require('../config/forgot')
 const updateUser = require('../config/update')
 const upload = require('../multer')
 const adminFunc = require('../config/admin')
+const teamFormation = require('../config/teamform')
 
 const express = require('express')
 const router = express.Router()
@@ -174,6 +175,35 @@ router.get('/auth/mlh/callback', isLoggedIn, function (req, res, next) {
 router.get('/almost-done', isLoggedIn, function (req, res, next) {
   if (req.user.local.registered) return renderProfile(req, res)
   res.render('pages/registration.ejs', {errormessage: '', uploadsuccess: ''})
+})
+
+router.get('/team-formation', isLoggedIn, function (req, res, next) {
+  res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''});
+})
+
+router.get('/create-new-team', isLoggedIn, function (req, res, next) {
+  res.render('pages/registration-create-new-team.ejs',  {errormessage: '', uploadsuccess: ''});
+})
+
+router.get('/join-existing-team', isLoggedIn, function (req, res, next) {
+  res.render('pages/registration-join-existing-team.ejs',  {errormessage: '', uploadsuccess: ''});
+})
+
+router.get('/find-new-teammates', isLoggedIn, function (req, res, next) {
+  res.render('pages/registration-find-new-teammates.ejs',  {errormessage: '', uploadsuccess: ''});
+})
+
+router.get('/finish-registration', isLoggedIn, function (req, res, next) {
+  // TODO: add a finishing page??
+})
+
+// TODO: how would I separate registration related routes and logic
+// into a separate file?
+router.post('/save-question-response', isLoggedIn, function (req, res, next) {
+  // console.log(req.body.data);
+  teamFormation.submitAnswer(req, res, function() {
+    return res.send('success');
+  }) 
 })
 
 router.post('/submit-application', isLoggedIn, upload.single('resume'), function (req, res, next) {
