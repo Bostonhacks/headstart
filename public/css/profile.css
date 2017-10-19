@@ -84,7 +84,7 @@
 }
 
 #profile-footer {
-    background-color: var(--light-blue);
+    background-color: var(--dark-color);
     position: fixed;
     bottom: 0;
 }
@@ -96,6 +96,15 @@
 .account-extras-container > .columns {
     padding-bottom: 200px; 
 }
+
+.team-formation-button {
+    text-align: center;
+}
+
+#teamFormationButton {
+    background-color: var(--light-orange-color);
+}
+
 
 @media only screen and (max-width: 900px) {
   
