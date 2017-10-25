@@ -178,7 +178,8 @@ router.get('/almost-done', isLoggedIn, function (req, res, next) {
 })
 
 router.get('/team-formation', isLoggedIn, function (req, res, next) {
-  res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''});
+  //res.render('pages/application-postMLH.ejs', {errormessage: '', uploadsuccess: ''});
+  res.render('pages/team-formation-closed.ejs', {errormessage: '', uploadsuccess: ''});
 })
 
 router.get('/create-new-team', isLoggedIn, function (req, res, next) {
