@@ -266,6 +266,32 @@ router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
   })
 })
 
+router.get('/check-in', isLoggedIn, function (req, res, next) {
+  if (!adminFunc.isAdmin(req.user.local.email)) {
+    res.redirect('/')
+    return
+  }
+  res.render('pages/admin-check-in.ejs')
+})
+
+router.get('/checkUserIn/:userid', isLoggedIn, function(req, res) {
+  if (!adminFunc.isAdmin(req.user.local.email)) {
+    return res.redirect('/')
+  }
+  adminFunc.checkUserIn(req.params.userid, function() {
+    return res.sendStatus(200)
+  })
+})
+
+router.get('/unCheckUserin/:userid', isLoggedIn, function(req, res) {
+  if (!adminFunc.isAdmin(req.user.local.email)) {
+    return res.redirect('/')
+  }
+  adminFunc.unCheckUserIn(req.params.userid, function() {
+    return res.sendStatus(200)
+  })
+})
+
 function isLoggedIn (req, res, next) {
   debug(req)
   if (req.isAuthenticated()) {
