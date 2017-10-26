@@ -27,5 +27,18 @@ module.exports = {
   // returns true if the email given is an admin email
   isAdmin: function(emailAddr) {
     return process.env.ADMIN_EMAILS.includes(emailAddr)
+  },
+  checkUserIn: function(userid, next) {
+    User.update({_id: userid}, {$set: {
+      checkedIn: true, 
+      checkInDate: (new Date()).toString()
+    }}, function(err, raw){
+      return next()
+    })
+  }, 
+  unCheckUserIn: function(userid, next) {
+    User.update({_id: userid}, {$set: {checkedIn: false}}, function(err, raw){
+      return next()
+    })
   }
 }

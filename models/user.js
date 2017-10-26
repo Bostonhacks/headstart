@@ -31,7 +31,15 @@ const userSchema = mongoose.Schema({
   additional: String,
   status: String, // Possible values so far: {'Pending', 'Not Attending'}
   notAttendingReason: String,
-  dataSharingAgreed: Boolean
+  dataSharingAgreed: Boolean,
+  checkedIn: {
+    type: Boolean,
+    required: false
+  },
+  checkInDate: {
+    type: String,
+    required: false
+  }
 })
 
 // Hash Generation

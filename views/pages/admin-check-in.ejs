@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <link rel="stylesheet" href="css/profile.css">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+  <h1 class="text-center" id="admin-title"> <a href='/'>BostonHacks</a> Check In </h1>
+
+  <div id="app">
+    <h2> Checked in: {{ checkInCount }} </h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Hacker</th>
+          <th>Check in</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="user in users">
+          <td> {{ user.first_name }} {{ user.last_name }} </td>
+          <td v-if="!user.checkedIn" style="background-color:pink;" v-on:click='checkIn(user._id)'> Check in </td>
+          <td v-else style="background-color:lightgreen;" v-on:click='unCheckIn(user._id)'> {{ user.checkInDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="/js/vue.js"></script>
+  <script src="/js/admin-check-in.js"></script>
+</body>
+
+<script src="https://use.fontawesome.com/fae771462f.js"></script>
+</html>

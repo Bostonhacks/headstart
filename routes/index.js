@@ -240,29 +240,34 @@ router.post('/not-attending-confirmation', isLoggedIn, function (req, res, next)
   res.redirect('/home')
 })
 
-router.get('/admin', isLoggedIn, function (req, res, next) {
-  if (!adminFunc.isAdmin(req.user.local.email)) {
-    res.redirect('/')
-    return
-  }
+router.get('/admin', isAdmin, function (req, res, next) {
   res.render('pages/admin-console.ejs')
 })
 
-router.get('/admin-all-registrants', isLoggedIn, function(req, res, next) {
-  if (!adminFunc.isAdmin(req.user.local.email)) {
-    res.redirect('/')
-    return
-  }
+router.get('/admin-all-registrants', isAdmin, function(req, res, next) {
   adminFunc.getAllUsers(req, res, function(responseData) {
     res.json(responseData)
   })
 })
 
-router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
-  if (!adminFunc.isAdmin(req.user.local.email)) {
-    return res.redirect('/')
-  }
+router.get('/changeStatus/:userid/:stat', isAdmin, function(req, res) {
   adminFunc.changeStatus(req.params.userid, req.params.stat, function() {
+    return res.sendStatus(200)
+  })
+})
+
+router.get('/check-in', isAdmin, function (req, res, next) {
+  res.render('pages/admin-check-in.ejs')
+})
+
+router.get('/checkUserIn/:userid', isAdmin, function(req, res) {
+  adminFunc.checkUserIn(req.params.userid, function() {
+    return res.sendStatus(200)
+  })
+})
+
+router.get('/unCheckUserin/:userid', isAdmin, function(req, res) {
+  adminFunc.unCheckUserIn(req.params.userid, function() {
     return res.sendStatus(200)
   })
 })
@@ -270,6 +275,15 @@ router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
 function isLoggedIn (req, res, next) {
   debug(req)
   if (req.isAuthenticated()) {
+    return next()
+  } else {
+    res.redirect('/login')
+  }
+}
+
+function isAdmin (req, res, next) {
+  debug(req)
+  if (req.isAuthenticated() && adminFunc.isAdmin(req.user.local.email)) {
     return next()
   } else {
     res.redirect('/login')
