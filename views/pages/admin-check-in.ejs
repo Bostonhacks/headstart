@@ -8,6 +8,7 @@
   <h1 class="text-center" id="admin-title"> <a href='/'>BostonHacks</a> Check In </h1>
 
   <div id="app">
+    <h2> Checked in: {{ checkInCount }} </h2>
     <table>
       <thead>
         <tr>
@@ -18,8 +19,8 @@
       <tbody>
         <tr v-for="user in users">
           <td> {{ user.first_name }} {{ user.last_name }} </td>
-          <td v-if="user.checkedIn == false || user.checkedIn == undefined" style="background-color:pink;" v-on:click='checkIn(user._id)'> Check in </td>
-          <td v-else style="background-color:lightgreen;" v-on:click='unCheckIn(user._id)'> {{ user.checkedIn }}</td>
+          <td v-if="!user.checkedIn" style="background-color:pink;" v-on:click='checkIn(user._id)'> Check in </td>
+          <td v-else style="background-color:lightgreen;" v-on:click='unCheckIn(user._id)'> {{ user.checkInDate }}</td>
         </tr>
       </tbody>
     </table>

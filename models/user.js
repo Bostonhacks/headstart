@@ -33,6 +33,11 @@ const userSchema = mongoose.Schema({
   notAttendingReason: String,
   dataSharingAgreed: Boolean,
   checkedIn: {
+    type: Boolean,
+    required: false
+  },
+  checkInDate: {
+    type: String,
     required: false
   }
 })

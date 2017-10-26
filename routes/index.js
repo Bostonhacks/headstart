@@ -241,16 +241,14 @@ router.post('/not-attending-confirmation', isLoggedIn, function (req, res, next)
 
 router.get('/admin', isLoggedIn, function (req, res, next) {
   if (!adminFunc.isAdmin(req.user.local.email)) {
-    res.redirect('/')
-    return
+    return res.redirect('/')
   }
   res.render('pages/admin-console.ejs')
 })
 
 router.get('/admin-all-registrants', isLoggedIn, function(req, res, next) {
   if (!adminFunc.isAdmin(req.user.local.email)) {
-    res.redirect('/')
-    return
+    return res.redirect('/')
   }
   adminFunc.getAllUsers(req, res, function(responseData) {
     res.json(responseData)
@@ -268,8 +266,7 @@ router.get('/changeStatus/:userid/:stat', isLoggedIn, function(req, res) {
 
 router.get('/check-in', isLoggedIn, function (req, res, next) {
   if (!adminFunc.isAdmin(req.user.local.email)) {
-    res.redirect('/')
-    return
+    return res.redirect('/')
   }
   res.render('pages/admin-check-in.ejs')
 })

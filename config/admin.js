@@ -29,7 +29,10 @@ module.exports = {
     return process.env.ADMIN_EMAILS.includes(emailAddr)
   },
   checkUserIn: function(userid, next) {
-    User.update({_id: userid}, {$set: {checkedIn: new Date()}}, function(err, raw){
+    User.update({_id: userid}, {$set: {
+      checkedIn: true, 
+      checkInDate: (new Date()).toString()
+    }}, function(err, raw){
       return next()
     })
   }, 
