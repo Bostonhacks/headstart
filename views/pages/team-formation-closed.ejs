@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+  <head>
+    <% include ../partials/head %>
+    <link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="stylesheet" href="css/slider.css">
+    <link rel="stylesheet" href="css/registration.css">
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js" integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU=" crossorigin="anonymous"></script>
+    <script src="js/vendor/slider.js"></script>
+  </head>
+  <body>
+    <div class="container registration-body">
+      <% include ../partials/profile-nav %>
+      <div class="page-header text-center">
+        <div class="registration-heading">
+          <h1>Team Formation</h1>
+        </div>
+        <div class="registration-heading">
+          The online team formation questionaire has closed. Please come to our in-person team formation event on Saturday!
+        </div>
+      </div>
+      <div class="questions-container">
+        <% if (errormessage.length > 0) { %>
+        <div class="text-center">
+          <div class="serverMessageError"> <%= errormessage %> </div>
+        </div>
+        <% } %>
+
+      </div>
+      </body>
+      <footer>        
+        <script src="/js/vendor/foundation.js"></script>        
+        <script src="js/registration-logic.js"></script>        
+        <script src="js/slider-local.js"></script>        
+        <script type="module" src="js/registration-gather-data.js"></script>
+      </footer>
+    </html>
