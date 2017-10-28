@@ -13,12 +13,14 @@
       <thead>
         <tr>
           <th>Hacker</th>
+          <th>Status</th>
           <th>Check in</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="user in users">
           <td> {{ user.first_name }} {{ user.last_name }} </td>
+          <td> {{ user.status }} </td>
           <td v-if="!user.checkedIn" style="background-color:pink;" v-on:click='checkIn(user._id)'> Check in </td>
           <td v-else style="background-color:lightgreen;" v-on:click='unCheckIn(user._id)'> {{ user.checkInDate }}</td>
         </tr>
